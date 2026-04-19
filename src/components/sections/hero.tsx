@@ -37,7 +37,7 @@ export function Hero() {
                 unoptimized
               />
             </span>
-            <span>Built with Instagram, TikTok & YouTube creators</span>
+            <span>Built with Instagram creators (LinkedIn coming soon)</span>
           </div>
 
           <h1 className="mt-6 font-heading text-[40px] leading-[1.05] tracking-tight text-white sm:text-[52px] md:text-[68px]">

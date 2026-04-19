@@ -142,10 +142,10 @@ export function SocialProof() {
           </div>
           <div>
             <div className="font-heading text-5xl text-white md:text-[56px]">
-              3 platforms
+              Instagram first
             </div>
             <div className="mt-2 text-white/70">
-              Instagram Reels, TikTok and YouTube Shorts, one unified feed.
+              We are starting with Instagram Reels. LinkedIn is next on the roadmap.
             </div>
           </div>
           <div>
@@ -159,7 +159,7 @@ export function SocialProof() {
         </div>
 
         <p className="mt-10 text-center text-xs font-medium uppercase tracking-[0.22em] text-white/50">
-          Built with Instagram, TikTok & YouTube creators in the loop
+          Built with Instagram creators in the loop. LinkedIn coming soon.
         </p>
       </div>
 

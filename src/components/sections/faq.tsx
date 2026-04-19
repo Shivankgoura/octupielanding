@@ -19,7 +19,7 @@ const groups: Group[] = [
       },
       {
         q: "What platforms does it support?",
-        a: "Instagram Reels, TikTok and YouTube Shorts, all in one unified feed. Track any creator across the three and get cross-platform outlier insights.",
+        a: "Instagram Reels at launch. LinkedIn is on the roadmap as our next platform, with more to follow once we nail the core experience.",
       },
       {
         q: "Can I track specific creators?",

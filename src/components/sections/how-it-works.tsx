@@ -1,40 +1,42 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
-import { assets } from "@/lib/assets";
+import {
+  StepIllustration,
+  type StepIllustrationKey,
+} from "@/components/step-illustrations";
 
 type Step = {
   label: string;
   title: string;
   body: string;
-  image: string;
+  illustration: StepIllustrationKey;
 };
 
 const steps: Step[] = [
   {
     label: "STEP 1",
     title: "Pick the creators you want to learn from",
-    body: "Plug in any Instagram, TikTok or YouTube handle. Octupie tracks what's working for them in near real-time.",
-    image: assets.steps.s1,
+    body: "Plug in any Instagram handle. Octupie tracks what's working for them in near real-time. LinkedIn support is on the roadmap.",
+    illustration: "pick",
   },
   {
     label: "STEP 2",
     title: "Surface their actual outliers",
     body: "We filter out their baseline and show only videos that massively out-performed. The ones worth studying.",
-    image: assets.steps.s2,
+    illustration: "outliers",
   },
   {
     label: "STEP 3",
     title: "Analyse the why: hooks, beats, style",
     body: "Octupie breaks down each outlier: hook pattern, story beats, pacing, format and the angle that made it land.",
-    image: assets.steps.s3,
+    illustration: "analyse",
   },
   {
     label: "STEP 4",
     title: "Recreate in your voice: script, title, caption",
     body: "One click turns insight into a ready-to-shoot script plus matching titles and captions, tuned to your tone and niche.",
-    image: assets.steps.s4,
+    illustration: "recreate",
   },
 ];
 
@@ -91,14 +93,9 @@ export function HowItWorks() {
 
           <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#040E22] p-4">
             <div className="card-gradient-border relative aspect-[16/10] overflow-hidden rounded-xl bg-[#040E22]">
-              <Image
-                key={current.image}
-                src={current.image}
-                alt={current.title}
-                fill
-                sizes="(min-width: 1024px) 60vw, 100vw"
-                className="object-cover"
-                unoptimized
+              <StepIllustration
+                key={current.illustration}
+                k={current.illustration}
               />
             </div>
           </div>

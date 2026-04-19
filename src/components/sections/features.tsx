@@ -13,7 +13,7 @@ type Feature = {
 const features: Feature[] = [
   {
     title: "Track the creators you want to beat",
-    body: "Follow any Instagram, TikTok or YouTube creator and get a live feed of what's actually working for them. No manual scrolling, no spreadsheets.",
+    body: "Follow any Instagram creator and get a live feed of what's actually working for them. No manual scrolling, no spreadsheets. LinkedIn support coming soon.",
     illustration: "track",
     wide: true,
   },

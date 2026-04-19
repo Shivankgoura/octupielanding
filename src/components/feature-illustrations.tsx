@@ -66,26 +66,27 @@ export function TrackCreatorsIllustration({ className }: Props) {
         .oct-row-2 { animation: oct-pulse-b 3.2s ease-in-out infinite 0.4s; }
         .oct-row-3 { animation: oct-pulse-a 3.2s ease-in-out infinite 0.8s; }
       `}</style>
-      {/* platform chips (IG / TT / YT) */}
+      {/* platform chips (IG live, IN soon) */}
       {[
-        { x: 30, label: "IG", color: "#E1306C" },
-        { x: 30, label: "TT", color: "#25F4EE", y: 90 },
-        { x: 30, label: "YT", color: "#FF0033", y: 160 },
+        { x: 30, y: 30, label: "IG", color: "#E1306C", live: true },
+        { x: 30, y: 100, label: "IG", color: "#E1306C", live: true },
+        { x: 30, y: 170, label: "IN", color: "#0A66C2", live: false },
       ].map((c, i) => (
         <g key={i} className={`oct-row-${i + 1}`}>
           <rect
             x={c.x}
-            y={c.y ?? 20}
+            y={c.y}
             width="110"
             height="50"
             rx="10"
             fill="url(#oct-chip)"
             stroke="rgba(255,255,255,0.08)"
+            opacity={c.live ? 1 : 0.55}
           />
-          <circle cx={c.x + 25} cy={(c.y ?? 20) + 25} r="12" fill={c.color} opacity="0.9" />
+          <circle cx={c.x + 25} cy={c.y + 25} r="12" fill={c.color} opacity={c.live ? 0.95 : 0.5} />
           <text
             x={c.x + 25}
-            y={(c.y ?? 20) + 29}
+            y={c.y + 29}
             textAnchor="middle"
             fontFamily="Inter, sans-serif"
             fontSize="11"
@@ -94,16 +95,24 @@ export function TrackCreatorsIllustration({ className }: Props) {
           >
             {c.label}
           </text>
-          <rect x={c.x + 48} y={(c.y ?? 20) + 18} width="48" height="5" rx="2.5" fill="rgba(255,255,255,0.35)" />
-          <rect x={c.x + 48} y={(c.y ?? 20) + 28} width="34" height="4" rx="2" fill="rgba(255,255,255,0.18)" />
+          <rect x={c.x + 48} y={c.y + 14} width="48" height="5" rx="2.5" fill="rgba(255,255,255,0.5)" />
+          <rect x={c.x + 48} y={c.y + 24} width="34" height="4" rx="2" fill="rgba(255,255,255,0.22)" />
+          {!c.live && (
+            <g>
+              <rect x={c.x + 48} y={c.y + 32} width="50" height="11" rx="5.5" fill="rgba(76,97,255,0.18)" stroke="rgba(76,97,255,0.4)" />
+              <text x={c.x + 73} y={c.y + 40} textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="7" fontWeight="700" fill="#9BB2FF">
+                COMING SOON
+              </text>
+            </g>
+          )}
         </g>
       ))}
 
       {/* connecting curves */}
       <g fill="none" stroke="#4C61FF" strokeWidth="1.5" opacity="0.7">
-        <path d="M140 45 C 200 45, 220 125, 260 125" />
-        <path d="M140 115 L 260 125" />
-        <path d="M140 185 C 200 185, 220 125, 260 125" />
+        <path d="M140 55 C 200 55, 220 125, 260 125" />
+        <path d="M140 125 L 260 125" />
+        <path d="M140 195 C 200 195, 220 125, 260 125" strokeDasharray="3 4" opacity="0.4" />
       </g>
 
       {/* Octupie feed panel */}
@@ -371,26 +380,34 @@ export function TitlesCaptionsIllustration({ className }: Props) {
 
         {/* platform toggles */}
         <g transform="translate(14 14)">
-          {["Reels", "Shorts", "TikTok"].map((p, i) => (
-            <g key={p} transform={`translate(${i * 74} 0)`}>
+          {[
+            { label: "Reels", live: true },
+            { label: "LinkedIn", live: false },
+          ].map((p, i) => (
+            <g key={p.label} transform={`translate(${i * 92} 0)`}>
               <rect
-                width="66"
+                width={p.live ? 66 : 84}
                 height="24"
                 rx="12"
-                fill={i === 0 ? "#014CE3" : "rgba(255,255,255,0.05)"}
-                stroke={i === 0 ? "none" : "rgba(255,255,255,0.08)"}
+                fill={p.live ? "#014CE3" : "rgba(255,255,255,0.05)"}
+                stroke={p.live ? "none" : "rgba(255,255,255,0.1)"}
               />
               <text
-                x="33"
+                x={p.live ? 33 : 26}
                 y="16"
-                textAnchor="middle"
+                textAnchor={p.live ? "middle" : "start"}
                 fontFamily="Inter, sans-serif"
                 fontSize="10"
                 fontWeight="600"
-                fill={i === 0 ? "#fff" : "rgba(255,255,255,0.65)"}
+                fill={p.live ? "#fff" : "rgba(255,255,255,0.65)"}
               >
-                {p}
+                {p.label}
               </text>
+              {!p.live && (
+                <text x="78" y="16" textAnchor="end" fontFamily="Inter, sans-serif" fontSize="7" fontWeight="700" fill="#9BB2FF">
+                  SOON
+                </text>
+              )}
             </g>
           ))}
         </g>
