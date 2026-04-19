@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { assets } from "@/lib/assets";
+import { WaitlistForm } from "@/components/waitlist-form";
 
 export function Cta() {
   return (
@@ -16,34 +17,19 @@ export function Cta() {
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[#040E22]/40 to-[#040E22]" />
 
           <div className="relative">
-            <h2 className="font-heading text-4xl leading-tight tracking-tight text-white md:text-[64px]">
-              Stop wasting time making
-              <br className="hidden md:block" /> content that doesn&apos;t work
+            <h2 className="font-heading text-4xl leading-tight tracking-tight text-white md:text-[60px]">
+              Stop researching.
+              <br className="hidden md:block" /> Start shipping.
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-white/75 md:text-lg">
-              Follow a scalable workflow and ship winning short-form videos in
-              under 30 minutes.
+              Join the waitlist to get early access to Octupie, your viral-content
+              researcher and script-writing agentic workflow.
             </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <a
-                href="#pricing"
-                className="inline-flex items-center gap-2 rounded-full bg-[#014CE3] px-7 py-3.5 text-sm font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.24),0_10px_30px_rgba(1,76,227,0.5)] transition hover:bg-[#4C61FF]"
-              >
-                Try It For Free
-                <span aria-hidden>→</span>
-              </a>
-              <a
-                href="#how-it-works"
-                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-7 py-3.5 text-sm text-white/90 transition hover:bg-white/10"
-              >
-                <span
-                  aria-hidden
-                  className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-white/10"
-                >
-                  ▶
-                </span>
-                Watch walkthrough
-              </a>
+            <div className="mx-auto mt-8 w-full max-w-xl">
+              <WaitlistForm ctaLabel="Join the Waitlist" />
+              <p className="mt-3 text-xs text-white/55">
+                We&apos;ll only email you launch news and early-access invites.
+              </p>
             </div>
           </div>
         </div>

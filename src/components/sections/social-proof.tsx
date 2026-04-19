@@ -20,13 +20,13 @@ const testimonials: Testimonial[] = [
     name: "James",
     avatar: assets.avatars.james,
     quote:
-      "3x views on Instagram in the first two videos I made with it — and it removed so much scripting stress.",
+      "3x views on Instagram in the first two videos I made with it, and it removed so much scripting stress.",
   },
   {
     name: "Grant",
     avatar: assets.avatars.grant,
     quote:
-      "Perfect timing for my company. The script nailed every curiosity loop — and I could expand it in one click.",
+      "Perfect timing for my company. The script nailed every curiosity loop, and I could expand it in one click.",
   },
   {
     name: "Todd",
@@ -50,7 +50,7 @@ const testimonials: Testimonial[] = [
     name: "Liz",
     avatar: assets.avatars.liz,
     quote:
-      "Octupie is in a league of its own. So thoughtful — even the small details.",
+      "Octupie is in a league of its own. So thoughtful, even the small details.",
   },
   {
     name: "Zach",
@@ -60,7 +60,7 @@ const testimonials: Testimonial[] = [
   {
     name: "@tube-master",
     avatar: assets.avatars.tubeMaster,
-    quote: "Thanks for making this — absolute fire.",
+    quote: "Thanks for making this, absolute fire.",
   },
   {
     name: "Angie",
@@ -71,7 +71,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Amar",
     avatar: assets.avatars.amar,
-    quote: "Been trying it out — amazing work!",
+    quote: "Been trying it out, amazing work!",
   },
   {
     name: "Paul",
@@ -81,7 +81,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Atsatsa",
     avatar: assets.avatars.atsatsa,
-    quote: "Amazing — much respect, and thank you.",
+    quote: "Amazing, much respect, and thank you.",
   },
   {
     name: "Hatem",
@@ -101,7 +101,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Scott",
     avatar: assets.avatars.scott,
-    quote: "Tested it on a couple ideas — dayum.",
+    quote: "Tested it on a couple ideas, dayum.",
   },
 ];
 
@@ -131,24 +131,36 @@ export function SocialProof() {
   return (
     <section className="relative py-20 md:py-28">
       <div className="mx-auto max-w-[1200px] px-6">
-        <div className="grid grid-cols-1 items-center gap-8 text-center md:grid-cols-2 md:text-left">
+        <div className="grid grid-cols-1 items-center gap-8 text-center md:grid-cols-3 md:text-left">
           <div>
-            <div className="font-heading text-5xl text-white md:text-[64px]">
-              Millions
+            <div className="font-heading text-5xl text-white md:text-[56px]">
+              Top 1%
             </div>
             <div className="mt-2 text-white/70">
-              of videos analyzed daily — find the top 1% outliers in every niche.
+              outliers surfaced for every niche you track, not baseline noise.
             </div>
           </div>
           <div>
-            <div className="font-heading text-5xl text-white md:text-[64px]">
-              4.9<span className="text-white/50">/5</span>
+            <div className="font-heading text-5xl text-white md:text-[56px]">
+              3 platforms
             </div>
             <div className="mt-2 text-white/70">
-              Trusted by 94K+ creators and brands worldwide.
+              Instagram Reels, TikTok and YouTube Shorts, one unified feed.
+            </div>
+          </div>
+          <div>
+            <div className="font-heading text-5xl text-white md:text-[56px]">
+              End-to-end
+            </div>
+            <div className="mt-2 text-white/70">
+              From outlier → script → caption in your voice. No more copy-paste chain.
             </div>
           </div>
         </div>
+
+        <p className="mt-10 text-center text-xs font-medium uppercase tracking-[0.22em] text-white/50">
+          Built with Instagram, TikTok & YouTube creators in the loop
+        </p>
       </div>
 
       <div className="relative mt-14 space-y-6 overflow-hidden">

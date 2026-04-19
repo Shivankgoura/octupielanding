@@ -7,77 +7,48 @@ type Group = { label: string; items: QA[] };
 
 const groups: Group[] = [
   {
-    label: "General",
+    label: "Product",
     items: [
       {
-        q: "Is there a free trial available?",
-        a: "Every new user gets a 7-day free trial to fully explore Octupie. You can try it risk-free and cancel anytime during the trial to avoid being charged.",
+        q: "How is Octupie different from existing viral-research tools?",
+        a: "Most tools stop at surfacing popular videos. Octupie runs the full workflow: outlier detection, pattern analysis, hook recreation, script-writing in your voice, then titles and captions ready to post. It's an agentic system, not a search engine with a script button.",
       },
       {
-        q: "Who is Octupie for?",
-        a: "Anyone looking to grow faster on social media. Whether you're just starting out or scaling up, we take the guesswork out of content creation with proven viral frameworks.",
+        q: "Does it actually write in my voice, not a generic AI voice?",
+        a: "Yes. That's the whole point. Octupie learns your tone from your past posts, captions and comments, then rewrites outlier scripts using your vocabulary, pacing and phrasing. The pattern is viral, the voice stays yours.",
       },
       {
-        q: "Do I have to connect my social media accounts?",
-        a: "No — it's totally optional. You'll still get plenty of value without connecting them, but syncing accounts helps us tailor insights even better.",
+        q: "What platforms does it support?",
+        a: "Instagram Reels, TikTok and YouTube Shorts, all in one unified feed. Track any creator across the three and get cross-platform outlier insights.",
       },
       {
-        q: "How much does Octupie cost?",
-        a: "Plans start at $39/month when billed annually on the Pro plan. See the pricing section above for a full breakdown.",
+        q: "Can I track specific creators?",
+        a: "Yes. Paste any handle and Octupie monitors their output, surfaces their real outliers (not their baseline), and breaks down the hook, structure and angle behind each.",
       },
       {
-        q: "What are the usage limitations on my plan?",
-        a: "You get credits every month. Credits go towards analyzing videos, writing scripts, and submitting new channels. Each action costs 1 credit.",
-      },
-      {
-        q: "How many creators can I track?",
-        a: "50 on Pro, 100 on Visionary, and up to 1,000 on Titan.",
+        q: "Is this just another research tool?",
+        a: "No. Octupie includes research, but it also produces ready-to-shoot scripts, titles and captions. Research is the starting point, not the finish line.",
       },
     ],
   },
   {
-    label: "Billing",
+    label: "Waitlist",
     items: [
       {
-        q: "Can I switch between plans?",
-        a: "Absolutely. You can upgrade or downgrade your plan anytime.",
+        q: "When will Octupie launch?",
+        a: "We're rolling out early access in waves. Join the waitlist with your name and email and you'll be among the first to get an invite.",
       },
       {
-        q: "How do I cancel my subscription?",
-        a: "Head to Settings and open the billing portal to cancel anytime.",
+        q: "What do I get on the waitlist?",
+        a: "Launch updates, early-access invites and (for the first batch of creators) founder pricing once billing goes live.",
       },
       {
-        q: "What's your refund policy?",
-        a: "All new users get a 7-day free trial with full functionality. We don't offer refunds on subscription plans after the trial.",
+        q: "Will you spam me?",
+        a: "No. You'll only hear from us about Octupie product launches, updates and your invite. You can unsubscribe from any email.",
       },
       {
-        q: "Can I pause my subscription temporarily?",
-        a: "Not at the moment. If you need a break, cancel and re-subscribe when you're ready.",
-      },
-    ],
-  },
-  {
-    label: "Account",
-    items: [
-      {
-        q: "I haven't received my verification email — what should I do?",
-        a: "Email support@octupie.com and we'll help you out.",
-      },
-      {
-        q: "How do I create an account?",
-        a: "Click Try It For Free and sign up with email or Google/Apple — that's it.",
-      },
-      {
-        q: "How do I reset my password?",
-        a: "Click Forgot password on the login screen and follow the steps.",
-      },
-      {
-        q: "Can I change the email address on my account?",
-        a: "This feature isn't available yet.",
-      },
-      {
-        q: "How do I enable two-factor authentication (2FA)?",
-        a: "We don't support 2FA yet, but you can use passkeys for extra account security.",
+        q: "What do you do with my data?",
+        a: "We store your name and email solely to notify you about Octupie. We never sell or share it with third parties.",
       },
     ],
   },
@@ -95,10 +66,10 @@ export function Faq() {
             Still have questions?
           </h2>
           <a
-            href="mailto:support@octupie.com"
+            href="mailto:hello@octupie.com"
             className="mt-4 inline-flex items-center gap-2 text-sm text-[#4C61FF] transition hover:text-white"
           >
-            Contact Us →
+            Contact us →
           </a>
         </div>
 

@@ -3,11 +3,12 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Wordmark } from "@/components/brand";
+import { WaitlistButton } from "@/components/waitlist-button";
 
 const links = [
   { label: "Features", href: "#features" },
   { label: "How it works", href: "#how-it-works" },
-  { label: "Pricing", href: "#pricing" },
+  { label: "Why Octupie", href: "#why" },
   { label: "FAQ", href: "#faq" },
 ];
 
@@ -49,19 +50,7 @@ export function Nav() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <a
-            href="#"
-            className="hidden rounded-full px-4 py-2 text-sm text-white/80 transition hover:text-white md:inline-block"
-          >
-            Login
-          </a>
-          <a
-            href="#pricing"
-            className="inline-flex items-center gap-1.5 rounded-full bg-[#014CE3] px-4 py-2 text-sm font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.24),0_6px_20px_rgba(1,76,227,0.4)] transition hover:bg-[#4C61FF]"
-          >
-            Try It For Free
-            <span aria-hidden>→</span>
-          </a>
+          <WaitlistButton />
           <button
             className="ml-1 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white md:hidden"
             aria-label="Toggle menu"
@@ -88,9 +77,6 @@ export function Nav() {
                 {l.label}
               </a>
             ))}
-            <a href="#" className="text-base text-white/70">
-              Login
-            </a>
           </div>
         </div>
       )}

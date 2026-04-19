@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { assets } from "@/lib/assets";
+import { WaitlistForm } from "@/components/waitlist-form";
 
 export function Hero() {
   return (
@@ -36,40 +37,26 @@ export function Hero() {
                 unoptimized
               />
             </span>
-            <span>Trusted by 94,249+ creators</span>
+            <span>Built with Instagram, TikTok & YouTube creators</span>
           </div>
 
-          <h1 className="mt-6 font-heading text-[44px] leading-[1.05] tracking-tight text-white sm:text-[56px] md:text-[72px]">
-            Create viral short-form
-            <br />
-            videos in seconds
+          <h1 className="mt-6 font-heading text-[40px] leading-[1.05] tracking-tight text-white sm:text-[52px] md:text-[68px]">
+            Your personal viral-content
+            <br className="hidden sm:block" /> researcher &amp; script-writing
+            <br className="hidden sm:block" /> agentic workflow
           </h1>
 
-          <p className="mt-5 max-w-2xl text-base text-white/70 md:text-lg">
-            The easiest way to research top channels, find viral outliers, and
-            remix them into your own winning videos.
+          <p className="mt-6 max-w-2xl text-base text-white/70 md:text-lg">
+            The smarter way to research top creators, find viral content, and
+            implement it in your voice and style. End-to-end, not just a
+            research tool.
           </p>
 
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
-            <a
-              href="#pricing"
-              className="inline-flex items-center gap-2 rounded-full bg-[#014CE3] px-6 py-3 text-sm font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.24),0_10px_30px_rgba(1,76,227,0.45)] transition hover:bg-[#4C61FF]"
-            >
-              Try It For Free
-              <span aria-hidden>→</span>
-            </a>
-            <a
-              href="#how-it-works"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm text-white/90 transition hover:bg-white/10"
-            >
-              <span
-                aria-hidden
-                className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-white/10"
-              >
-                ▶
-              </span>
-              Play video
-            </a>
+          <div className="mt-8 w-full max-w-xl">
+            <WaitlistForm ctaLabel="Join the Waitlist" />
+            <p className="mt-3 text-xs text-white/50">
+              Early access invites go out in waves. No spam, just launch news.
+            </p>
           </div>
         </div>
 

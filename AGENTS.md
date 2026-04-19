@@ -63,3 +63,7 @@ scripts/            # Asset download scripts
 - After editing `.claude/skills/clone-website/SKILL.md`, run `node scripts/sync-skills.mjs` to regenerate the skill for all platforms.
 
 @docs/research/INSPECTION_GUIDE.md
+
+## Content Rules (Octupie)
+
+- **NEVER use em-dashes or en-dashes anywhere in copy, UI text, comments, or docs.** Use commas, periods, colons, or parentheses instead. Applies to both the literal U+2014 and U+2013 characters. This is a hard rule. Enforce before committing.

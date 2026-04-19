@@ -11,46 +11,36 @@ type Feature = {
 
 const features: Feature[] = [
   {
-    title: "Discover successful channels in your niche",
-    body: "Learn from their success and replicate those tactics in your next video.",
+    title: "Track the creators you want to beat",
+    body: "Follow any Instagram, TikTok or YouTube creator and get a live feed of what's actually working for them. No manual scrolling, no spreadsheets.",
     image: assets.graphics.g1,
     wide: true,
   },
   {
-    title: "Easily find winning videos from your favorite channels",
-    body: "Explore a database with millions of validated outliers.",
-    image: assets.graphics.g2,
+    title: "Copy, analyse and recreate outlier scripts, in your voice",
+    body: "Octupie doesn't hand you someone else's words. It dissects why a script went viral, then rewrites it in your tone, pacing and vocabulary.",
+    image: assets.featureImages.scripts,
   },
   {
-    title: "Generate dozens of winning hooks in seconds",
-    body: "Eliminate guesswork using hook templates backed by millions of views.",
+    title: "Recreate hooks that are already working",
+    body: "Hook templates pulled from your niche's top 1% outliers, rewritten for your topic so you never start a video from a blank page.",
     image: assets.featureImages.hooks,
   },
   {
-    title: "Build a feed of top-performing channels for easy analysis",
-    body: "Track any channel across Instagram, TikTok and YouTube in one place.",
+    title: "Daily script & content ideas",
+    body: "Wake up to a fresh shortlist of video angles sourced from real outlier performance in your niche, not generic AI prompts.",
     image: assets.graphics.g3,
   },
   {
-    title: "Instantly download the transcript from any video",
-    body: "Save time by referencing high-quality transcripts on demand.",
+    title: "Ready-to-post titles & captions",
+    body: "Every script ships with title, caption and hashtag variants tuned to each platform. Paste and post.",
     image: assets.graphics.g4,
   },
   {
-    title: "Write viral video scripts in seconds",
-    body: "Use proven storytelling frameworks that drove billions of views.",
-    image: assets.featureImages.scripts,
-    wide: true,
-  },
-  {
-    title: "Understand why the best videos went viral",
-    body: "Get in-depth analysis of hooks, storytelling, formats and styles.",
+    title: "An agentic workflow, not just a research tool",
+    body: "From research → analysis → script → caption, Octupie runs the loop end-to-end so you spend time filming, not digging through dashboards.",
     image: assets.graphics.g5,
-  },
-  {
-    title: "Use projects to organize winning ideas",
-    body: "Build collections of winning ideas to speed up your workflow.",
-    image: assets.graphics.g6,
+    wide: true,
   },
 ];
 
@@ -59,9 +49,12 @@ export function Features() {
     <section id="features" className="relative py-20 md:py-28">
       <div className="mx-auto max-w-[1200px] px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-heading text-4xl leading-tight tracking-tight text-white md:text-[56px]">
-            Everything you need to create
-            <br className="hidden md:block" /> winning short-form videos
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#4C61FF]">
+            What you actually get
+          </p>
+          <h2 className="mt-3 font-heading text-4xl leading-tight tracking-tight text-white md:text-[56px]">
+            Everything a viral short-form
+            <br className="hidden md:block" /> workflow actually needs
           </h2>
         </div>
 

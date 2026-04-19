@@ -1,4 +1,5 @@
 import { Wordmark } from "@/components/brand";
+import { WaitlistButton } from "@/components/waitlist-button";
 
 const cols = [
   {
@@ -6,17 +7,16 @@ const cols = [
     links: [
       { label: "Features", href: "#features" },
       { label: "How it works", href: "#how-it-works" },
-      { label: "Pricing", href: "#pricing" },
+      { label: "Why Octupie", href: "#why" },
       { label: "FAQ", href: "#faq" },
     ],
   },
   {
     label: "Company",
     links: [
-      { label: "Contact Us", href: "mailto:support@octupie.com" },
-      { label: "Tutorials", href: "#" },
-      { label: "Login", href: "#" },
-      { label: "Affiliate Program", href: "#" },
+      { label: "Contact Us", href: "mailto:hello@octupie.com" },
+      { label: "Privacy Policy", href: "#" },
+      { label: "Terms of Service", href: "#" },
     ],
   },
 ];
@@ -29,8 +29,8 @@ export function Footer() {
           <div>
             <Wordmark />
             <p className="mt-4 max-w-sm text-sm text-white/60">
-              Research top channels, find viral outliers, and remix them into
-              your own winning short-form videos.
+              Your personal viral-content researcher and script-writing agentic
+              workflow. Research top creators, recreate outliers in your voice.
             </p>
           </div>
 
@@ -56,14 +56,11 @@ export function Footer() {
 
           <div>
             <div className="text-xs font-medium uppercase tracking-[0.18em] text-white/50">
-              Get started
+              Get early access
             </div>
-            <a
-              href="#pricing"
-              className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#014CE3] px-4 py-2.5 text-sm font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.24),0_6px_20px_rgba(1,76,227,0.35)] transition hover:bg-[#4C61FF]"
-            >
-              Try It For Free →
-            </a>
+            <div className="mt-4">
+              <WaitlistButton />
+            </div>
           </div>
         </div>
 
@@ -71,14 +68,7 @@ export function Footer() {
           <div className="text-xs text-white/50">
             © {new Date().getFullYear()} Octupie. All rights reserved.
           </div>
-          <div className="flex gap-6 text-xs text-white/50">
-            <a href="#" className="hover:text-white">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:text-white">
-              Terms of Service
-            </a>
-          </div>
+          <div className="text-xs text-white/50">octupie.com</div>
         </div>
       </div>
     </footer>

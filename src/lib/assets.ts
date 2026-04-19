@@ -1,4 +1,4 @@
-// Asset path constants — files live in /public/images/
+// Asset path constants. Files live in /public/images/.
 const BASE = "/images";
 
 export const assets = {

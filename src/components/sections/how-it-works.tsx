@@ -14,26 +14,26 @@ type Step = {
 const steps: Step[] = [
   {
     label: "STEP 1",
-    title: "Customize your feed",
-    body: "Discover successful channels from Instagram, TikTok, & YouTube Shorts.",
+    title: "Pick the creators you want to learn from",
+    body: "Plug in any Instagram, TikTok or YouTube handle. Octupie tracks what's working for them in near real-time.",
     image: assets.steps.s1,
   },
   {
     label: "STEP 2",
-    title: "Find outlier videos",
-    body: "Explore the top-performing videos in your niche.",
+    title: "Surface their actual outliers",
+    body: "We filter out their baseline and show only videos that massively out-performed. The ones worth studying.",
     image: assets.steps.s2,
   },
   {
     label: "STEP 3",
-    title: "Understand why they went viral",
-    body: "Get in-depth analysis of why videos went viral and how to recreate their success.",
+    title: "Analyse the why: hooks, beats, style",
+    body: "Octupie breaks down each outlier: hook pattern, story beats, pacing, format and the angle that made it land.",
     image: assets.steps.s3,
   },
   {
     label: "STEP 4",
-    title: "Write winning short-form scripts",
-    body: "Turn winning ideas into unique scripts using data-backed storytelling.",
+    title: "Recreate in your voice: script, title, caption",
+    body: "One click turns insight into a ready-to-shoot script plus matching titles and captions, tuned to your tone and niche.",
     image: assets.steps.s4,
   },
 ];
@@ -47,11 +47,11 @@ export function HowItWorks() {
       <div className="mx-auto max-w-[1200px] px-6">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="font-heading text-4xl leading-tight tracking-tight text-white md:text-[56px]">
-            How it works
+            How Octupie works
           </h2>
           <p className="mt-4 text-white/70 md:text-lg">
-            Octupie handles the heavy lifting of idea research and scriptwriting
-            so you can focus on bringing your short-form videos to life.
+            Research → analysis → script → caption, all in one agentic loop. No
+            more jumping between tabs, tools and half-finished docs.
           </p>
         </div>
 
