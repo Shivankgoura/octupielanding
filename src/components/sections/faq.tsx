@@ -59,7 +59,7 @@ export function Faq() {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative py-20 md:py-28">
+    <section id="faq" className="relative overflow-x-clip py-20 md:py-28">
       <div className="mx-auto max-w-[900px] px-6">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="font-heading text-4xl leading-tight tracking-tight text-white md:text-[56px]">

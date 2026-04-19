@@ -52,7 +52,7 @@ export function HowItWorks() {
   const current = steps[visible];
 
   return (
-    <section id="how-it-works" className="relative py-20 md:py-28">
+    <section id="how-it-works" className="relative overflow-x-clip py-20 md:py-28">
       <div className="mx-auto max-w-[1200px] px-6">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="font-heading text-4xl leading-tight tracking-tight text-white md:text-[56px]">

@@ -52,7 +52,7 @@ const features: Feature[] = [
 
 export function Features() {
   return (
-    <section id="features" className="relative py-20 md:py-28">
+    <section id="features" className="relative overflow-x-clip py-20 md:py-28">
       <div className="mx-auto max-w-[1200px] px-6">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#4C61FF]">

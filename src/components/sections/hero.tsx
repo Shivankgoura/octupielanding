@@ -10,7 +10,7 @@ export function Hero() {
 
       <div className="relative mx-auto max-w-[1200px] px-6">
         <div className="flex flex-col items-center text-center">
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm">
+          <div className="flex max-w-full flex-wrap items-center justify-center gap-x-1.5 gap-y-1 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm">
             <span>Built with</span>
             <InstagramIcon className="h-3.5 w-3.5" />
             <span>creators (</span>
@@ -18,7 +18,7 @@ export function Hero() {
             <span>coming soon)</span>
           </div>
 
-          <h1 className="mt-6 font-heading text-[40px] leading-[1.05] tracking-tight text-white sm:text-[52px] md:text-[68px]">
+          <h1 className="mt-6 font-heading text-[clamp(32px,9vw,40px)] leading-[1.08] tracking-tight text-white text-balance break-words hyphens-auto sm:text-[52px] md:text-[60px] lg:text-[68px] sm:leading-[1.05]">
             Your personal viral-content
             <br className="hidden sm:block" /> researcher &amp; script-writing
             <br className="hidden sm:block" /> agentic workflow

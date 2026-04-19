@@ -49,7 +49,7 @@ const rows: Row[] = [
 
 export function WhyOctupie() {
   return (
-    <section id="why" className="relative py-20 md:py-28">
+    <section id="why" className="relative overflow-x-clip py-20 md:py-28">
       {/* soft background accents */}
       <div className="pointer-events-none absolute inset-x-0 top-0 mx-auto h-px max-w-3xl divider-line" />
       <div className="pointer-events-none absolute -left-40 top-40 h-72 w-72 rounded-full bg-[#014CE3]/10 blur-3xl" />

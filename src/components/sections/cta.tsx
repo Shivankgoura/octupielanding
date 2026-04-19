@@ -4,7 +4,7 @@ import { WaitlistForm } from "@/components/waitlist-form";
 
 export function Cta() {
   return (
-    <section className="relative py-20 md:py-28">
+    <section className="relative overflow-x-clip py-20 md:py-28">
       <div className="mx-auto max-w-[1100px] px-6">
         <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#040E22] px-8 py-16 text-center md:px-16 md:py-20">
           <Image

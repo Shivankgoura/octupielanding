@@ -94,12 +94,27 @@
     font-family: var(--font-inter), Inter, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
+  html,
+  body {
+    /* Kill any accidental horizontal scroll without breaking position:sticky
+       (overflow-x: clip preserves sticky; overflow-x: hidden fallback). */
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-x: clip;
+  }
   html {
     /* Native wheel scrolling. Only smooth for anchor jumps and only when
        the user has not requested reduced motion. Applied via :focus-within
        so mouse-wheel scrolls use the browser default (no sticky easing). */
     scroll-behavior: auto;
     overscroll-behavior-y: none;
+    /* Prevent iOS text inflation on orientation change. */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  body {
+    /* Smoother scroll wheel/trackpad on macOS + Safari. */
+    -webkit-overflow-scrolling: touch;
   }
   @media (prefers-reduced-motion: no-preference) {
     html:focus-within {

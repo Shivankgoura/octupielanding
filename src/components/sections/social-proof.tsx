@@ -130,7 +130,7 @@ export function SocialProof() {
   const row2 = testimonials.slice(9);
 
   return (
-    <section className="relative py-20 md:py-28">
+    <section className="relative overflow-x-clip py-20 md:py-28">
       <div className="mx-auto max-w-[1200px] px-6">
         <div className="grid grid-cols-1 items-center gap-8 text-center md:grid-cols-3 md:text-left">
           <div>
