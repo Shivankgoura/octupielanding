@@ -1,133 +1,122 @@
-import Image from "next/image";
-import { assets } from "@/lib/assets";
 import { InstagramIcon, LinkedInIcon } from "@/components/social-icons";
+import { NicheIcon, type NicheIconKind } from "@/components/niche-icons";
 
-type Testimonial = { name: string; avatar: string; quote: string };
+// Pre-launch social proof. We intentionally do NOT use testimonial quotes
+// or avatars here because the product has not shipped yet and fabricated
+// endorsements would mislead visitors. Instead, we surface the creator
+// niches Octupie is being built for.
+type Niche = { icon: NicheIconKind; label: string; blurb: string };
 
-const testimonials: Testimonial[] = [
+const niches: Niche[] = [
   {
-    name: "Husein",
-    avatar: assets.avatars.husein,
-    quote:
-      "Just got the free trial and it's amazing. Saved me days of research and ideation work.",
+    icon: "fitness",
+    label: "Fitness & training",
+    blurb: "Outlier routines and form breakdowns, scripted in your voice.",
   },
   {
-    name: "Cody",
-    avatar: assets.avatars.cody,
-    quote:
-      "As a neuroscientist, Octupie even works for advanced science and mental health content. V2 is a different beast.",
+    icon: "finance",
+    label: "Finance & investing",
+    blurb: "Viral hooks for markets, money, and side hustle content.",
   },
   {
-    name: "James",
-    avatar: assets.avatars.james,
-    quote:
-      "3x views on Instagram in the first two videos I made with it, and it removed so much scripting stress.",
+    icon: "skincare",
+    label: "Skincare & beauty",
+    blurb: "Routine reveals and product breakdowns that convert.",
   },
   {
-    name: "Grant",
-    avatar: assets.avatars.grant,
-    quote:
-      "Perfect timing for my company. The script nailed every curiosity loop, and I could expand it in one click.",
+    icon: "selfImprovement",
+    label: "Self improvement",
+    blurb: "Deep work, habits, and discipline scripts built for retention.",
   },
   {
-    name: "Todd",
-    avatar: assets.avatars.todd,
-    quote:
-      "Played with it last night and was totally blown away. Absolute game changer.",
+    icon: "food",
+    label: "Food & recipes",
+    blurb: "Viral recipe formats remixed into your kitchen and tone.",
   },
   {
-    name: "Michael",
-    avatar: assets.avatars.michael,
-    quote:
-      "Takes my scripting to the next level. My client list has grown tremendously.",
+    icon: "gaming",
+    label: "Gaming & tech",
+    blurb: "Reaction and explainer scripts around the latest drops.",
   },
   {
-    name: "David",
-    avatar: assets.avatars.david,
-    quote:
-      "Best tool I've seen made with AI to date. Absolute genius.",
+    icon: "coach",
+    label: "Business coaches",
+    blurb: "Client magnet hooks and case study breakdowns on demand.",
   },
   {
-    name: "Liz",
-    avatar: assets.avatars.liz,
-    quote:
-      "Octupie is in a league of its own. So thoughtful, even the small details.",
+    icon: "travel",
+    label: "Travel creators",
+    blurb: "City guides and budget breakdowns written how you post.",
   },
   {
-    name: "Zach",
-    avatar: assets.avatars.zach,
-    quote: "Worth every single penny. Genius tool.",
+    icon: "design",
+    label: "Design & creative",
+    blurb: "Process reels and portfolio scripts from viral patterns.",
   },
   {
-    name: "@tube-master",
-    avatar: assets.avatars.tubeMaster,
-    quote: "Thanks for making this, absolute fire.",
+    icon: "saas",
+    label: "SaaS & founders",
+    blurb: "Build in public scripts and product teardown breakdowns.",
   },
   {
-    name: "Angie",
-    avatar: assets.avatars.angie,
-    quote:
-      "On the free trial and it's phenomenal. 32 short-form scripts in 2 days with almost no work.",
+    icon: "education",
+    label: "Education & learning",
+    blurb: "Class style explainers that keep viewers hooked for 60s.",
   },
   {
-    name: "Amar",
-    avatar: assets.avatars.amar,
-    quote: "Been trying it out, amazing work!",
+    icon: "music",
+    label: "Music & audio",
+    blurb: "Sample scripts, gear explainers, and reaction formats.",
   },
   {
-    name: "Paul",
-    avatar: assets.avatars.paul,
-    quote: "This is awesome. Very cool.",
+    icon: "realEstate",
+    label: "Real estate",
+    blurb: "Listing tours and market takes engineered for Reels virality.",
   },
   {
-    name: "Atsatsa",
-    avatar: assets.avatars.atsatsa,
-    quote: "Amazing, much respect, and thank you.",
+    icon: "parenting",
+    label: "Parenting & lifestyle",
+    blurb: "Relatable POV scripts that travel across your audience.",
   },
   {
-    name: "Hatem",
-    avatar: assets.avatars.hatem,
-    quote: "Just tried it and I love it. Total game changer.",
+    icon: "health",
+    label: "Health & wellness",
+    blurb: "Evidence first scripts written in your clinician voice.",
   },
   {
-    name: "Mike",
-    avatar: assets.avatars.mike,
-    quote: "V2 is on point. Been using it all day.",
+    icon: "chef",
+    label: "Chefs & restaurants",
+    blurb: "Signature dish reveal scripts engineered for saves.",
   },
   {
-    name: "Lewis",
-    avatar: assets.avatars.lewis,
-    quote: "Please launch ASAP.",
+    icon: "podcast",
+    label: "Podcasts & talk",
+    blurb: "Clippable hooks and retention edits for every episode.",
   },
   {
-    name: "Scott",
-    avatar: assets.avatars.scott,
-    quote: "Tested it on a couple ideas, dayum.",
+    icon: "personalBrand",
+    label: "Personal brand",
+    blurb: "Thought leader scripts that sound like you, not a bot.",
   },
 ];
 
-function Card({ t }: { t: Testimonial }) {
+function Card({ n }: { n: Niche }) {
   return (
-    <div className="mx-2 w-[320px] shrink-0 rounded-2xl border border-white/10 bg-[#040E22] p-5">
-      <p className="text-sm leading-relaxed text-white/85">&ldquo;{t.quote}&rdquo;</p>
-      <div className="mt-4 flex items-center gap-3">
-        <Image
-          src={t.avatar}
-          alt={t.name}
-          width={32}
-          height={32}
-          className="h-8 w-8 rounded-full"
-          unoptimized
-        />
-        <div className="text-sm font-medium text-white">{t.name}</div>
+    <div className="mx-2 w-[300px] shrink-0 rounded-2xl border border-white/10 bg-[#040E22] p-5">
+      <div className="flex items-center gap-3">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br from-[#0a1636] to-[#040E22] text-[#9BB2FF]">
+          <NicheIcon kind={n.icon} className="h-5 w-5" />
+        </div>
+        <div className="text-sm font-medium text-white">{n.label}</div>
       </div>
+      <p className="mt-3 text-sm leading-relaxed text-white/70">{n.blurb}</p>
     </div>
   );
 }
 
 export function SocialProof() {
-  const row1 = testimonials.slice(0, 9);
-  const row2 = testimonials.slice(9);
+  const row1 = niches.slice(0, 9);
+  const row2 = niches.slice(9);
 
   return (
     <section className="relative overflow-x-clip py-20 md:py-28">
@@ -151,24 +140,38 @@ export function SocialProof() {
           </div>
           <div>
             <div className="font-heading text-5xl text-white md:text-[56px]">
-              End-to-end
+              End to end
             </div>
             <div className="mt-2 text-white/70">
-              From outlier → script → caption in your voice. No more copy-paste chain.
+              From outlier to script to caption in your voice. No more copy paste chain.
             </div>
           </div>
         </div>
 
-        <p className="mt-10 flex items-center justify-center gap-2 text-center text-xs font-medium uppercase tracking-[0.22em] text-white/50">
-          <span>Built with</span>
+        <div className="mt-14 text-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#4C61FF]/30 bg-[#4C61FF]/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.22em] text-[#9BB2FF]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#4C61FF]" />
+            Pre launch
+          </span>
+          <h2 className="mt-4 font-heading text-3xl leading-tight tracking-tight text-white md:text-[44px]">
+            Built for short form creators across every niche
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-sm text-white/65 md:text-base">
+            Octupie has not launched yet. The niches below are the creator
+            archetypes we are building the first release around. Join the
+            waitlist to help shape which one we ship support for next.
+          </p>
+        </div>
+
+        <p className="mt-8 flex flex-wrap items-center justify-center gap-2 text-center text-xs font-medium uppercase tracking-[0.22em] text-white/50">
           <InstagramIcon className="h-4 w-4" />
-          <span>creators in the loop.</span>
+          <span>Reels live at launch.</span>
           <LinkedInIcon className="h-4 w-4 opacity-80" />
-          <span>coming soon.</span>
+          <span>creators onboard next.</span>
         </p>
       </div>
 
-      <div className="relative mt-14 space-y-6 overflow-hidden">
+      <div className="relative mt-12 space-y-6 overflow-hidden">
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[#020814] to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[#020814] to-transparent" />
 
@@ -179,13 +182,7 @@ export function SocialProof() {
   );
 }
 
-function Marquee({
-  items,
-  reverse,
-}: {
-  items: Testimonial[];
-  reverse: boolean;
-}) {
+function Marquee({ items, reverse }: { items: Niche[]; reverse: boolean }) {
   const doubled = [...items, ...items];
   return (
     <div className="relative flex overflow-hidden">
@@ -195,8 +192,8 @@ function Marquee({
           animationDirection: reverse ? "reverse" : "normal",
         }}
       >
-        {doubled.map((t, i) => (
-          <Card key={i} t={t} />
+        {doubled.map((n, i) => (
+          <Card key={i} n={n} />
         ))}
       </div>
       <style>{`
