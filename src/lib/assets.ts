@@ -1,0 +1,51 @@
+// Asset path constants — files live in /public/images/
+const BASE = "/images";
+
+export const assets = {
+  brandmark: `${BASE}/68c5840df6102be515f87c7a_brandmark.webp`,
+  footerBg: `${BASE}/68c40159a89453ac3dd27931_footer-bg-element.webp`,
+  container: `${BASE}/68c5962882091e31c39a685a_Container.webp`,
+  mobDash: `${BASE}/68c79057a7fced13a81a8740_mob-only-dash%20(1).webp`,
+  graphics: {
+    g1: `${BASE}/68c41027db7d7b01724592a3_graphics-01.webp`,
+    g2: `${BASE}/68c41021a7f473f72afe7695_graphics-02.webp`,
+    g3: `${BASE}/68c4101b16e5d5e6989ff725_graphics-03.webp`,
+    g4: `${BASE}/68c41014cba3cda967f394fe_graphics-04.webp`,
+    g5: `${BASE}/68c4100e7d2aace456cd4f3a_graphics-05.webp`,
+    g6: `${BASE}/68c41008a91d0f79d43c4e58_graphics-06.webp`,
+  },
+  steps: {
+    s1: `${BASE}/68c7a75564299d7d05c8f3da_step%201%20tab.png`,
+    s2: `${BASE}/68c7a7c57b66f7fc27fbd8ea_step%202%20tab.webp`,
+    s3: `${BASE}/68c7a6a29822d614fbdacddd_STEP%203%20TAB%20(1).webp`,
+    s4: `${BASE}/6904828e830e21d562536088_Winning%20Short-Form%20Scripts.webp`,
+  },
+  featureImages: {
+    scripts: `${BASE}/69047f904031b39ab00788a1_Write%20viral%20video%20scripts%20%20in%20seconds.png`,
+    hooks: `${BASE}/69047fe6ed7c9052dabb1ddb_Instantly%20write%20winning%20hooks%20using%20viral%20templates.png`,
+    winningScripts: `${BASE}/6904828e830e21d562536088_Winning%20Short-Form%20Scripts.webp`,
+  },
+  avatars: {
+    a1: `${BASE}/68c5130cc45bbd104d88ea72_Avatar%20Image.webp`,
+    a2: `${BASE}/68c514fe09480d18ea0d0351_Avatar%20Image-1.webp`,
+    a3: `${BASE}/68c514fe23c15ad134b88c15_Avatar%20Image.webp`,
+    husein: `${BASE}/68c5994c6f48d1c6741b3699_husein.webp`,
+    cody: `${BASE}/68c599724b51fe30c1bef493_cody.webp`,
+    james: `${BASE}/68c5999083cf51eb4fd4e95f_james.webp`,
+    grant: `${BASE}/68c69206f8c71eeb618c05c8_grant.webp`,
+    todd: `${BASE}/68c692321ff5ea915d490fa3_todd.webp`,
+    michael: `${BASE}/68c69261fded2a0038b8d680_michael.webp`,
+    david: `${BASE}/68c69290b6742cb4ac770a5a_david.webp`,
+    liz: `${BASE}/68c6930c9b70ae2ab8ae1407_liz.webp`,
+    zach: `${BASE}/68c69344e475174226ae2c23_zach.webp`,
+    tubeMaster: `${BASE}/68c69438ac920cf61b320285_tube-master.webp`,
+    angie: `${BASE}/68c69457ab3f53d704dcfb95_angie.webp`,
+    amar: `${BASE}/68c694730233ae7521cf50fd_amar.webp`,
+    paul: `${BASE}/68c6948de69ba234db010e4a_paul.webp`,
+    atsatsa: `${BASE}/68c694affb575750c236b8d6_atsatsa.webp`,
+    hatem: `${BASE}/68c694cf77d8b9e652fcefa0_hatem.webp`,
+    mike: `${BASE}/68c694ec66c9f57c06bc5e16_mike.webp`,
+    lewis: `${BASE}/68c6951310fe0d688ff1ac5c_lewis.webp`,
+    scott: `${BASE}/68c6953d3c55e7c76b64a014_scott.webp`,
+  },
+};
