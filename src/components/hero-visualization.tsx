@@ -1,283 +1,292 @@
-// Hero explainer. Minimal, aligned, one clear idea:
+// Hero "what Octupie does in a nutshell" diagram.
 //
-//   [ Outlier reel ]  ->  [ Octupie analyses 3 things ]  ->  [ Ready-to-post script ]
+// Three stages, left to right, readable in one glance:
+//   1. INSTAGRAM creator feed -> one reel marked OUTLIER
+//   2. OCTUPIE engine reads it -> three plain analysis chips
+//   3. OUTPUT script + caption + READY badge in your voice
 //
-// Motion rules (deliberately restrained):
-//   1. A single thin progress bar fills once across the bottom of all
-//      three panels to signal the loop direction.
-//   2. The three analysis items in the middle panel tick off one by
-//      one as the bar passes each third.
-//   3. The output script + caption lines and the 'Ready to post' pill
-//      reveal in the final third.
-//
-// No rotating rings, no radial glows, no drifting particles, no scale
-// pulses. Everything is on a tidy grid, full-width aligned.
+// Static layout. Single subtle pulse on the outlier tile + a single
+// pulse on the READY badge. No spinning rings, no glow halos, no
+// travelling dots. Real Instagram + Octupie marks embedded inline.
 
 type Props = { className?: string };
 
 export function HeroVisualization({ className = "" }: Props) {
-  // Canvas: 1080 x 480, three equal columns of 320 with 60px gutters.
-  // Column X-origins: 60, 440, 760 (each 260 wide).
-  const colW = 260;
-  const cols = [60, 400, 740];
-
   return (
     <svg
-      viewBox="0 0 1080 480"
+      viewBox="0 0 1080 540"
       xmlns="http://www.w3.org/2000/svg"
       className={`h-full w-full ${className}`}
       preserveAspectRatio="xMidYMid meet"
       role="img"
-      aria-label="Octupie takes an outlier Reel from a creator you track, analyses its hook, beats and style, and returns a ready-to-post script in your voice."
+      aria-label="Octupie reads outlier reels from creators on Instagram and turns them into ready-to-post scripts in your voice"
     >
       <defs>
-        <linearGradient id="hv-accent" x1="0" y1="0" x2="1" y2="0">
+        <linearGradient id="hv-bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#0a152c" />
+          <stop offset="100%" stopColor="#040E22" />
+        </linearGradient>
+        <linearGradient id="hv-accent" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stopColor="#4C61FF" />
           <stop offset="100%" stopColor="#014CE3" />
         </linearGradient>
-        <linearGradient id="hv-ig" x1="0" y1="0" x2="1" y2="1">
+        <linearGradient id="hv-chip" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#15223C" />
+          <stop offset="100%" stopColor="#0a1530" />
+        </linearGradient>
+        <linearGradient id="hv-ig" x1="0" y1="1" x2="1" y2="0">
           <stop offset="0%" stopColor="#F58529" />
           <stop offset="50%" stopColor="#DD2A7B" />
           <stop offset="100%" stopColor="#8134AF" />
         </linearGradient>
-
         <style>{`
-          /* Single shared progress bar that crosses the full width. */
-          @keyframes hv-progress {
-            0%   { transform: scaleX(0); }
-            95%  { transform: scaleX(1); }
-            100% { transform: scaleX(1); }
-          }
-          .hv-progress {
-            transform-box: fill-box;
-            transform-origin: left center;
-            animation: hv-progress 7s ease-in-out infinite;
-          }
-
-          /* Checklist ticks reveal one after another during the middle third. */
-          @keyframes hv-tick {
-            0%,40% { opacity: 0; transform: scale(0.7); }
-            55%,100% { opacity: 1; transform: scale(1); }
-          }
-          .hv-tick {
-            transform-box: fill-box;
-            transform-origin: center;
-            animation: hv-tick 7s ease-out infinite;
-          }
-          .hv-tick-2 { animation-delay: 0.35s; }
-          .hv-tick-3 { animation-delay: 0.7s; }
-
-          /* Output script/caption lines reveal in the final third. */
-          @keyframes hv-line {
-            0%,60% { transform: scaleX(0); }
-            80%,100% { transform: scaleX(1); }
-          }
-          .hv-line {
-            transform-box: fill-box;
-            transform-origin: left center;
-            animation: hv-line 7s ease-out infinite;
-          }
-          .hv-line-2 { animation-delay: 0.1s; }
-          .hv-line-3 { animation-delay: 0.2s; }
-          .hv-line-4 { animation-delay: 0.3s; }
-
-          /* Ready-to-post pill activates at the very end. */
-          @keyframes hv-ready {
-            0%,85% { opacity: 0.2; }
-            100%   { opacity: 1; }
-          }
-          .hv-ready { animation: hv-ready 7s ease-out infinite; }
-
+          @keyframes hv-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.78; } }
+          .hv-pulse { animation: hv-pulse 3s ease-in-out infinite; }
+          @keyframes hv-blink { 0%,90%,100% { opacity: 1; } 95% { opacity: 0.4; } }
+          .hv-blink { animation: hv-blink 4s ease-in-out infinite; }
           @media (prefers-reduced-motion: reduce) {
-            .hv-progress, .hv-tick, .hv-line, .hv-ready {
-              animation: none;
-            }
-            .hv-progress, .hv-line { transform: scaleX(1); }
-            .hv-tick { opacity: 1; transform: scale(1); }
-            .hv-ready { opacity: 1; }
+            .hv-pulse, .hv-blink { animation: none; }
           }
         `}</style>
       </defs>
 
-      {/* Solid canvas. No grid, no radial glow. */}
-      <rect width="1080" height="480" fill="#040E22" />
+      <rect width="1080" height="540" fill="url(#hv-bg)" />
 
-      {/* Top phase labels, perfectly centered per column. */}
+      {/* phase headers */}
       {[
-        { x: cols[0] + colW / 2, label: "1. Outlier Reel" },
-        { x: cols[1] + colW / 2, label: "2. Octupie analyses" },
-        { x: cols[2] + colW / 2, label: "3. Ready to post" },
+        { x: 170, label: "1. Track Instagram creators" },
+        { x: 540, label: "2. Octupie analyses outliers" },
+        { x: 910, label: "3. Ready to post in your voice" },
       ].map((p) => (
         <text
-          key={p.label}
+          key={p.x}
           x={p.x}
-          y="40"
+          y="50"
           textAnchor="middle"
           fontFamily="Inter, sans-serif"
-          fontSize="12"
+          fontSize="13"
           fontWeight="700"
-          fill="#9BB2FF"
-          letterSpacing="2"
+          fill="rgba(155,178,255,0.85)"
+          letterSpacing="1.5"
         >
           {p.label.toUpperCase()}
         </text>
       ))}
 
-      {/* Horizontal connector between the three cards (thin line). */}
-      <line x1={cols[0] + colW} y1="220" x2={cols[1]} y2="220" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" />
-      <line x1={cols[1] + colW} y1="220" x2={cols[2]} y2="220" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" />
+      {/* simple connectors between stages */}
+      <line x1="320" y1="280" x2="430" y2="280" stroke="rgba(76,97,255,0.55)" strokeWidth="1.5" strokeDasharray="4 6" />
+      <polygon points="430,280 422,275 422,285" fill="rgba(76,97,255,0.85)" />
 
-      {/* === Card 1: Outlier Reel === */}
-      <g transform={`translate(${cols[0]} 70)`}>
-        <rect width={colW} height="300" rx="16" fill="#0a1636" stroke="rgba(76,97,255,0.35)" />
+      <line x1="660" y1="280" x2="770" y2="280" stroke="rgba(76,97,255,0.55)" strokeWidth="1.5" strokeDasharray="4 6" />
+      <polygon points="770,280 762,275 762,285" fill="rgba(76,97,255,0.85)" />
 
-        {/* creator handle row */}
-        <g transform="translate(18 18)">
-          <rect width="24" height="24" rx="6" fill="url(#hv-ig)" />
-          <text x="36" y="17" fontFamily="Inter, sans-serif" fontSize="13" fontWeight="600" fill="#fff">
+      {/* ===== Stage 1: Instagram creator feed ===== */}
+      <g transform="translate(70 90)">
+        <rect width="250" height="380" rx="22" fill="#0a1636" stroke="rgba(255,255,255,0.1)" />
+        <rect x="14" y="14" width="222" height="352" rx="14" fill="url(#hv-chip)" />
+
+        {/* header: real Instagram glyph + handle */}
+        <g transform="translate(28 30)">
+          <rect width="32" height="32" rx="9" fill="url(#hv-ig)" />
+          {/* IG camera body */}
+          <rect x="6" y="6" width="20" height="20" rx="6" fill="none" stroke="#fff" strokeWidth="2" />
+          {/* lens */}
+          <circle cx="16" cy="16" r="4.6" fill="none" stroke="#fff" strokeWidth="2" />
+          {/* viewfinder dot */}
+          <circle cx="22.5" cy="9.5" r="1.3" fill="#fff" />
+          <text x="44" y="16" fontFamily="Inter, sans-serif" fontSize="13" fontWeight="700" fill="#fff">
             @creator
           </text>
-        </g>
-
-        {/* reel thumbnail frame */}
-        <g transform="translate(60 60)">
-          <rect width="140" height="180" rx="12" fill="#15223C" stroke="rgba(255,255,255,0.08)" />
-          {/* play glyph */}
-          <circle cx="70" cy="90" r="22" fill="rgba(255,255,255,0.95)" />
-          <polygon points="63,78 63,102 85,90" fill="#014CE3" />
-        </g>
-
-        {/* view count + outlier tag row */}
-        <g transform="translate(18 260)">
-          <text fontFamily="Inter, sans-serif" fontSize="18" fontWeight="700" fill="#fff">
-            412k views
+          <text x="44" y="29" fontFamily="Inter, sans-serif" fontSize="9" fontWeight="600" fill="rgba(155,178,255,0.7)" letterSpacing="1.5">
+            INSTAGRAM REELS
           </text>
-          <g transform="translate(140 -14)">
-            <rect width="84" height="22" rx="11" fill="rgba(76,97,255,0.15)" stroke="rgba(76,97,255,0.6)" />
-            <text x="42" y="15" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="10" fontWeight="700" fill="#9BB2FF">
-              OUTLIER
-            </text>
-          </g>
+        </g>
+
+        {/* 3x3 reel grid */}
+        {[
+          { x: 0, y: 0, label: "12k" },
+          { x: 1, y: 0, label: "18k" },
+          { x: 2, y: 0, label: "22k" },
+          { x: 0, y: 1, label: "412k", outlier: true },
+          { x: 1, y: 1, label: "20k" },
+          { x: 2, y: 1, label: "16k" },
+          { x: 0, y: 2, label: "14k" },
+          { x: 1, y: 2, label: "9k" },
+          { x: 2, y: 2, label: "11k" },
+        ].map((r, i) => {
+          const x = 28 + r.x * 68;
+          const y = 86 + r.y * 92;
+          const w = 60;
+          const h = 84;
+          return (
+            <g key={i}>
+              <rect
+                x={x}
+                y={y}
+                width={w}
+                height={h}
+                rx="6"
+                fill={r.outlier ? "url(#hv-accent)" : "rgba(255,255,255,0.06)"}
+                stroke={r.outlier ? "rgba(76,97,255,0.7)" : "rgba(255,255,255,0.06)"}
+                className={r.outlier ? "hv-pulse" : undefined}
+              />
+              {r.outlier ? (
+                <>
+                  <circle cx={x + w / 2} cy={y + h / 2 - 6} r="10" fill="#fff" />
+                  <polygon
+                    points={`${x + w / 2 - 3},${y + h / 2 - 11} ${x + w / 2 - 3},${y + h / 2 - 1} ${x + w / 2 + 5},${y + h / 2 - 6}`}
+                    fill="#014CE3"
+                  />
+                </>
+              ) : (
+                <>
+                  <circle cx={x + w / 2} cy={y + h / 2 - 6} r="6" fill="rgba(255,255,255,0.16)" />
+                  <rect x={x + 8} y={y + h - 16} width={w - 16} height="3" rx="1.5" fill="rgba(255,255,255,0.18)" />
+                </>
+              )}
+              <text
+                x={x + w / 2}
+                y={y + h - 4}
+                textAnchor="middle"
+                fontFamily="Inter, sans-serif"
+                fontSize="9"
+                fontWeight={r.outlier ? "700" : "500"}
+                fill={r.outlier ? "#fff" : "rgba(255,255,255,0.65)"}
+              >
+                {r.label}
+              </text>
+            </g>
+          );
+        })}
+
+        {/* OUTLIER badge above the highlighted tile */}
+        <g transform="translate(58 168)">
+          <rect x="-30" y="0" width="60" height="18" rx="9" fill="#0a1636" stroke="rgba(76,97,255,0.7)" />
+          <circle cx="-22" cy="9" r="2.5" fill="#4C61FF" />
+          <text x="-15" y="12" fontFamily="Inter, sans-serif" fontSize="9" fontWeight="700" fill="#fff">
+            OUTLIER
+          </text>
         </g>
       </g>
 
-      {/* === Card 2: Octupie analyses === */}
-      <g transform={`translate(${cols[1]} 70)`}>
-        <rect width={colW} height="300" rx="16" fill="#0a1636" stroke="rgba(76,97,255,0.35)" />
+      {/* ===== Stage 2: Octupie engine + analysis chips ===== */}
+      <g transform="translate(440 90)">
+        {/* engine card with real Octupie brandmark */}
+        <g transform="translate(0 110)">
+          <rect width="220" height="160" rx="20" fill="#0a1636" stroke="rgba(76,97,255,0.55)" strokeWidth="1.5" />
 
-        {/* Octupie wordmark row */}
-        <g transform="translate(18 18)">
-          <rect width="24" height="24" rx="6" fill="url(#hv-accent)" />
-          <text x="36" y="17" fontFamily="Inter, sans-serif" fontSize="13" fontWeight="600" fill="#fff">
+          {/* Octupie logo, centred */}
+          <g transform="translate(110 56)">
+            <rect x="-22" y="-22" width="44" height="44" rx="10" fill="url(#hv-accent)" />
+            <g fill="#ffffff" transform="scale(1)">
+              <circle cx="0" cy="-14" r="2" />
+              <circle cx="9.9" cy="-9.9" r="2" />
+              <circle cx="14" cy="0" r="2" />
+              <circle cx="9.9" cy="9.9" r="2" />
+              <circle cx="0" cy="14" r="2" />
+              <circle cx="-9.9" cy="9.9" r="2" />
+              <circle cx="-14" cy="0" r="2" />
+              <circle cx="-9.9" cy="-9.9" r="2" />
+            </g>
+            <circle cx="0" cy="0" r="6.5" fill="#ffffff" />
+            <circle cx="0" cy="0" r="2.4" fill="url(#hv-accent)" />
+          </g>
+
+          <text x="110" y="106" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="16" fontWeight="700" fill="#fff">
             Octupie
           </text>
-          <text x="36" y="32" fontFamily="Inter, sans-serif" fontSize="9" fontWeight="600" fill="rgba(155,178,255,0.7)" letterSpacing="1.5">
-            ANALYSING
+          <text x="110" y="124" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="9" fontWeight="700" fill="rgba(155,178,255,0.7)" letterSpacing="2">
+            READING THE OUTLIER
           </text>
+          <circle cx="110" cy="142" r="3" fill="#4C61FF" className="hv-blink" />
         </g>
 
-        {/* Three analysis rows with checkbox ticks */}
+        {/* 3 analysis chips, vertical column to the right of the engine */}
         {[
-          { y: 82, label: "Hook pattern", cls: "hv-tick" },
-          { y: 138, label: "Story beats", cls: "hv-tick hv-tick-2" },
-          { y: 194, label: "Tone & style", cls: "hv-tick hv-tick-3" },
-        ].map((r, i) => (
-          <g key={i} transform={`translate(18 ${r.y})`}>
-            <rect width="224" height="44" rx="10" fill="#15223C" stroke="rgba(255,255,255,0.06)" />
-            {/* check box */}
-            <rect x="12" y="12" width="20" height="20" rx="6" fill="rgba(76,97,255,0.14)" stroke="rgba(76,97,255,0.5)" />
-            {/* check mark (animated in) */}
-            <g transform="translate(22 22)">
-              <g className={r.cls}>
-                <polyline points="-5,0 -1,4 5,-4" fill="none" stroke="#9BB2FF" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-              </g>
+          { y: 0, label: "Hook", val: "Pattern interrupt" },
+          { y: 70, label: "Beats", val: "3 beats, 2.5s each" },
+          { y: 140, label: "Style", val: "Talking head + caption" },
+        ].map((c, i) => (
+          <g key={i} transform={`translate(0 ${c.y})`}>
+            {/* chips centered vertically with the engine */}
+            <g transform="translate(0 80)">
+              <rect width="220" height="56" rx="12" fill="url(#hv-chip)" stroke="rgba(76,97,255,0.4)" />
+              <text x="16" y="22" fontFamily="Inter, sans-serif" fontSize="10" fontWeight="700" fill="#9BB2FF" letterSpacing="1.5">
+                {c.label.toUpperCase()}
+              </text>
+              <text x="16" y="40" fontFamily="Inter, sans-serif" fontSize="12" fontWeight="500" fill="#fff">
+                {c.val}
+              </text>
             </g>
-            <text x="44" y="27" fontFamily="Inter, sans-serif" fontSize="13" fontWeight="500" fill="#fff">
-              {r.label}
-            </text>
           </g>
         ))}
       </g>
 
-      {/* === Card 3: Ready to post === */}
-      <g transform={`translate(${cols[2]} 70)`}>
-        <rect width={colW} height="300" rx="16" fill="#0a1636" stroke="rgba(76,97,255,0.35)" />
+      {/* ===== Stage 3: Output panel ===== */}
+      <g transform="translate(780 90)">
+        <rect width="240" height="380" rx="20" fill="url(#hv-chip)" stroke="rgba(76,97,255,0.45)" />
 
-        {/* Header: "Your script" */}
-        <g transform="translate(18 18)">
-          <text fontFamily="Inter, sans-serif" fontSize="11" fontWeight="700" fill="#9BB2FF" letterSpacing="1.5">
-            YOUR SCRIPT
+        {/* header tabs */}
+        <g transform="translate(14 14)">
+          <rect width="80" height="24" rx="12" fill="#014CE3" />
+          <text x="40" y="16" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="10" fontWeight="700" fill="#fff">
+            Reels
+          </text>
+          <rect x="92" y="0" width="92" height="24" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" />
+          <text x="106" y="16" fontFamily="Inter, sans-serif" fontSize="9" fontWeight="700" fill="rgba(255,255,255,0.6)">
+            LinkedIn
+          </text>
+          <text x="180" y="16" textAnchor="end" fontFamily="Inter, sans-serif" fontSize="7" fontWeight="700" fill="#9BB2FF">
+            SOON
           </text>
         </g>
 
-        {/* Script lines (reveal at the end of the loop) */}
-        <g transform="translate(18 46)">
-          <rect width="224" height="96" rx="10" fill="#15223C" stroke="rgba(255,255,255,0.06)" />
+        {/* SCRIPT */}
+        <g transform="translate(14 54)">
+          <text fontFamily="Inter, sans-serif" fontSize="9" fontWeight="700" fill="#9BB2FF" letterSpacing="1.2">
+            SCRIPT IN YOUR VOICE
+          </text>
+          <rect y="8" width="212" height="118" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)" />
           {[
-            { y: 16, w: 196, op: 0.9, cls: "hv-line" },
-            { y: 32, w: 168, op: 0.75, cls: "hv-line hv-line-2" },
-            { y: 48, w: 204, op: 0.65, cls: "hv-line hv-line-3" },
-            { y: 64, w: 140, op: 0.55, cls: "hv-line hv-line-4" },
+            { y: 24, w: 188, op: 0.85 },
+            { y: 38, w: 168, op: 0.7 },
+            { y: 52, w: 196, op: 0.7 },
+            { y: 66, w: 144, op: 0.55 },
+            { y: 80, w: 178, op: 0.55 },
+            { y: 94, w: 102, op: 0.45 },
           ].map((l, i) => (
-            <rect
-              key={i}
-              x="12"
-              y={l.y}
-              width={l.w}
-              height="6"
-              rx="2"
-              fill={`rgba(255,255,255,${l.op})`}
-              className={l.cls}
-            />
+            <rect key={i} x="12" y={l.y} width={l.w} height="6" rx="2" fill={`rgba(255,255,255,${l.op})`} />
           ))}
         </g>
 
-        {/* Title + caption label row (compact meta) */}
-        <g transform="translate(18 158)">
-          <text fontFamily="Inter, sans-serif" fontSize="11" fontWeight="700" fill="#9BB2FF" letterSpacing="1.5">
-            TITLE &amp; CAPTION
+        {/* TITLE */}
+        <g transform="translate(14 188)">
+          <text fontFamily="Inter, sans-serif" fontSize="9" fontWeight="700" fill="#9BB2FF" letterSpacing="1.2">
+            TITLE
           </text>
-          <rect y="14" width="224" height="52" rx="10" fill="#15223C" stroke="rgba(255,255,255,0.06)" />
-          <rect className="hv-line hv-line-2" x="12" y="26" width="184" height="6" rx="2" fill="rgba(255,255,255,0.8)" />
-          <rect className="hv-line hv-line-3" x="12" y="40" width="148" height="6" rx="2" fill="rgba(255,255,255,0.5)" />
-          <rect className="hv-line hv-line-4" x="12" y="52" width="108" height="6" rx="2" fill="rgba(255,255,255,0.35)" />
+          <rect y="8" width="212" height="30" rx="10" fill="#0a1636" stroke="rgba(76,97,255,0.4)" />
+          <rect x="12" y="20" width="186" height="8" rx="3" fill="#fff" opacity="0.85" />
         </g>
 
-        {/* Ready-to-post pill */}
-        <g transform="translate(18 244)">
-          <g className="hv-ready">
-            <rect width="224" height="38" rx="19" fill="#014CE3" />
-            <text
-              x="112"
-              y="24"
-              textAnchor="middle"
-              fontFamily="Inter, sans-serif"
-              fontSize="13"
-              fontWeight="700"
-              fill="#fff"
-            >
-              Ready to post
-            </text>
-          </g>
+        {/* CAPTION */}
+        <g transform="translate(14 236)">
+          <text fontFamily="Inter, sans-serif" fontSize="9" fontWeight="700" fill="#9BB2FF" letterSpacing="1.2">
+            CAPTION
+          </text>
+          <rect y="8" width="212" height="56" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)" />
+          <rect x="12" y="22" width="184" height="6" rx="2" fill="rgba(255,255,255,0.6)" />
+          <rect x="12" y="34" width="160" height="6" rx="2" fill="rgba(255,255,255,0.5)" />
+          <rect x="12" y="46" width="120" height="6" rx="2" fill="rgba(255,255,255,0.4)" />
+        </g>
+
+        {/* READY pill */}
+        <g transform="translate(14 308)" className="hv-pulse">
+          <rect width="212" height="34" rx="17" fill="url(#hv-accent)" />
+          <text x="106" y="22" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="12" fontWeight="700" fill="#fff">
+            Ready to post →
+          </text>
         </g>
       </g>
-
-      {/* ===== Shared progress bar across the bottom ===== */}
-      <g transform={`translate(${cols[0]} 420)`}>
-        {/* track spans all three columns + gutters */}
-        <rect width="960" height="4" rx="2" fill="rgba(255,255,255,0.07)" />
-        <rect className="hv-progress" width="960" height="4" rx="2" fill="url(#hv-accent)" />
-      </g>
-      <text
-        x="1020"
-        y="424"
-        fontFamily="Inter, sans-serif"
-        fontSize="10"
-        fontWeight="600"
-        fill="rgba(155,178,255,0.8)"
-      >
-        one loop
-      </text>
     </svg>
   );
 }

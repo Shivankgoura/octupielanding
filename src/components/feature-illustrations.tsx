@@ -567,13 +567,111 @@ export function AgenticFlowIllustration({ className }: Props) {
   );
 }
 
+// 7. Outlier alerts the moment they happen
+// Phone notification mockup: incoming alert from a tracked creator with
+// "OUTLIER" badge, view count + delta arrow, and a draft-script chip.
+export function OutlierAlertsIllustration({ className }: Props) {
+  return (
+    <Card className={className}>
+      <style>{`
+        @keyframes oct-bell { 0%,90%,100% { transform: rotate(0); } 4% { transform: rotate(12deg); } 8% { transform: rotate(-10deg); } 12% { transform: rotate(6deg); } 16% { transform: rotate(0); } }
+        .oct-bell { transform-box: fill-box; transform-origin: 50% 20%; animation: oct-bell 3s ease-in-out infinite; }
+        @keyframes oct-alert-in { 0%,10% { opacity: 0; transform: translateY(-6px); } 25%,100% { opacity: 1; transform: translateY(0); } }
+        .oct-alert { transform-box: fill-box; transform-origin: center; animation: oct-alert-in 3.6s ease-out infinite; }
+      `}</style>
+
+      {/* phone frame */}
+      <g transform="translate(120 22)">
+        <rect width="160" height="206" rx="22" fill="#0a1636" stroke="rgba(76,97,255,0.45)" strokeWidth="1.5" />
+        <rect x="8" y="8" width="144" height="190" rx="16" fill="url(#oct-chip)" />
+        <rect x="64" y="10" width="32" height="4" rx="2" fill="rgba(255,255,255,0.2)" />
+
+        {/* status bar */}
+        <text x="20" y="32" fontFamily="Inter, sans-serif" fontSize="9" fontWeight="700" fill="rgba(255,255,255,0.7)">
+          09:41
+        </text>
+        <g transform="translate(126 26)">
+          <g className="oct-bell">
+            <path d="M 0 4 C 0 0, 8 0, 8 4 L 8 8 L 10 10 L -2 10 L 0 8 Z" fill="#9BB2FF" />
+            <circle cx="4" cy="12" r="1.4" fill="#9BB2FF" />
+          </g>
+        </g>
+
+        {/* notification card */}
+        <g transform="translate(16 44)">
+          <g className="oct-alert">
+            <rect width="128" height="68" rx="10" fill="#0a1636" stroke="rgba(76,97,255,0.55)" />
+            <g transform="translate(8 8)">
+              {/* mini Octupie mark */}
+              <rect width="18" height="18" rx="5" fill="url(#oct-accent)" />
+              <g fill="#fff" transform="translate(9 9) scale(0.6)">
+                <circle cx="0" cy="-10" r="1.2" />
+                <circle cx="7.07" cy="-7.07" r="1.2" />
+                <circle cx="10" cy="0" r="1.2" />
+                <circle cx="7.07" cy="7.07" r="1.2" />
+                <circle cx="0" cy="10" r="1.2" />
+                <circle cx="-7.07" cy="7.07" r="1.2" />
+                <circle cx="-10" cy="0" r="1.2" />
+                <circle cx="-7.07" cy="-7.07" r="1.2" />
+              </g>
+              <circle cx="9" cy="9" r="2.6" fill="#fff" />
+            </g>
+            <text x="34" y="18" fontFamily="Inter, sans-serif" fontSize="9" fontWeight="700" fill="#fff">
+              Octupie
+            </text>
+            <text x="120" y="18" textAnchor="end" fontFamily="Inter, sans-serif" fontSize="8" fill="rgba(255,255,255,0.5)">
+              now
+            </text>
+            <text x="8" y="40" fontFamily="Inter, sans-serif" fontSize="9" fontWeight="600" fill="rgba(255,255,255,0.85)">
+              @creator just posted
+            </text>
+            <g transform="translate(8 46)">
+              <rect width="42" height="14" rx="7" fill="rgba(76,97,255,0.18)" stroke="rgba(76,97,255,0.5)" />
+              <text x="21" y="10" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="7" fontWeight="700" fill="#9BB2FF">
+                OUTLIER
+              </text>
+              <text x="50" y="10" fontFamily="Inter, sans-serif" fontSize="9" fontWeight="700" fill="#fff">
+                412k
+              </text>
+              <text x="76" y="10" fontFamily="Inter, sans-serif" fontSize="9" fontWeight="700" fill="#9BB2FF">
+                ↑
+              </text>
+              <text x="86" y="10" fontFamily="Inter, sans-serif" fontSize="8" fontWeight="600" fill="rgba(255,255,255,0.6)">
+                7x base
+              </text>
+            </g>
+          </g>
+        </g>
+
+        {/* draft script chip */}
+        <g transform="translate(16 124)">
+          <rect width="128" height="58" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" />
+          <text x="8" y="14" fontFamily="Inter, sans-serif" fontSize="7" fontWeight="700" fill="#9BB2FF" letterSpacing="1">
+            DRAFT SCRIPT READY
+          </text>
+          <rect x="8" y="20" width="112" height="4" rx="2" fill="rgba(255,255,255,0.5)" />
+          <rect x="8" y="28" width="92" height="4" rx="2" fill="rgba(255,255,255,0.4)" />
+          <rect x="8" y="36" width="104" height="4" rx="2" fill="rgba(255,255,255,0.3)" />
+          <g transform="translate(8 44)">
+            <rect width="60" height="10" rx="5" fill="#014CE3" />
+            <text x="30" y="7.5" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="6" fontWeight="700" fill="#fff">
+              OPEN →
+            </text>
+          </g>
+        </g>
+      </g>
+    </Card>
+  );
+}
+
 export type FeatureIllustrationKey =
   | "track"
   | "voice"
   | "hooks"
   | "daily"
   | "titles"
-  | "agentic";
+  | "agentic"
+  | "alerts";
 
 export function FeatureIllustration({
   k,
@@ -595,5 +693,7 @@ export function FeatureIllustration({
       return <TitlesCaptionsIllustration className={className} />;
     case "agentic":
       return <AgenticFlowIllustration className={className} />;
+    case "alerts":
+      return <OutlierAlertsIllustration className={className} />;
   }
 }

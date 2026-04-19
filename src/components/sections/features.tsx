@@ -43,6 +43,11 @@ const features: Feature[] = [
     illustration: "agentic",
     wide: true,
   },
+  {
+    title: "Outlier alerts the moment they happen",
+    body: "The second a creator you track posts a Reel that breaks past their baseline, Octupie pings you with the outlier, its analysis and a draft script so you can react the same day.",
+    illustration: "alerts",
+  },
 ];
 
 export function Features() {
