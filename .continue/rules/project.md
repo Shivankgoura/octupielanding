@@ -149,3 +149,29 @@ After inspection, create these files in `docs/research/`:
 3. `LAYOUT_ARCHITECTURE.md` — Page layouts, grid system, responsive behavior
 4. `INTERACTION_PATTERNS.md` — Animations, transitions, hover states
 5. `TECH_STACK_ANALYSIS.md` — What the site uses and our chosen equivalents
+
+
+## Content Rules (Octupie)
+
+- **NEVER use em-dashes or en-dashes anywhere in copy, UI text, comments, or docs.** Use commas, periods, colons, or parentheses instead. Applies to both the literal U+2014 and U+2013 characters. This is a hard rule. Enforce before committing.
+
+## Brand Assets (Octupie)
+
+- **Logo:** `src/components/logo.tsx` exports `OctupieLogo` — inline SVG, brand gradient (#4C61FF to #014CE3), 8 dots (tentacles / pie slices) around a core node. Use via `Brandmark` / `Wordmark` in `src/components/brand.tsx`. Do NOT reintroduce the old `brandmark.webp` path.
+- **Favicon:** `src/app/icon.svg` is the Next.js 16 app-router icon file. Do NOT recreate `favicon.ico` — it will double up. Update `icon.svg` when the logo changes.
+- **Tab title:** maintained in `src/app/layout.tsx` `metadata.title`. Current: `"Octupie | Your viral-content researcher & script-writing agent"`. Keep the pipe separator (no dashes allowed).
+- **Social brand icons:** `src/components/social-icons.tsx` exports `InstagramIcon` and `LinkedInIcon` (inline SVG, unique gradient ids via `useId()`). Use these wherever the copy references Instagram or LinkedIn (hero pill, social-proof paragraph, feature illustrations).
+
+## Scroll + Responsive Rules (Octupie)
+
+These rules exist because mouse-wheel stutter and horizontal scrollbars were shipped bugs. Do not regress them.
+
+- **Never set `scroll-behavior: smooth` on `html` unconditionally.** Wheel scrolling inherits the easing and feels sticky. The current pattern in `globals.css` is smooth only under `html:focus-within` and only when `prefers-reduced-motion: no-preference`. Preserve it.
+- **Never use `backdrop-blur-md` or larger on full-width fixed elements** (nav pill, mobile menu, toasts). They reblur the whole region per scroll frame and cause jank. `backdrop-blur-sm` on small elements is fine.
+- **Scroll listeners must be rAF-throttled and state-gated.** See `src/components/sections/nav.tsx` for the canonical pattern (no `setState` per wheel tick, no `window` reads in the `useState` initializer, initial state is deterministic to avoid hydration mismatch).
+- **Horizontal scroll is forbidden.** `html, body` already set `overflow-x: clip` (with `overflow-x: hidden` fallback). Every `<section>` that contains absolutely-positioned decorations (blur blobs, glows, `-inset-x-*`) MUST add `overflow-x-clip` on the section wrapper. Use `overflow-x-clip`, NOT `overflow-hidden`, so `position: sticky` descendants keep working.
+- **Responsive headings** should use `text-[clamp(min, vw, max)]` with `break-words hyphens-auto text-balance` for the base size so they never overflow 320px viewports.
+- **Inline-flex pills** with multiple text + icon chunks must have `flex-wrap` + `max-w-full` so they wrap instead of pushing layout width.
+- **SSR/hydration:** `<body>` in `src/app/layout.tsx` has `suppressHydrationWarning` to absorb browser-extension attributes (ColorZilla `cz-shortcut-listen`, Grammarly, etc.). Do not remove. Any Client Component using `window`/`Date.now()` must initialize deterministically and sync in `useEffect`.
+- **Cross-browser base styles** in `globals.css`: keep `-webkit-text-size-adjust: 100%`, `overscroll-behavior-y: none`, and `-webkit-overflow-scrolling: touch`. These fix iOS Safari font inflation, Chrome/Edge rubber-band chaining, and legacy iOS momentum scroll respectively.
+- **GPU-heavy continuous animations** (marquee rows, long-running transforms) should use the `.gpu-layer` utility (`will-change: transform; translateZ(0); backface-visibility: hidden;`) so they stay on the compositor and do not jank scroll.
