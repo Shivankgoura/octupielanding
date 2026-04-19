@@ -52,11 +52,11 @@ export function HeroVisualization({ className = "" }: Props) {
 
       <rect width="1080" height="540" fill="url(#hv-bg)" />
 
-      {/* phase headers */}
+      {/* phase headers - shortened where needed so each fits inside its column */}
       {[
-        { x: 195, label: "1. Track Instagram creators" },
-        { x: 578, label: "2. Octupie analyses outliers" },
-        { x: 950, label: "3. Ready to post in your voice" },
+        { x: 195, label: "1. Track creators" },
+        { x: 578, label: "2. Analyse outliers" },
+        { x: 950, label: "3. Ready to post" },
       ].map((p) => (
         <text
           key={p.x}
@@ -67,7 +67,7 @@ export function HeroVisualization({ className = "" }: Props) {
           fontSize="13"
           fontWeight="700"
           fill="rgba(155,178,255,0.85)"
-          letterSpacing="1.5"
+          letterSpacing="1.2"
         >
           {p.label.toUpperCase()}
         </text>
