@@ -169,47 +169,54 @@ export function HeroVisualization({ className = "" }: Props) {
         </g>
       </g>
 
-      {/* ===== Stage 2: Octupie engine (left) + analysis chips (right) ===== */}
-      {/* outer width 380: engine 160 + 30 gap + chips 190 */}
+      {/* ===== Stage 2: Octupie engine (left) + analysis chips (right) =====
+           Same y-band as stages 1 and 3: y=90 to y=470 (380 tall).
+           Layout: engine 160 wide left, 30px gap, chips column 190 wide right. */}
       <g transform="translate(388 90)">
-        {/* engine card */}
-        <g transform="translate(0 110)">
-          <rect width="160" height="180" rx="20" fill="#0a1636" stroke="rgba(76,97,255,0.55)" strokeWidth="1.5" />
+        {/* engine card - full height to match phone + output panels */}
+        <g>
+          <rect width="160" height="380" rx="20" fill="#0a1636" stroke="rgba(76,97,255,0.55)" strokeWidth="1.5" />
 
-          {/* Octupie brandmark, centred */}
-          <g transform="translate(80 56)">
-            <rect x="-22" y="-22" width="44" height="44" rx="10" fill="url(#hv-accent)" />
+          {/* Octupie brandmark, centred horizontally and vertically in the card */}
+          <g transform="translate(80 168)">
+            <rect x="-26" y="-26" width="52" height="52" rx="12" fill="url(#hv-accent)" />
             <g fill="#ffffff">
-              <circle cx="0" cy="-14" r="2" />
-              <circle cx="9.9" cy="-9.9" r="2" />
-              <circle cx="14" cy="0" r="2" />
-              <circle cx="9.9" cy="9.9" r="2" />
-              <circle cx="0" cy="14" r="2" />
-              <circle cx="-9.9" cy="9.9" r="2" />
-              <circle cx="-14" cy="0" r="2" />
-              <circle cx="-9.9" cy="-9.9" r="2" />
+              <circle cx="0" cy="-16" r="2.2" />
+              <circle cx="11.3" cy="-11.3" r="2.2" />
+              <circle cx="16" cy="0" r="2.2" />
+              <circle cx="11.3" cy="11.3" r="2.2" />
+              <circle cx="0" cy="16" r="2.2" />
+              <circle cx="-11.3" cy="11.3" r="2.2" />
+              <circle cx="-16" cy="0" r="2.2" />
+              <circle cx="-11.3" cy="-11.3" r="2.2" />
             </g>
-            <circle cx="0" cy="0" r="6.5" fill="#ffffff" />
-            <circle cx="0" cy="0" r="2.4" fill="url(#hv-accent)" />
+            <circle cx="0" cy="0" r="7.5" fill="#ffffff" />
+            <circle cx="0" cy="0" r="2.8" fill="url(#hv-accent)" />
           </g>
 
-          <text x="80" y="116" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="16" fontWeight="700" fill="#fff">
+          <text x="80" y="232" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="18" fontWeight="700" fill="#fff">
             Octupie
           </text>
-          <text x="80" y="134" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="9" fontWeight="700" fill="rgba(155,178,255,0.7)" letterSpacing="2">
+          <text x="80" y="252" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="9" fontWeight="700" fill="rgba(155,178,255,0.7)" letterSpacing="2">
             READING THE OUTLIER
           </text>
-          <circle cx="80" cy="156" r="3" fill="#4C61FF" className="hv-blink" />
+
+          <g transform="translate(80 280)">
+            <circle cx="-22" cy="0" r="3" fill="#4C61FF" className="hv-blink" />
+            <text x="-12" y="3" fontFamily="Inter, sans-serif" fontSize="10" fontWeight="600" fill="rgba(255,255,255,0.7)">
+              live
+            </text>
+          </g>
         </g>
 
-        {/* short connector engine -> first chip */}
-        <line x1="160" y1="200" x2="190" y2="200" stroke="rgba(76,97,255,0.55)" strokeWidth="1.5" strokeDasharray="3 5" />
+        {/* short connector engine -> middle chip */}
+        <line x1="160" y1="190" x2="190" y2="190" stroke="rgba(76,97,255,0.55)" strokeWidth="1.5" strokeDasharray="3 5" />
 
-        {/* 3 analysis chips stacked to the right of the engine */}
+        {/* 3 analysis chips, evenly spread across the same 380px band */}
         {[
-          { y: 110, label: "Hook", val: "Pattern interrupt" },
-          { y: 178, label: "Beats", val: "3 beats, 2.5s each" },
-          { y: 246, label: "Style", val: "Talking head + caption" },
+          { y: 30, label: "Hook", val: "Pattern interrupt" },
+          { y: 162, label: "Beats", val: "3 beats, 2.5s each" },
+          { y: 294, label: "Style", val: "Talking head + caption" },
         ].map((c, i) => (
           <g key={i} transform={`translate(190 ${c.y})`}>
             <rect width="190" height="56" rx="12" fill="url(#hv-chip)" stroke="rgba(76,97,255,0.4)" />
@@ -221,6 +228,9 @@ export function HeroVisualization({ className = "" }: Props) {
             </text>
           </g>
         ))}
+
+        {/* spine line connecting the 3 chips for visual rhythm */}
+        <line x1="190" y1="58" x2="190" y2="322" stroke="rgba(76,97,255,0.2)" strokeWidth="1" />
       </g>
 
       {/* ===== Stage 3: Output panel ===== */}
