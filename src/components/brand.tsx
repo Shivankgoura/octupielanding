@@ -1,17 +1,7 @@
-import Image from "next/image";
-import { assets } from "@/lib/assets";
+import { OctupieLogo } from "@/components/logo";
 
 export function Brandmark({ className = "h-7 w-7" }: { className?: string }) {
-  return (
-    <Image
-      src={assets.brandmark}
-      alt="Octupie"
-      width={28}
-      height={28}
-      className={className}
-      unoptimized
-    />
-  );
+  return <OctupieLogo className={className} />;
 }
 
 export function Wordmark({ className = "" }: { className?: string }) {

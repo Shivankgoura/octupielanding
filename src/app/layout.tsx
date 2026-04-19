@@ -16,12 +16,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Octupie | Create viral short-form videos in seconds",
+  title: "Octupie | Your viral-content researcher & script-writing agent",
   description:
     "The easiest way to research top channels, find viral outliers, and remix them into your own winning videos.",
   metadataBase: new URL("https://octupie.com"),
   openGraph: {
-    title: "Octupie | Create viral short-form videos in seconds",
+    title: "Octupie | Your viral-content researcher & script-writing agent",
     description:
       "Research top channels, find viral outliers, and remix them into winning short-form videos.",
     url: "https://octupie.com",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Octupie | Create viral short-form videos in seconds",
+    title: "Octupie | Your viral-content researcher & script-writing agent",
     description:
       "Research top channels, find viral outliers, and remix them into winning short-form videos.",
   },
