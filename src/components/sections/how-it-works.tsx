@@ -8,6 +8,7 @@ import {
 
 type Step = {
   label: string;
+  shortLabel: string;
   title: string;
   body: string;
   illustration: StepIllustrationKey;
@@ -16,24 +17,28 @@ type Step = {
 const steps: Step[] = [
   {
     label: "STEP 1",
+    shortLabel: "Research",
     title: "Pick the creators you want to learn from",
     body: "Plug in any Instagram handle. Octupie tracks what's working for them in near real-time. LinkedIn support is on the roadmap.",
     illustration: "pick",
   },
   {
     label: "STEP 2",
+    shortLabel: "Analyse",
     title: "Surface their actual outliers",
     body: "We filter out their baseline and show only videos that massively out-performed. The ones worth studying.",
     illustration: "outliers",
   },
   {
     label: "STEP 3",
+    shortLabel: "Script",
     title: "Analyse the why: hooks, beats, style",
     body: "Octupie breaks down each outlier: hook pattern, story beats, pacing, format and the angle that made it land.",
     illustration: "analyse",
   },
   {
     label: "STEP 4",
+    shortLabel: "Caption",
     title: "Recreate in your voice: script, title, caption",
     body: "One click turns insight into a ready-to-shoot script plus matching titles and captions, tuned to your tone and niche.",
     illustration: "recreate",
@@ -42,7 +47,9 @@ const steps: Step[] = [
 
 export function HowItWorks() {
   const [active, setActive] = useState(0);
-  const current = steps[active];
+  const [hovered, setHovered] = useState<number | null>(null);
+  const visible = hovered ?? active;
+  const current = steps[visible];
 
   return (
     <section id="how-it-works" className="relative py-20 md:py-28">
@@ -52,43 +59,106 @@ export function HowItWorks() {
             How Octupie works
           </h2>
           <p className="mt-4 text-white/70 md:text-lg">
-            Research → analysis → script → caption, all in one agentic loop. No
-            more jumping between tabs, tools and half-finished docs.
+            One agentic loop. No more jumping between tabs, tools and
+            half-finished docs.
+          </p>
+
+          {/* Visual flow pills (replaces the arrow tagline) */}
+          <div className="mt-8 hidden items-center justify-center gap-2 md:flex">
+            {steps.map((s, i) => (
+              <div key={s.shortLabel} className="flex items-center gap-2">
+                <div
+                  className={[
+                    "flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-medium transition",
+                    visible === i
+                      ? "border-[#4C61FF] bg-[#0a1636] text-white shadow-[0_0_0_4px_rgba(76,97,255,0.12)]"
+                      : "border-white/10 bg-white/[0.03] text-white/65",
+                  ].join(" ")}
+                >
+                  <span
+                    className={[
+                      "inline-flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold",
+                      visible === i
+                        ? "bg-[#014CE3] text-white"
+                        : "bg-white/10 text-white/70",
+                    ].join(" ")}
+                  >
+                    {i + 1}
+                  </span>
+                  {s.shortLabel}
+                </div>
+                {i < steps.length - 1 && (
+                  <svg width="22" height="10" viewBox="0 0 22 10" aria-hidden>
+                    <path
+                      d="M0 5 L 18 5"
+                      stroke={
+                        visible > i
+                          ? "rgba(76,97,255,0.9)"
+                          : "rgba(255,255,255,0.18)"
+                      }
+                      strokeWidth="1.5"
+                      strokeDasharray="3 3"
+                      fill="none"
+                    />
+                    <polygon
+                      points="22,5 16,1.5 16,8.5"
+                      fill={
+                        visible >= i + 1
+                          ? "rgba(76,97,255,0.9)"
+                          : "rgba(255,255,255,0.25)"
+                      }
+                    />
+                  </svg>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile fallback (no pills, simple line) */}
+          <p className="mt-6 text-xs uppercase tracking-[0.18em] text-white/45 md:hidden">
+            Research · Analyse · Script · Caption
           </p>
         </div>
 
         <div className="mt-12 grid grid-cols-1 items-start gap-8 lg:grid-cols-[380px_1fr]">
           <div className="flex flex-col gap-3">
-            {steps.map((s, i) => (
-              <button
-                key={s.label}
-                onClick={() => setActive(i)}
-                className={[
-                  "group relative overflow-hidden rounded-2xl border p-5 text-left transition",
-                  active === i
-                    ? "border-[#014CE3]/50 bg-[#0a1636]"
-                    : "border-white/10 bg-[#040E22] hover:border-white/20",
-                ].join(" ")}
-              >
-                <div
+            {steps.map((s, i) => {
+              const isActive = visible === i;
+              return (
+                <button
+                  key={s.label}
+                  onClick={() => setActive(i)}
+                  onMouseEnter={() => setHovered(i)}
+                  onMouseLeave={() => setHovered(null)}
+                  onFocus={() => setHovered(i)}
+                  onBlur={() => setHovered(null)}
                   className={[
-                    "text-[11px] font-medium tracking-[0.18em] transition",
-                    active === i ? "text-[#4C61FF]" : "text-white/50",
+                    "group relative overflow-hidden rounded-2xl border p-5 text-left transition",
+                    isActive
+                      ? "border-[#014CE3]/50 bg-[#0a1636]"
+                      : "border-white/10 bg-[#040E22] hover:border-white/20 hover:bg-[#081433]",
                   ].join(" ")}
                 >
-                  {s.label}
-                </div>
-                <div className="mt-2 font-heading text-[22px] leading-snug tracking-tight text-white">
-                  {s.title}
-                </div>
-                <div className="mt-1.5 text-sm text-white/65">{s.body}</div>
-                {active === i && (
-                  <div className="mt-4 h-1 w-full overflow-hidden rounded-full bg-white/10">
-                    <div className="h-full w-1/3 bg-[#4C61FF]" />
+                  <div
+                    className={[
+                      "text-[11px] font-medium tracking-[0.18em] transition",
+                      isActive ? "text-[#4C61FF]" : "text-white/50",
+                    ].join(" ")}
+                  >
+                    {s.label}
                   </div>
-                )}
-              </button>
-            ))}
+                  <div className="mt-2 font-heading text-[22px] leading-snug tracking-tight text-white">
+                    {s.title}
+                  </div>
+                  <div className="mt-1.5 text-sm text-white/65">{s.body}</div>
+                  {isActive && (
+                    <div className="mt-4 h-1 w-full overflow-hidden rounded-full bg-white/10">
+                      <div className="h-full w-1/3 bg-[#4C61FF]" />
+                    </div>
+                  )}
+                </button>
+              );
+            })}
           </div>
 
           <div className="relative lg:sticky lg:top-24">
@@ -98,6 +168,14 @@ export function HowItWorks() {
                   key={current.illustration}
                   k={current.illustration}
                 />
+              </div>
+              <div className="px-2 pt-3 pb-1">
+                <div className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4C61FF]">
+                  {current.label}
+                </div>
+                <div className="mt-1 font-heading text-lg text-white">
+                  {current.title}
+                </div>
               </div>
             </div>
           </div>

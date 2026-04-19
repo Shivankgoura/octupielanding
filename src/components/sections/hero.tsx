@@ -11,40 +11,12 @@ export function Hero() {
 
       <div className="relative mx-auto max-w-[1200px] px-6">
         <div className="flex flex-col items-center text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm">
-            <span className="flex -space-x-2">
-              <Image
-                src={assets.avatars.a1}
-                alt=""
-                width={18}
-                height={18}
-                className="h-[18px] w-[18px] rounded-full ring-1 ring-[#040E22]"
-                unoptimized
-              />
-              <Image
-                src={assets.avatars.a2}
-                alt=""
-                width={18}
-                height={18}
-                className="h-[18px] w-[18px] rounded-full ring-1 ring-[#040E22]"
-                unoptimized
-              />
-              <Image
-                src={assets.avatars.a3}
-                alt=""
-                width={18}
-                height={18}
-                className="h-[18px] w-[18px] rounded-full ring-1 ring-[#040E22]"
-                unoptimized
-              />
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              Built with
-              <InstagramIcon className="h-3.5 w-3.5" />
-              creators (
-              <LinkedInIcon className="h-3.5 w-3.5 opacity-70" />
-              coming soon)
-            </span>
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm">
+            <span>Built with</span>
+            <InstagramIcon className="h-3.5 w-3.5" />
+            <span>creators (</span>
+            <LinkedInIcon className="h-3.5 w-3.5 opacity-70" />
+            <span>coming soon)</span>
           </div>
 
           <h1 className="mt-6 font-heading text-[40px] leading-[1.05] tracking-tight text-white sm:text-[52px] md:text-[68px]">

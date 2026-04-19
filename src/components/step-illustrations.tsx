@@ -196,7 +196,7 @@ export function SurfaceOutliersStep({ className }: Props) {
         );
       })}
 
-      {/* OUTLIER flag — outer <g> positions via SVG attr transform,
+      {/* OUTLIER flag. Outer <g> positions via SVG attr transform,
            inner <g> handles the float animation so the CSS transform
            from the keyframe does NOT overwrite the outer positioning. */}
       {(() => {
