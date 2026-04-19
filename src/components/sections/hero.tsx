@@ -1,7 +1,6 @@
-import Image from "next/image";
-import { assets } from "@/lib/assets";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { InstagramIcon, LinkedInIcon } from "@/components/social-icons";
+import { HeroVisualization } from "@/components/hero-visualization";
 
 export function Hero() {
   return (
@@ -39,17 +38,11 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="relative mx-auto mt-16 max-w-[1080px]">
-          <div className="card-gradient-border overflow-hidden rounded-2xl border border-white/10 bg-[#040E22]/60 backdrop-blur-sm">
-            <Image
-              src={assets.featureImages.winningScripts}
-              alt="Octupie product dashboard"
-              width={2000}
-              height={1200}
-              className="h-auto w-full"
-              priority
-              unoptimized
-            />
+        <div className="relative mx-auto mt-16 max-w-[1100px]">
+          <div className="card-gradient-border overflow-hidden rounded-2xl border border-white/10 bg-[#040E22]/60 p-3 backdrop-blur-sm">
+            <div className="relative aspect-[2/1] overflow-hidden rounded-xl">
+              <HeroVisualization />
+            </div>
           </div>
           <div className="pointer-events-none absolute -inset-x-20 -bottom-20 h-40 bg-[radial-gradient(closest-side,rgba(1,76,227,0.45),transparent)]" />
         </div>
