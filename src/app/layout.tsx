@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Host_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const hostGrotesk = Host_Grotesk({
   variable: "--font-host-grotesk",
@@ -45,12 +46,13 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${hostGrotesk.variable} ${inter.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body
-        className="min-h-full flex flex-col bg-[#020814] text-white"
+        className="min-h-full flex flex-col bg-background text-foreground"
         suppressHydrationWarning
       >
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Wordmark } from "@/components/brand";
 import { WaitlistButton } from "@/components/waitlist-button";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const links = [
   { label: "Features", href: "#features" },
@@ -45,7 +46,7 @@ export function Nav() {
         className={[
           "flex w-full items-center justify-between rounded-full border px-4 py-2 transition-all duration-300",
           scrolled
-            ? "max-w-[1100px] border-white/10 bg-[#040E22]/95 shadow-[0_8px_30px_rgba(0,0,0,0.35)]"
+            ? "max-w-[1100px] border-black/10 bg-white/95 shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:border-white/10 dark:bg-[#040E22]/95 dark:shadow-[0_8px_30px_rgba(0,0,0,0.35)]"
             : "max-w-[1280px] border-transparent bg-transparent",
         ].join(" ")}
       >
@@ -58,7 +59,7 @@ export function Nav() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm text-white/75 transition hover:text-white"
+              className="text-sm text-[#0B1430]/75 transition hover:text-[#0B1430] dark:text-white/75 dark:hover:text-white"
             >
               {l.label}
             </a>
@@ -66,28 +67,29 @@ export function Nav() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <ThemeToggle />
           <WaitlistButton />
           <button
-            className="ml-1 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white md:hidden"
+            className="ml-1 inline-flex h-9 w-9 items-center justify-center rounded-full border border-black/10 bg-black/5 text-[#0B1430] dark:border-white/10 dark:bg-white/5 dark:text-white md:hidden"
             aria-label="Toggle menu"
             onClick={() => setOpen((v) => !v)}
           >
             <span className="flex flex-col gap-1">
-              <span className="h-px w-4 bg-white" />
-              <span className="h-px w-4 bg-white" />
+              <span className="h-px w-4 bg-[#0B1430] dark:bg-white" />
+              <span className="h-px w-4 bg-[#0B1430] dark:bg-white" />
             </span>
           </button>
         </div>
       </div>
 
       {open && (
-        <div className="fixed inset-x-4 top-20 z-40 rounded-2xl border border-white/10 bg-[#040E22] p-6 md:hidden">
+        <div className="fixed inset-x-4 top-20 z-40 rounded-2xl border border-black/10 bg-white p-6 dark:border-white/10 dark:bg-[#040E22] md:hidden">
           <div className="flex flex-col gap-4">
             {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
-                className="text-base text-white/90"
+                className="text-base text-[#0B1430]/90 dark:text-white/90"
                 onClick={() => setOpen(false)}
               >
                 {l.label}

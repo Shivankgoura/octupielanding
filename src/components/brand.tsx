@@ -8,7 +8,7 @@ export function Wordmark({ className = "" }: { className?: string }) {
   return (
     <div className={`flex items-center gap-2 ${className}`}>
       <Brandmark />
-      <span className="font-heading text-xl font-medium tracking-tight text-white">
+      <span className="font-heading text-xl font-medium tracking-tight text-[#0B1430] dark:text-white">
         Octupie
       </span>
     </div>

@@ -62,19 +62,19 @@ export function Faq() {
     <section id="faq" className="relative overflow-x-clip py-20 md:py-28">
       <div className="mx-auto max-w-[900px] px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-heading text-4xl leading-tight tracking-tight text-white md:text-[56px]">
+          <h2 className="font-heading text-4xl leading-tight tracking-tight text-[#0B1430] md:text-[56px] dark:text-white">
             Still have questions?
           </h2>
           <a
             href="mailto:hello@octupie.com"
-            className="mt-4 inline-flex items-center gap-2 text-sm text-[#4C61FF] transition hover:text-white"
+            className="mt-4 inline-flex items-center gap-2 text-sm text-[#014CE3] transition hover:text-[#0B1430] dark:text-[#4C61FF] dark:hover:text-white"
           >
             Contact us →
           </a>
         </div>
 
         <div className="mt-10 flex justify-center">
-          <div className="relative inline-flex items-center gap-1 rounded-full border border-white/10 bg-[#040E22] p-1">
+          <div className="relative inline-flex items-center gap-1 rounded-full border border-black/10 bg-white p-1 dark:border-white/10 dark:bg-[#040E22]">
             {groups.map((g, i) => (
               <button
                 key={g.label}
@@ -85,8 +85,8 @@ export function Faq() {
                 className={[
                   "rounded-full px-5 py-2 text-sm transition",
                   tab === i
-                    ? "bg-[#15223C] text-white shadow-[inset_0_2px_4px_rgba(255,255,255,0.12)]"
-                    : "text-white/70 hover:text-white",
+                    ? "bg-[#EEF2FA] text-[#0B1430] shadow-[inset_0_1px_2px_rgba(11,20,48,0.08)] dark:bg-[#15223C] dark:text-white dark:shadow-[inset_0_2px_4px_rgba(255,255,255,0.12)]"
+                    : "text-[#0B1430]/70 hover:text-[#0B1430] dark:text-white/70 dark:hover:text-white",
                 ].join(" ")}
               >
                 {g.label}
@@ -101,20 +101,20 @@ export function Faq() {
             return (
               <div
                 key={item.q}
-                className="overflow-hidden rounded-2xl border border-white/10 bg-[#040E22]"
+                className="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_1px_2px_rgba(11,20,48,0.04)] dark:border-white/10 dark:bg-[#040E22] dark:shadow-none"
               >
                 <button
                   className="flex w-full items-center justify-between gap-6 px-6 py-5 text-left"
                   onClick={() => setOpenIdx(open ? null : i)}
                   aria-expanded={open}
                 >
-                  <span className="font-heading text-base text-white md:text-lg">
+                  <span className="font-heading text-base text-[#0B1430] md:text-lg dark:text-white">
                     {item.q}
                   </span>
                   <span
                     aria-hidden
                     className={[
-                      "inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/80 transition",
+                      "inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-black/10 bg-black/[0.04] text-[#0B1430]/80 transition dark:border-white/10 dark:bg-white/5 dark:text-white/80",
                       open ? "rotate-45" : "",
                     ].join(" ")}
                   >
@@ -128,7 +128,7 @@ export function Faq() {
                   ].join(" ")}
                 >
                   <div className="overflow-hidden">
-                    <p className="px-6 pb-5 text-sm leading-relaxed text-white/70">
+                    <p className="px-6 pb-5 text-sm leading-relaxed text-[#0B1430]/70 dark:text-white/70">
                       {item.a}
                     </p>
                   </div>

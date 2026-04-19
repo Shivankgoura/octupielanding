@@ -102,14 +102,14 @@ const niches: Niche[] = [
 
 function Card({ n }: { n: Niche }) {
   return (
-    <div className="mx-2 w-[300px] shrink-0 rounded-2xl border border-white/10 bg-[#040E22] p-5">
+    <div className="mx-2 w-[300px] shrink-0 rounded-2xl border border-black/10 bg-white p-5 shadow-[0_1px_2px_rgba(11,20,48,0.04)] dark:border-white/10 dark:bg-[#040E22] dark:shadow-none">
       <div className="flex items-center gap-3">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br from-[#0a1636] to-[#040E22] text-[#9BB2FF]">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-black/10 bg-gradient-to-br from-[#F0F4FF] to-[#FFFFFF] text-[#014CE3] dark:border-white/10 dark:from-[#0a1636] dark:to-[#040E22] dark:text-[#9BB2FF]">
           <NicheIcon kind={n.icon} className="h-5 w-5" />
         </div>
-        <div className="text-sm font-medium text-white">{n.label}</div>
+        <div className="text-sm font-medium text-[#0B1430] dark:text-white">{n.label}</div>
       </div>
-      <p className="mt-3 text-sm leading-relaxed text-white/70">{n.blurb}</p>
+      <p className="mt-3 text-sm leading-relaxed text-[#0B1430]/70 dark:text-white/70">{n.blurb}</p>
     </div>
   );
 }
@@ -123,47 +123,47 @@ export function SocialProof() {
       <div className="mx-auto max-w-[1200px] px-6">
         <div className="grid grid-cols-1 items-center gap-8 text-center md:grid-cols-3 md:text-left">
           <div>
-            <div className="font-heading text-5xl text-white md:text-[56px]">
+            <div className="font-heading text-5xl text-[#0B1430] md:text-[56px] dark:text-white">
               Top 1%
             </div>
-            <div className="mt-2 text-white/70">
+            <div className="mt-2 text-[#0B1430]/70 dark:text-white/70">
               outliers surfaced for every niche you track, not baseline noise.
             </div>
           </div>
           <div>
-            <div className="font-heading text-5xl text-white md:text-[56px]">
+            <div className="font-heading text-5xl text-[#0B1430] md:text-[56px] dark:text-white">
               Instagram first
             </div>
-            <div className="mt-2 text-white/70">
+            <div className="mt-2 text-[#0B1430]/70 dark:text-white/70">
               We are starting with Instagram Reels. LinkedIn is next on the roadmap.
             </div>
           </div>
           <div>
-            <div className="font-heading text-5xl text-white md:text-[56px]">
+            <div className="font-heading text-5xl text-[#0B1430] md:text-[56px] dark:text-white">
               End to end
             </div>
-            <div className="mt-2 text-white/70">
+            <div className="mt-2 text-[#0B1430]/70 dark:text-white/70">
               From outlier to script to caption in your voice. No more copy paste chain.
             </div>
           </div>
         </div>
 
         <div className="mt-14 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-[#4C61FF]/30 bg-[#4C61FF]/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.22em] text-[#9BB2FF]">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#4C61FF]/30 bg-[#4C61FF]/15 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.22em] text-[#014CE3] dark:bg-[#4C61FF]/10 dark:text-[#9BB2FF]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#4C61FF]" />
             Pre launch
           </span>
-          <h2 className="mt-4 font-heading text-3xl leading-tight tracking-tight text-white md:text-[44px]">
+          <h2 className="mt-4 font-heading text-3xl leading-tight tracking-tight text-[#0B1430] md:text-[44px] dark:text-white">
             Built for short form creators across every niche
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-sm text-white/65 md:text-base">
+          <p className="mx-auto mt-3 max-w-2xl text-sm text-[#0B1430]/65 md:text-base dark:text-white/65">
             Octupie has not launched yet. The niches below are the creator
             archetypes we are building the first release around. Join the
             waitlist to help shape which one we ship support for next.
           </p>
         </div>
 
-        <p className="mt-8 flex flex-wrap items-center justify-center gap-2 text-center text-xs font-medium uppercase tracking-[0.22em] text-white/50">
+        <p className="mt-8 flex flex-wrap items-center justify-center gap-2 text-center text-xs font-medium uppercase tracking-[0.22em] text-[#0B1430]/50 dark:text-white/50">
           <InstagramIcon className="h-4 w-4" />
           <span>Reels live at launch.</span>
           <LinkedInIcon className="h-4 w-4 opacity-80" />
@@ -172,8 +172,8 @@ export function SocialProof() {
       </div>
 
       <div className="relative mt-12 space-y-6 overflow-hidden">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[#020814] to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[#020814] to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-white to-transparent dark:from-[#020814]" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-white to-transparent dark:from-[#020814]" />
 
         <Marquee items={row1} reverse={false} />
         <Marquee items={row2} reverse />

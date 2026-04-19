@@ -39,22 +39,67 @@
   --radius-xl: calc(var(--radius) * 1.4);
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
-
-  /* Octupie brand tokens */
-  --color-bg-0: #0D0D12;
-  --color-bg-1: #020814;
-  --color-bg-2: #040E22;
-  --color-bg-3: #15223C;
-  --color-bg-4: #222222;
-  --color-bg-5: #333333;
-  --color-accent-1: #4C61FF;
-  --color-accent-2: #014CE3;
-  --color-accent-3: #DDDBD9;
-  --color-gray-3: #F0F4F8;
-  --color-gray-4: #F5F8FF;
 }
 
+/* =================================================================== */
+/* LIGHT (default) theme. Dark stays default for users via next-themes  */
+/* defaultTheme="dark", so visitors still land on dark; but the tokens  */
+/* below are correct when .dark is not present on <html>.               */
+/* =================================================================== */
 :root {
+  --background: #FFFFFF;
+  --foreground: #0B1430;
+  --card: #FFFFFF;
+  --card-foreground: #0B1430;
+  --popover: #FFFFFF;
+  --popover-foreground: #0B1430;
+  --primary: #014CE3;
+  --primary-foreground: #FFFFFF;
+  --secondary: #EEF2FA;
+  --secondary-foreground: #0B1430;
+  --muted: #F5F7FB;
+  --muted-foreground: rgba(11,20,48,0.65);
+  --accent: #4C61FF;
+  --accent-foreground: #FFFFFF;
+  --destructive: #B42318;
+  --border: rgba(11,20,48,0.10);
+  --input: rgba(11,20,48,0.06);
+  --ring: #4C61FF;
+  --radius: 0.625rem;
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #0B1430;
+  --sidebar-primary: #014CE3;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #EEF2FA;
+  --sidebar-accent-foreground: #0B1430;
+  --sidebar-border: rgba(11,20,48,0.10);
+  --sidebar-ring: #4C61FF;
+
+  /* Surface helpers used by the .divider-line and .bg-grid-overlay
+     utilities so they remain visible on both themes. The rgb triplet
+     lets us compose rgba() with an arbitrary alpha at the usage site. */
+  --grid-line-rgb: 11 20 48;
+  --divider-rgb: 11 20 48;
+  --page-bg-transparent: rgba(255,255,255,0);
+
+  /* SVG illustration tokens. Intentionally pinned to the DARK values in
+     both themes: the hero/feature/step illustrations are product UI
+     previews and keep their dark look on light mode too. */
+  --illus-bg-start: #0a152c;
+  --illus-bg-end: #040E22;
+  --illus-chip-start: #15223C;
+  --illus-chip-end: #0a1530;
+  --illus-text: #FFFFFF;
+  --illus-text-muted: rgba(255,255,255,0.50);
+  --illus-text-faint: rgba(255,255,255,0.28);
+  --illus-grid: rgba(255,255,255,0.04);
+  --illus-border: rgba(255,255,255,0.08);
+}
+
+/* =================================================================== */
+/* DARK theme overrides. Applied when next-themes adds .dark on <html>. */
+/* =================================================================== */
+.dark {
   --background: #020814;
   --foreground: #FFFFFF;
   --card: #040E22;
@@ -66,33 +111,31 @@
   --secondary: #15223C;
   --secondary-foreground: #FFFFFF;
   --muted: #15223C;
-  --muted-foreground: rgba(255,255,255,0.7);
+  --muted-foreground: rgba(255,255,255,0.70);
   --accent: #4C61FF;
   --accent-foreground: #FFFFFF;
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: rgba(255,255,255,0.1);
+  --destructive: #FCA5A5;
+  --border: rgba(255,255,255,0.10);
   --input: rgba(255,255,255,0.08);
   --ring: #4C61FF;
-  --radius: 0.625rem;
   --sidebar: #040E22;
   --sidebar-foreground: #FFFFFF;
   --sidebar-primary: #014CE3;
   --sidebar-primary-foreground: #FFFFFF;
   --sidebar-accent: #15223C;
   --sidebar-accent-foreground: #FFFFFF;
-  --sidebar-border: rgba(255,255,255,0.1);
+  --sidebar-border: rgba(255,255,255,0.10);
   --sidebar-ring: #4C61FF;
+
+  --grid-line-rgb: 255 255 255;
+  --divider-rgb: 255 255 255;
+  --page-bg-transparent: rgba(2,8,20,0);
+
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
-  }
-  body {
-    background: #020814;
-    color: #FFFFFF;
-    font-family: var(--font-inter), Inter, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
   }
   html,
   body {
@@ -111,8 +154,18 @@
     /* Prevent iOS text inflation on orientation change. */
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
+    /* Swap background color instantly on theme flip (done by
+       disableTransitionOnChange in next-themes, double-guarded here). */
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
   }
   body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-inter), Inter, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
     /* Smoother scroll wheel/trackpad on macOS + Safari. */
     -webkit-overflow-scrolling: touch;
   }
@@ -134,8 +187,8 @@
   }
   .bg-grid-overlay {
     background-image:
-      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      linear-gradient(rgb(var(--grid-line-rgb) / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--grid-line-rgb) / 0.05) 1px, transparent 1px);
     background-size: 48px 48px;
   }
   .card-gradient-border {
@@ -166,10 +219,10 @@
     100% { box-shadow: 0 0 0 0 rgba(76,97,255,0); }
   }
   .gradient-radial-bottom {
-    background: radial-gradient(60% 80% at 50% 100%, rgba(1,76,227,0.35) 0%, rgba(2,8,20,0) 70%);
+    background: radial-gradient(60% 80% at 50% 100%, rgba(1,76,227,0.35) 0%, var(--page-bg-transparent) 70%);
   }
   .divider-line {
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+    background: linear-gradient(90deg, transparent, rgb(var(--divider-rgb) / 0.10), transparent);
   }
   /* Isolate off-screen sections so their paint does not hit scroll frames. */
   .scroll-optimize {

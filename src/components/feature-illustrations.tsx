@@ -9,16 +9,16 @@ const defs = (
   <>
     <defs>
       <linearGradient id="oct-card-bg" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stopColor="#0a152c" />
-        <stop offset="100%" stopColor="#040E22" />
+        <stop offset="0%" stopColor="var(--illus-bg-start)" />
+        <stop offset="100%" stopColor="var(--illus-bg-end)" />
       </linearGradient>
       <linearGradient id="oct-accent" x1="0" y1="0" x2="1" y2="1">
         <stop offset="0%" stopColor="#4C61FF" />
         <stop offset="100%" stopColor="#014CE3" />
       </linearGradient>
       <linearGradient id="oct-chip" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="#15223C" />
-        <stop offset="100%" stopColor="#0a1530" />
+        <stop offset="0%" stopColor="var(--illus-chip-start)" />
+        <stop offset="100%" stopColor="var(--illus-chip-end)" />
       </linearGradient>
     </defs>
   </>
@@ -41,7 +41,7 @@ function Card({
       {defs}
       <rect width="400" height="250" fill="url(#oct-card-bg)" />
       {/* subtle grid */}
-      <g stroke="rgba(255,255,255,0.04)" strokeWidth="1">
+      <g stroke="var(--illus-grid)" strokeWidth="1">
         {Array.from({ length: 8 }).map((_, i) => (
           <line key={`v${i}`} x1={i * 50} y1="0" x2={i * 50} y2="250" />
         ))}
@@ -67,12 +67,12 @@ export function TrackCreatorsIllustration({ className }: Props) {
     >
       <defs>
         <linearGradient id="track-bg" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#0a152c" />
-          <stop offset="100%" stopColor="#040E22" />
+          <stop offset="0%" stopColor="var(--illus-bg-start)" />
+          <stop offset="100%" stopColor="var(--illus-bg-end)" />
         </linearGradient>
         <linearGradient id="track-chip" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#15223C" />
-          <stop offset="100%" stopColor="#0a1530" />
+          <stop offset="0%" stopColor="var(--illus-chip-start)" />
+          <stop offset="100%" stopColor="var(--illus-chip-end)" />
         </linearGradient>
         <linearGradient id="track-ig" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stopColor="#F58529" />
@@ -81,7 +81,7 @@ export function TrackCreatorsIllustration({ className }: Props) {
         </linearGradient>
       </defs>
       <rect width="640" height="250" fill="url(#track-bg)" />
-      <g stroke="rgba(255,255,255,0.04)" strokeWidth="1">
+      <g stroke="var(--illus-grid)" strokeWidth="1">
         {Array.from({ length: 13 }).map((_, i) => (
           <line key={`v${i}`} x1={i * 50} y1="0" x2={i * 50} y2="250" />
         ))}
@@ -111,7 +111,7 @@ export function TrackCreatorsIllustration({ className }: Props) {
             height="50"
             rx="10"
             fill="url(#track-chip)"
-            stroke="rgba(255,255,255,0.08)"
+            stroke="var(--illus-border)"
             opacity={c.live ? 1 : 0.6}
           />
           <g transform={`translate(${c.x + 13} ${c.y + 13})`} opacity={c.live ? 1 : 0.55}>
@@ -132,8 +132,8 @@ export function TrackCreatorsIllustration({ className }: Props) {
               </g>
             )}
           </g>
-          <rect x={c.x + 48} y={c.y + 14} width="96" height="5" rx="2.5" fill="rgba(255,255,255,0.5)" />
-          <rect x={c.x + 48} y={c.y + 24} width="70" height="4" rx="2" fill="rgba(255,255,255,0.22)" />
+          <rect x={c.x + 48} y={c.y + 14} width="96" height="5" rx="2.5" fill="var(--illus-text-muted)" />
+          <rect x={c.x + 48} y={c.y + 24} width="70" height="4" rx="2" fill="var(--illus-text-faint)" />
           {!c.live && (
             <g>
               <rect x={c.x + 48} y={c.y + 32} width="66" height="12" rx="6" fill="rgba(76,97,255,0.18)" stroke="rgba(76,97,255,0.4)" />
@@ -163,15 +163,15 @@ export function TrackCreatorsIllustration({ className }: Props) {
           fill="url(#track-chip)"
           stroke="rgba(76,97,255,0.35)"
         />
-        <rect x="436" y="44" width="90" height="8" rx="3" fill="rgba(255,255,255,0.6)" />
-        <rect x="436" y="58" width="56" height="6" rx="2.5" fill="rgba(255,255,255,0.28)" />
+        <rect x="436" y="44" width="90" height="8" rx="3" fill="var(--illus-text-muted)" />
+        <rect x="436" y="58" width="56" height="6" rx="2.5" fill="var(--illus-text-faint)" />
 
         {[0, 1, 2, 3].map((i) => (
           <g key={i} transform={`translate(436 ${82 + i * 32})`}>
-            <rect width="150" height="24" rx="6" fill="rgba(255,255,255,0.05)" />
+            <rect width="150" height="24" rx="6" fill="var(--illus-grid)" />
             <circle cx="14" cy="12" r="6" fill="#4C61FF" />
-            <rect x="26" y="7" width="90" height="4" rx="2" fill="rgba(255,255,255,0.65)" />
-            <rect x="26" y="15" width="58" height="3" rx="1.5" fill="rgba(255,255,255,0.32)" />
+            <rect x="26" y="7" width="90" height="4" rx="2" fill="var(--illus-text-muted)" />
+            <rect x="26" y="15" width="58" height="3" rx="1.5" fill="var(--illus-text-faint)" />
           </g>
         ))}
 
@@ -193,9 +193,9 @@ export function VoiceRewriteIllustration({ className }: Props) {
 
       {/* Left panel: generic script */}
       <g>
-        <rect x="24" y="30" width="160" height="190" rx="14" fill="url(#oct-chip)" stroke="rgba(255,255,255,0.08)" />
-        <rect x="36" y="44" width="60" height="6" rx="3" fill="rgba(255,255,255,0.35)" />
-        <rect x="36" y="56" width="40" height="4" rx="2" fill="rgba(255,255,255,0.18)" />
+        <rect x="24" y="30" width="160" height="190" rx="14" fill="url(#oct-chip)" stroke="var(--illus-border)" />
+        <rect x="36" y="44" width="60" height="6" rx="3" fill="var(--illus-text-muted)" />
+        <rect x="36" y="56" width="40" height="4" rx="2" fill="var(--illus-text-faint)" />
         {[0, 1, 2, 3, 4].map((i) => (
           <rect
             key={i}
@@ -204,10 +204,10 @@ export function VoiceRewriteIllustration({ className }: Props) {
             width={130 - (i % 2) * 18}
             height="6"
             rx="2"
-            fill="rgba(255,255,255,0.15)"
+            fill="var(--illus-text-faint)"
           />
         ))}
-        <text x="36" y="206" fontFamily="Inter, sans-serif" fontSize="10" fill="rgba(255,255,255,0.45)">
+        <text x="36" y="206" fontFamily="Inter, sans-serif" fontSize="10" fill="var(--illus-text-muted)">
           Generic template
         </text>
       </g>
@@ -270,8 +270,8 @@ export function HooksIllustration({ className }: Props) {
       `}</style>
       <g transform="translate(70 40)">
         {/* stacked cards behind */}
-        <rect x="14" y="16" width="240" height="120" rx="14" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.06)" />
-        <rect x="7" y="8" width="240" height="120" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)" />
+        <rect x="14" y="16" width="240" height="120" rx="14" fill="var(--illus-grid)" stroke="var(--illus-border)" />
+        <rect x="7" y="8" width="240" height="120" rx="14" fill="var(--illus-grid)" stroke="var(--illus-border)" />
 
         {/* top hook card */}
         <g>
@@ -286,9 +286,9 @@ export function HooksIllustration({ className }: Props) {
           <text x="45" y="31" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="10" fontWeight="600" fill="#9BB2FF">
             HOOK
           </text>
-          <rect x="16" y="48" width="200" height="8" rx="3" fill="rgba(255,255,255,0.7)" />
-          <rect x="16" y="62" width="170" height="8" rx="3" fill="rgba(255,255,255,0.55)" />
-          <rect x="16" y="82" width="100" height="5" rx="2" fill="rgba(255,255,255,0.25)" />
+          <rect x="16" y="48" width="200" height="8" rx="3" fill="var(--illus-text-muted)" />
+          <rect x="16" y="62" width="170" height="8" rx="3" fill="var(--illus-text-muted)" />
+          <rect x="16" y="82" width="100" height="5" rx="2" fill="var(--illus-text-faint)" />
 
           {/* shimmer */}
           <g clipPath="url(#hookClip)">
@@ -316,11 +316,11 @@ export function HooksIllustration({ className }: Props) {
           { label: "Shares", val: "2.8k" },
         ].map((m, i) => (
           <g key={i} transform={`translate(${i * 85} 0)`}>
-            <rect width="76" height="40" rx="10" fill="url(#oct-chip)" stroke="rgba(255,255,255,0.06)" />
-            <text x="12" y="16" fontFamily="Inter, sans-serif" fontSize="9" fill="rgba(255,255,255,0.55)">
+            <rect width="76" height="40" rx="10" fill="url(#oct-chip)" stroke="var(--illus-border)" />
+            <text x="12" y="16" fontFamily="Inter, sans-serif" fontSize="9" fill="var(--illus-text-muted)">
               {m.label}
             </text>
-            <text x="12" y="32" fontFamily="Inter, sans-serif" fontSize="14" fontWeight="700" fill="#fff">
+            <text x="12" y="32" fontFamily="Inter, sans-serif" fontSize="14" fontWeight="700" fill="var(--illus-text)">
               {m.val}
             </text>
           </g>

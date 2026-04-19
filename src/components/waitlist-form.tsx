@@ -53,7 +53,7 @@ export function WaitlistForm({
       <div
         role="status"
         aria-live="polite"
-        className="flex w-full items-center justify-center gap-2 rounded-full border border-[#4C61FF]/30 bg-[#4C61FF]/10 px-5 py-3 text-sm font-medium text-[#9BB2FF]"
+        className="flex w-full items-center justify-center gap-2 rounded-full border border-[#4C61FF]/30 bg-[#4C61FF]/15 px-5 py-3 text-sm font-medium text-[#014CE3] dark:bg-[#4C61FF]/10 dark:text-[#9BB2FF]"
       >
         <svg
           viewBox="0 0 20 20"
@@ -87,7 +87,7 @@ export function WaitlistForm({
         value={name}
         onChange={(e) => setName(e.target.value)}
         disabled={status === "loading"}
-        className="w-full flex-1 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm text-white placeholder:text-white/45 outline-none transition focus:border-[#4C61FF] focus:bg-white/10"
+        className="w-full flex-1 rounded-full border border-black/15 bg-black/[0.04] px-5 py-3 text-sm text-[#0B1430] placeholder:text-[#0B1430]/45 outline-none transition focus:border-[#4C61FF] focus:bg-black/[0.06] dark:border-white/15 dark:bg-white/5 dark:text-white dark:placeholder:text-white/45 dark:focus:bg-white/10"
       />
       <input
         type="email"
@@ -96,7 +96,7 @@ export function WaitlistForm({
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         disabled={status === "loading"}
-        className="w-full flex-1 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm text-white placeholder:text-white/45 outline-none transition focus:border-[#4C61FF] focus:bg-white/10"
+        className="w-full flex-1 rounded-full border border-black/15 bg-black/[0.04] px-5 py-3 text-sm text-[#0B1430] placeholder:text-[#0B1430]/45 outline-none transition focus:border-[#4C61FF] focus:bg-black/[0.06] dark:border-white/15 dark:bg-white/5 dark:text-white dark:placeholder:text-white/45 dark:focus:bg-white/10"
       />
       <button
         type="submit"
@@ -107,7 +107,7 @@ export function WaitlistForm({
         <span aria-hidden>→</span>
       </button>
       {status === "err" && message && (
-        <p className="text-xs text-red-300 sm:basis-full sm:text-center">
+        <p className="text-xs text-[#B42318] sm:basis-full sm:text-center dark:text-red-300">
           {message}
         </p>
       )}
@@ -129,20 +129,20 @@ export function WaitlistDialog({
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-md overflow-hidden rounded-2xl border border-white/10 bg-[#040E22] p-8"
+        className="relative w-full max-w-md overflow-hidden rounded-2xl border border-black/10 bg-white p-8 dark:border-white/10 dark:bg-[#040E22]"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/80 hover:text-white"
+          className="absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-full border border-black/10 bg-black/5 text-[#0B1430]/80 hover:text-[#0B1430] dark:border-white/10 dark:bg-white/5 dark:text-white/80 dark:hover:text-white"
           aria-label="Close"
         >
           ×
         </button>
-        <h3 className="font-heading text-2xl tracking-tight text-white">
+        <h3 className="font-heading text-2xl tracking-tight text-[#0B1430] dark:text-white">
           Join the Octupie waitlist
         </h3>
-        <p className="mt-2 text-sm text-white/65">
+        <p className="mt-2 text-sm text-[#0B1430]/65 dark:text-white/65">
           Leave your name and email. You&apos;ll be first to know when we launch
           plus get early-access perks.
         </p>

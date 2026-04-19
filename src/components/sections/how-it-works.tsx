@@ -55,10 +55,10 @@ export function HowItWorks() {
     <section id="how-it-works" className="relative overflow-x-clip py-20 md:py-28">
       <div className="mx-auto max-w-[1200px] px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-heading text-4xl leading-tight tracking-tight text-white md:text-[56px]">
+          <h2 className="font-heading text-4xl leading-tight tracking-tight text-[#0B1430] md:text-[56px] dark:text-white">
             How Octupie works
           </h2>
-          <p className="mt-4 text-white/70 md:text-lg">
+          <p className="mt-4 text-[#0B1430]/70 md:text-lg dark:text-white/70">
             One agentic loop. No more jumping between tabs, tools and
             half-finished docs.
           </p>
@@ -71,8 +71,8 @@ export function HowItWorks() {
                   className={[
                     "flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-medium transition",
                     visible === i
-                      ? "border-[#4C61FF] bg-[#0a1636] text-white shadow-[0_0_0_4px_rgba(76,97,255,0.12)]"
-                      : "border-white/10 bg-white/[0.03] text-white/65",
+                      ? "border-[#4C61FF] bg-[#F0F4FF] text-[#0B1430] shadow-[0_0_0_4px_rgba(76,97,255,0.12)] dark:bg-[#0a1636] dark:text-white"
+                      : "border-black/10 bg-black/[0.03] text-[#0B1430]/65 dark:border-white/10 dark:bg-white/[0.03] dark:text-white/65",
                   ].join(" ")}
                 >
                   <span
@@ -80,7 +80,7 @@ export function HowItWorks() {
                       "inline-flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold",
                       visible === i
                         ? "bg-[#014CE3] text-white"
-                        : "bg-white/10 text-white/70",
+                        : "bg-black/10 text-[#0B1430]/70 dark:bg-white/10 dark:text-white/70",
                     ].join(" ")}
                   >
                     {i + 1}
@@ -88,34 +88,32 @@ export function HowItWorks() {
                   {s.shortLabel}
                 </div>
                 {i < steps.length - 1 && (
-                  <svg width="22" height="10" viewBox="0 0 22 10" aria-hidden>
-                    <path
-                      d="M0 5 L 18 5"
-                      stroke={
-                        visible > i
-                          ? "rgba(76,97,255,0.9)"
-                          : "rgba(255,255,255,0.18)"
-                      }
-                      strokeWidth="1.5"
-                      strokeDasharray="3 3"
-                      fill="none"
-                    />
-                    <polygon
-                      points="22,5 16,1.5 16,8.5"
-                      fill={
-                        visible >= i + 1
-                          ? "rgba(76,97,255,0.9)"
-                          : "rgba(255,255,255,0.25)"
-                      }
-                    />
-                  </svg>
+                  <span
+                    aria-hidden
+                    className={
+                      visible > i
+                        ? "text-[#4C61FF]/90"
+                        : "text-[#0B1430]/25 dark:text-white/25"
+                    }
+                  >
+                    <svg width="22" height="10" viewBox="0 0 22 10">
+                      <path
+                        d="M0 5 L 18 5"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeDasharray="3 3"
+                        fill="none"
+                      />
+                      <polygon points="22,5 16,1.5 16,8.5" fill="currentColor" />
+                    </svg>
+                  </span>
                 )}
               </div>
             ))}
           </div>
 
           {/* Mobile fallback (no pills, simple line) */}
-          <p className="mt-6 text-xs uppercase tracking-[0.18em] text-white/45 md:hidden">
+          <p className="mt-6 text-xs uppercase tracking-[0.18em] text-[#0B1430]/45 md:hidden dark:text-white/45">
             Research · Analyse · Script · Caption
           </p>
         </div>
@@ -135,24 +133,24 @@ export function HowItWorks() {
                   className={[
                     "group relative overflow-hidden rounded-2xl border p-5 text-left transition",
                     isActive
-                      ? "border-[#014CE3]/50 bg-[#0a1636]"
-                      : "border-white/10 bg-[#040E22] hover:border-white/20 hover:bg-[#081433]",
+                      ? "border-[#014CE3]/50 bg-[#F0F4FF] dark:bg-[#0a1636]"
+                      : "border-black/10 bg-white hover:border-black/20 hover:bg-[#F5F7FB] dark:border-white/10 dark:bg-[#040E22] dark:hover:border-white/20 dark:hover:bg-[#081433]",
                   ].join(" ")}
                 >
                   <div
                     className={[
                       "text-[11px] font-medium tracking-[0.18em] transition",
-                      isActive ? "text-[#4C61FF]" : "text-white/50",
+                      isActive ? "text-[#014CE3] dark:text-[#4C61FF]" : "text-[#0B1430]/50 dark:text-white/50",
                     ].join(" ")}
                   >
                     {s.label}
                   </div>
-                  <div className="mt-2 font-heading text-[22px] leading-snug tracking-tight text-white">
+                  <div className="mt-2 font-heading text-[22px] leading-snug tracking-tight text-[#0B1430] dark:text-white">
                     {s.title}
                   </div>
-                  <div className="mt-1.5 text-sm text-white/65">{s.body}</div>
+                  <div className="mt-1.5 text-sm text-[#0B1430]/65 dark:text-white/65">{s.body}</div>
                   {isActive && (
-                    <div className="mt-4 h-1 w-full overflow-hidden rounded-full bg-white/10">
+                    <div className="mt-4 h-1 w-full overflow-hidden rounded-full bg-black/10 dark:bg-white/10">
                       <div className="h-full w-1/3 bg-[#4C61FF]" />
                     </div>
                   )}

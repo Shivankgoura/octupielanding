@@ -57,15 +57,15 @@ export function WhyOctupie() {
 
       <div className="relative mx-auto max-w-[1100px] px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-[#9BB2FF]">
+          <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-black/[0.04] px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-[#014CE3] dark:border-white/10 dark:bg-white/5 dark:text-[#9BB2FF]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#4C61FF]" />
             Why Octupie
           </span>
-          <h2 className="mt-5 font-heading text-4xl leading-tight tracking-tight text-white md:text-[56px]">
+          <h2 className="mt-5 font-heading text-4xl leading-tight tracking-tight text-[#0B1430] md:text-[56px] dark:text-white">
             Built to fix what research
             <br className="hidden md:block" /> tools leave unfinished
           </h2>
-          <p className="mt-5 text-white/70 md:text-lg">
+          <p className="mt-5 text-[#0B1430]/70 md:text-lg dark:text-white/70">
             We talked to creators using today&apos;s viral-research apps. The
             same complaints came up. Octupie is the answer to each one.
           </p>
@@ -75,14 +75,14 @@ export function WhyOctupie() {
           {rows.map((r, i) => (
             <article
               key={i}
-              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#040E22] transition hover:border-[#4C61FF]/40"
+              className="group relative overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_1px_2px_rgba(11,20,48,0.04)] transition hover:border-[#4C61FF]/40 dark:border-white/10 dark:bg-[#040E22] dark:shadow-none"
             >
               {/* tag + index in top-right corner */}
               <div className="absolute right-5 top-5 z-10 flex items-center gap-2">
-                <span className="rounded-full bg-white/5 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-white/55">
+                <span className="rounded-full bg-black/[0.04] px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-[#0B1430]/55 dark:bg-white/5 dark:text-white/55">
                   {r.tag}
                 </span>
-                <span className="font-heading text-sm text-white/30">
+                <span className="font-heading text-sm text-[#0B1430]/30 dark:text-white/30">
                   0{i + 1}
                 </span>
               </div>
@@ -90,30 +90,30 @@ export function WhyOctupie() {
               {/* Problem half */}
               <div className="relative bg-[radial-gradient(120%_120%_at_0%_0%,rgba(239,68,68,0.08),transparent_55%)] px-7 pt-7 pb-6">
                 <div className="flex items-center gap-2">
-                  <span className="inline-flex h-6 w-6 items-center justify-center rounded-md border border-red-400/25 bg-red-500/12 text-xs font-bold text-red-300">
+                  <span className="inline-flex h-6 w-6 items-center justify-center rounded-md border border-red-400/25 bg-red-500/12 text-xs font-bold text-[#B42318] dark:text-red-300">
                     ✕
                   </span>
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-red-300/80">
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#B42318]/85 dark:text-red-300/80">
                     The problem
                   </span>
                 </div>
-                <h3 className="mt-3 font-heading text-[20px] leading-snug tracking-tight text-white/90 md:text-[22px]">
+                <h3 className="mt-3 font-heading text-[20px] leading-snug tracking-tight text-[#0B1430]/90 md:text-[22px] dark:text-white/90">
                   {r.pain}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/55">
+                <p className="mt-2 text-sm leading-relaxed text-[#0B1430]/60 dark:text-white/55">
                   {r.painDetail}
                 </p>
               </div>
 
               {/* Connector: vertical chevron arrow flowing down into the fix */}
               <div className="relative flex items-center px-7" aria-hidden>
-                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-                <span className="mx-3 inline-flex h-7 w-7 items-center justify-center rounded-full border border-[#4C61FF]/40 bg-[#0a1636] text-[#9BB2FF]">
+                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-black/10 to-transparent dark:via-white/10" />
+                <span className="mx-3 inline-flex h-7 w-7 items-center justify-center rounded-full border border-[#4C61FF]/40 bg-[#F0F4FF] text-[#014CE3] dark:bg-[#0a1636] dark:text-[#9BB2FF]">
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                     <path d="M6 1 V 11 M2 7 L 6 11 L 10 7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </span>
-                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-black/10 to-transparent dark:via-white/10" />
               </div>
 
               {/* Fix half */}
@@ -122,14 +122,14 @@ export function WhyOctupie() {
                   <span className="inline-flex h-6 w-6 items-center justify-center rounded-md border border-[#4C61FF]/40 bg-[#4C61FF]/15">
                     <OctupieLogo className="h-3.5 w-3.5" />
                   </span>
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9BB2FF]">
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#014CE3] dark:text-[#9BB2FF]">
                     Octupie fixes it
                   </span>
                 </div>
-                <h4 className="mt-3 font-heading text-[20px] leading-snug tracking-tight text-white md:text-[22px]">
+                <h4 className="mt-3 font-heading text-[20px] leading-snug tracking-tight text-[#0B1430] md:text-[22px] dark:text-white">
                   {r.fix}
                 </h4>
-                <p className="mt-2 text-sm leading-relaxed text-white/75">
+                <p className="mt-2 text-sm leading-relaxed text-[#0B1430]/75 dark:text-white/75">
                   {r.fixDetail}
                 </p>
               </div>
@@ -141,12 +141,12 @@ export function WhyOctupie() {
         </div>
 
         {/* footnote strip */}
-        <div className="mt-10 flex flex-col items-center gap-3 text-center text-xs text-white/45 md:flex-row md:justify-center md:gap-6">
+        <div className="mt-10 flex flex-col items-center gap-3 text-center text-xs text-[#0B1430]/45 md:flex-row md:justify-center md:gap-6 dark:text-white/45">
           <span className="inline-flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-red-400/70" />
             Common pain in research tools today
           </span>
-          <span className="hidden h-3 w-px bg-white/10 md:inline-block" />
+          <span className="hidden h-3 w-px bg-black/10 md:inline-block dark:bg-white/10" />
           <span className="inline-flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-[#4C61FF]" />
             How Octupie is built differently
