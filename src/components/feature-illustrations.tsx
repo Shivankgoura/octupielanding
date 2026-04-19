@@ -56,9 +56,35 @@ function Card({
 
 // 1. Track the creators you want to beat
 // Three creator chips feeding into a unified "Octupie feed".
+// Wide 640-viewBox version so it fills wide cards without letterboxing.
 export function TrackCreatorsIllustration({ className }: Props) {
   return (
-    <Card className={className}>
+    <svg
+      viewBox="0 0 640 250"
+      xmlns="http://www.w3.org/2000/svg"
+      className={`h-full w-full ${className ?? ""}`}
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <defs>
+        <linearGradient id="track-bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#0a152c" />
+          <stop offset="100%" stopColor="#040E22" />
+        </linearGradient>
+        <linearGradient id="track-chip" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#15223C" />
+          <stop offset="100%" stopColor="#0a1530" />
+        </linearGradient>
+      </defs>
+      <rect width="640" height="250" fill="url(#track-bg)" />
+      <g stroke="rgba(255,255,255,0.04)" strokeWidth="1">
+        {Array.from({ length: 13 }).map((_, i) => (
+          <line key={`v${i}`} x1={i * 50} y1="0" x2={i * 50} y2="250" />
+        ))}
+        {Array.from({ length: 6 }).map((_, i) => (
+          <line key={`h${i}`} x1="0" y1={i * 50} x2="640" y2={i * 50} />
+        ))}
+      </g>
+
       <style>{`
         @keyframes oct-pulse-a { 0%,100%{opacity:.55} 50%{opacity:1} }
         @keyframes oct-pulse-b { 0%,100%{opacity:.75} 50%{opacity:1} }
@@ -68,20 +94,20 @@ export function TrackCreatorsIllustration({ className }: Props) {
       `}</style>
       {/* platform chips (IG live, IN soon) */}
       {[
-        { x: 30, y: 30, label: "IG", color: "#E1306C", live: true },
-        { x: 30, y: 100, label: "IG", color: "#E1306C", live: true },
-        { x: 30, y: 170, label: "IN", color: "#0A66C2", live: false },
+        { x: 60, y: 30, label: "IG", color: "#E1306C", live: true },
+        { x: 60, y: 100, label: "IG", color: "#E1306C", live: true },
+        { x: 60, y: 170, label: "IN", color: "#0A66C2", live: false },
       ].map((c, i) => (
         <g key={i} className={`oct-row-${i + 1}`}>
           <rect
             x={c.x}
             y={c.y}
-            width="110"
+            width="160"
             height="50"
             rx="10"
-            fill="url(#oct-chip)"
+            fill="url(#track-chip)"
             stroke="rgba(255,255,255,0.08)"
-            opacity={c.live ? 1 : 0.55}
+            opacity={c.live ? 1 : 0.6}
           />
           <circle cx={c.x + 25} cy={c.y + 25} r="12" fill={c.color} opacity={c.live ? 0.95 : 0.5} />
           <text
@@ -95,12 +121,12 @@ export function TrackCreatorsIllustration({ className }: Props) {
           >
             {c.label}
           </text>
-          <rect x={c.x + 48} y={c.y + 14} width="48" height="5" rx="2.5" fill="rgba(255,255,255,0.5)" />
-          <rect x={c.x + 48} y={c.y + 24} width="34" height="4" rx="2" fill="rgba(255,255,255,0.22)" />
+          <rect x={c.x + 48} y={c.y + 14} width="96" height="5" rx="2.5" fill="rgba(255,255,255,0.5)" />
+          <rect x={c.x + 48} y={c.y + 24} width="70" height="4" rx="2" fill="rgba(255,255,255,0.22)" />
           {!c.live && (
             <g>
-              <rect x={c.x + 48} y={c.y + 32} width="50" height="11" rx="5.5" fill="rgba(76,97,255,0.18)" stroke="rgba(76,97,255,0.4)" />
-              <text x={c.x + 73} y={c.y + 40} textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="7" fontWeight="700" fill="#9BB2FF">
+              <rect x={c.x + 48} y={c.y + 32} width="66" height="12" rx="6" fill="rgba(76,97,255,0.18)" stroke="rgba(76,97,255,0.4)" />
+              <text x={c.x + 81} y={c.y + 41} textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="7" fontWeight="700" fill="#9BB2FF">
                 COMING SOON
               </text>
             </g>
@@ -109,38 +135,38 @@ export function TrackCreatorsIllustration({ className }: Props) {
       ))}
 
       {/* connecting curves */}
-      <g fill="none" stroke="#4C61FF" strokeWidth="1.5" opacity="0.7">
-        <path d="M140 55 C 200 55, 220 125, 260 125" />
-        <path d="M140 125 L 260 125" />
-        <path d="M140 195 C 200 195, 220 125, 260 125" strokeDasharray="3 4" opacity="0.4" />
+      <g fill="none" stroke="#4C61FF" strokeWidth="1.6" opacity="0.7">
+        <path d="M220 55 C 320 55, 360 125, 420 125" />
+        <path d="M220 125 L 420 125" />
+        <path d="M220 195 C 320 195, 360 125, 420 125" strokeDasharray="3 4" opacity="0.4" />
       </g>
 
-      {/* Octupie feed panel */}
+      {/* Octupie feed panel (shifted right) */}
       <g>
         <rect
-          x="260"
+          x="420"
           y="30"
-          width="115"
+          width="180"
           height="190"
           rx="14"
-          fill="url(#oct-chip)"
+          fill="url(#track-chip)"
           stroke="rgba(76,97,255,0.35)"
         />
-        <rect x="272" y="44" width="60" height="8" rx="3" fill="rgba(255,255,255,0.55)" />
-        <rect x="272" y="58" width="38" height="6" rx="2.5" fill="rgba(255,255,255,0.25)" />
+        <rect x="436" y="44" width="90" height="8" rx="3" fill="rgba(255,255,255,0.6)" />
+        <rect x="436" y="58" width="56" height="6" rx="2.5" fill="rgba(255,255,255,0.28)" />
 
         {[0, 1, 2, 3].map((i) => (
-          <g key={i} transform={`translate(272 ${80 + i * 32})`}>
-            <rect width="90" height="24" rx="6" fill="rgba(255,255,255,0.04)" />
+          <g key={i} transform={`translate(436 ${82 + i * 32})`}>
+            <rect width="150" height="24" rx="6" fill="rgba(255,255,255,0.05)" />
             <circle cx="14" cy="12" r="6" fill="#4C61FF" />
-            <rect x="26" y="7" width="50" height="4" rx="2" fill="rgba(255,255,255,0.6)" />
-            <rect x="26" y="15" width="32" height="3" rx="1.5" fill="rgba(255,255,255,0.3)" />
+            <rect x="26" y="7" width="90" height="4" rx="2" fill="rgba(255,255,255,0.65)" />
+            <rect x="26" y="15" width="58" height="3" rx="1.5" fill="rgba(255,255,255,0.32)" />
           </g>
         ))}
 
-        <rect x="272" y="210" width="90" height="4" rx="2" fill="#014CE3" opacity="0.6" />
+        <rect x="436" y="212" width="150" height="4" rx="2" fill="#014CE3" opacity="0.7" />
       </g>
-    </Card>
+    </svg>
   );
 }
 
@@ -450,26 +476,52 @@ export function TitlesCaptionsIllustration({ className }: Props) {
 
 // 6. Agentic workflow, end-to-end
 // A pipeline of connected nodes: Research > Analyse > Script > Caption.
+// Uses its own wider Card (600x250) so the flow stretches across wide cards.
 export function AgenticFlowIllustration({ className }: Props) {
   const nodes = [
-    { x: 20, y: 100, label: "Research", icon: "🔎" },
-    { x: 120, y: 60, label: "Analyse", icon: "⚡" },
-    { x: 220, y: 140, label: "Script", icon: "✍" },
-    { x: 310, y: 80, label: "Caption", icon: "#" },
+    { x: 30, y: 100, label: "Research" },
+    { x: 200, y: 50, label: "Analyse" },
+    { x: 360, y: 140, label: "Script" },
+    { x: 510, y: 70, label: "Caption" },
   ];
   return (
-    <Card className={className}>
+    <svg
+      viewBox="0 0 640 250"
+      xmlns="http://www.w3.org/2000/svg"
+      className={`h-full w-full ${className ?? ""}`}
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <defs>
+        <linearGradient id="agentic-bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#0a152c" />
+          <stop offset="100%" stopColor="#040E22" />
+        </linearGradient>
+        <linearGradient id="agentic-chip" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#15223C" />
+          <stop offset="100%" stopColor="#0a1530" />
+        </linearGradient>
+      </defs>
+      <rect width="640" height="250" fill="url(#agentic-bg)" />
+      <g stroke="rgba(255,255,255,0.04)" strokeWidth="1">
+        {Array.from({ length: 13 }).map((_, i) => (
+          <line key={`v${i}`} x1={i * 50} y1="0" x2={i * 50} y2="250" />
+        ))}
+        {Array.from({ length: 6 }).map((_, i) => (
+          <line key={`h${i}`} x1="0" y1={i * 50} x2="640" y2={i * 50} />
+        ))}
+      </g>
+
       <style>{`
         @keyframes oct-dash { to { stroke-dashoffset: -40 } }
         .oct-path { stroke-dasharray: 4 6; animation: oct-dash 2.5s linear infinite; }
       `}</style>
 
-      {/* connecting path */}
+      {/* connecting path between node centers */}
       <path
-        d={`M ${nodes[0].x + 20} ${nodes[0].y + 20}
-            Q ${(nodes[0].x + nodes[1].x) / 2} 40 ${nodes[1].x + 20} ${nodes[1].y + 20}
-            Q ${(nodes[1].x + nodes[2].x) / 2} 160 ${nodes[2].x + 20} ${nodes[2].y + 20}
-            Q ${(nodes[2].x + nodes[3].x) / 2} 60 ${nodes[3].x + 20} ${nodes[3].y + 20}`}
+        d={`M ${nodes[0].x + 50} ${nodes[0].y + 20}
+            Q ${(nodes[0].x + nodes[1].x) / 2 + 50} 40 ${nodes[1].x + 50} ${nodes[1].y + 20}
+            Q ${(nodes[1].x + nodes[2].x) / 2 + 50} 170 ${nodes[2].x + 50} ${nodes[2].y + 20}
+            Q ${(nodes[2].x + nodes[3].x) / 2 + 50} 70 ${nodes[3].x + 50} ${nodes[3].y + 20}`}
         fill="none"
         stroke="#4C61FF"
         strokeWidth="2"
@@ -477,26 +529,26 @@ export function AgenticFlowIllustration({ className }: Props) {
       />
 
       {nodes.map((n, i) => (
-        <g key={n.label} transform={`translate(${n.x - 10} ${n.y - 10})`}>
+        <g key={n.label} transform={`translate(${n.x} ${n.y})`}>
           <rect
-            width="80"
+            width="110"
             height="60"
             rx="14"
-            fill={i === 0 || i === 3 ? "#0a1636" : "url(#oct-chip)"}
+            fill={i === 0 || i === 3 ? "#0a1636" : "url(#agentic-chip)"}
             stroke={i === 0 || i === 3 ? "rgba(76,97,255,0.55)" : "rgba(255,255,255,0.08)"}
           />
-          <circle cx="20" cy="24" r="12" fill="rgba(76,97,255,0.25)" />
-          <text x="20" y="28" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="12" fill="#9BB2FF" fontWeight="700">
+          <circle cx="22" cy="30" r="13" fill="rgba(76,97,255,0.25)" />
+          <text x="22" y="34" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="13" fill="#9BB2FF" fontWeight="700">
             {String(i + 1)}
           </text>
-          <text x="40" y="22" fontFamily="Inter, sans-serif" fontSize="11" fontWeight="600" fill="#fff">
+          <text x="44" y="26" fontFamily="Inter, sans-serif" fontSize="12" fontWeight="600" fill="#fff">
             {n.label}
           </text>
-          <rect x="40" y="30" width="32" height="4" rx="2" fill="rgba(255,255,255,0.3)" />
-          <rect x="40" y="40" width="22" height="4" rx="2" fill="rgba(255,255,255,0.18)" />
+          <rect x="44" y="34" width="50" height="4" rx="2" fill="rgba(255,255,255,0.3)" />
+          <rect x="44" y="44" width="34" height="4" rx="2" fill="rgba(255,255,255,0.18)" />
         </g>
       ))}
-    </Card>
+    </svg>
   );
 }
 

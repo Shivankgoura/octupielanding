@@ -68,7 +68,12 @@ export function Features() {
                 f.wide ? "md:col-span-2" : "",
               ].join(" ")}
             >
-              <div className="relative mb-5 aspect-[16/10] overflow-hidden rounded-xl border border-white/5 bg-gradient-to-br from-[#0a152c] to-[#040E22]">
+              <div
+                className={[
+                  "relative mb-5 overflow-hidden rounded-xl border border-white/5 bg-gradient-to-br from-[#0a152c] to-[#040E22]",
+                  f.wide ? "aspect-[32/13]" : "aspect-[16/10]",
+                ].join(" ")}
+              >
                 <FeatureIllustration
                   k={f.illustration}
                   className="transition duration-500 group-hover:scale-[1.02]"

@@ -155,7 +155,7 @@ export function SurfaceOutliersStep({ className }: Props) {
         baseline
       </text>
 
-      {/* bars */}
+      {/* bars (animated) */}
       {bars.map((b, i) => {
         const x = 80 + i * 50;
         const y = baseY - b.h;
@@ -169,30 +169,46 @@ export function SurfaceOutliersStep({ className }: Props) {
               rx="6"
               fill={b.outlier ? "url(#step-accent)" : "rgba(255,255,255,0.18)"}
             />
-            <text
-              x={x + 16}
-              y={baseY + 16}
-              textAnchor="middle"
-              fontFamily="Inter, sans-serif"
-              fontSize="9"
-              fill={b.outlier ? "#9BB2FF" : "rgba(255,255,255,0.45)"}
-              fontWeight={b.outlier ? "700" : "500"}
-            >
-              {b.label}
-            </text>
-            {b.outlier && (
-              <g className="step2-flag" transform={`translate(${x + 16} ${y - 36})`}>
-                <rect x="-44" y="0" width="88" height="26" rx="13" fill="#0a1636" stroke="rgba(76,97,255,0.6)" />
-                <circle cx="-30" cy="13" r="4" fill="#4C61FF" />
-                <text x="-20" y="17" fontFamily="Inter, sans-serif" fontSize="10" fontWeight="700" fill="#fff">
-                  OUTLIER
-                </text>
-                <polygon points="-6,26 0,32 6,26" fill="#0a1636" stroke="rgba(76,97,255,0.6)" />
-              </g>
-            )}
           </g>
         );
       })}
+
+      {/* labels (no animation) */}
+      {bars.map((b, i) => {
+        const x = 80 + i * 50;
+        return (
+          <text
+            key={`l${i}`}
+            x={x + 16}
+            y={baseY + 16}
+            textAnchor="middle"
+            fontFamily="Inter, sans-serif"
+            fontSize="9"
+            fill={b.outlier ? "#9BB2FF" : "rgba(255,255,255,0.45)"}
+            fontWeight={b.outlier ? "700" : "500"}
+          >
+            {b.label}
+          </text>
+        );
+      })}
+
+      {/* OUTLIER flag (positioned in raw SVG coords above the tall bar, no parent transform) */}
+      {(() => {
+        const i = bars.findIndex((b) => b.outlier);
+        if (i < 0) return null;
+        const cx = 80 + i * 50 + 16; // bar center x
+        const flagY = baseY - bars[i].h - 38; // 38px above the top of the bar
+        return (
+          <g className="step2-flag" transform={`translate(${cx} ${flagY})`}>
+            <rect x="-44" y="0" width="88" height="26" rx="13" fill="#0a1636" stroke="rgba(76,97,255,0.6)" />
+            <circle cx="-30" cy="13" r="4" fill="#4C61FF" />
+            <text x="-20" y="17" fontFamily="Inter, sans-serif" fontSize="10" fontWeight="700" fill="#fff">
+              OUTLIER
+            </text>
+            <polygon points="-6,26 0,32 6,26" fill="#0a1636" stroke="rgba(76,97,255,0.6)" />
+          </g>
+        );
+      })()}
 
       {/* title */}
       <text x="60" y="55" fontFamily="Inter, sans-serif" fontSize="12" fontWeight="700" fill="rgba(155,178,255,0.9)">
