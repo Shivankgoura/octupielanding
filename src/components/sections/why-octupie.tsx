@@ -14,7 +14,7 @@ const rows: Row[] = [
     pain: "Generic scripts in someone else's voice",
     painDetail:
       "Most tools give back content that already circulates everywhere, just with another AI voiceover pasted on top.",
-    fix: "Voice-matched rewrites",
+    fix: "Voice matched rewrites",
     fixDetail:
       "Octupie studies your past videos, captions and comments to rewrite outlier scripts in your tone, pacing and vocabulary. Not a generic template.",
   },
@@ -23,7 +23,7 @@ const rows: Row[] = [
     pain: "\"It's just a research tool\"",
     painDetail:
       "Current tools stop at showing you top videos. You still have to script, hook, title and caption everything yourself.",
-    fix: "End-to-end agentic workflow",
+    fix: "End to end agentic workflow",
     fixDetail:
       "Research, outlier analysis, hook, script, title and caption happen in one connected flow. You leave with something ready to shoot.",
   },
@@ -38,7 +38,7 @@ const rows: Row[] = [
   },
   {
     tag: "Hooks",
-    pain: "Copy-paste hooks that nobody reacts to",
+    pain: "Copy paste hooks that nobody reacts to",
     painDetail:
       "Recycled hook templates feel obvious the second viewers see them. Retention drops in the first 2 seconds.",
     fix: "Hook recreation, not repetition",
@@ -66,7 +66,7 @@ export function WhyOctupie() {
             <br className="hidden md:block" /> tools leave unfinished
           </h2>
           <p className="mt-5 text-[#0B1430]/70 md:text-lg dark:text-white/70">
-            We talked to creators using today&apos;s viral-research apps. The
+            We talked to creators using today&apos;s viral research apps. The
             same complaints came up. Octupie is the answer to each one.
           </p>
         </div>

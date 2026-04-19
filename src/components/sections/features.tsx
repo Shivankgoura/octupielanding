@@ -33,13 +33,13 @@ const features: Feature[] = [
     illustration: "daily",
   },
   {
-    title: "Ready-to-post titles & captions",
+    title: "Ready to post titles & captions",
     body: "Every script ships with title, caption and hashtag variants tuned to each platform. Paste and post.",
     illustration: "titles",
   },
   {
     title: "An agentic workflow, not just a research tool",
-    body: "From research to analysis to script to caption, Octupie runs the loop end-to-end so you spend time filming, not digging through dashboards.",
+    body: "From research to analysis to script to caption, Octupie runs the loop end to end so you spend time filming, not digging through dashboards.",
     illustration: "agentic",
     wide: true,
   },
@@ -59,7 +59,7 @@ export function Features() {
             What you actually get
           </p>
           <h2 className="mt-3 font-heading text-4xl leading-tight tracking-tight text-[#0B1430] md:text-[56px] dark:text-white">
-            Everything a viral short-form
+            Everything a viral short form
             <br className="hidden md:block" /> workflow actually needs
           </h2>
         </div>

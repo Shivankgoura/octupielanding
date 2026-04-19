@@ -10,8 +10,8 @@ const groups: Group[] = [
     label: "Product",
     items: [
       {
-        q: "How is Octupie different from existing viral-research tools?",
-        a: "Most tools stop at surfacing popular videos. Octupie runs the full workflow: outlier detection, pattern analysis, hook recreation, script-writing in your voice, then titles and captions ready to post. It's an agentic system, not a search engine with a script button.",
+        q: "How is Octupie different from existing viral research tools?",
+        a: "Most tools stop at surfacing popular videos. Octupie runs the full workflow: outlier detection, pattern analysis, hook recreation, scriptwriting in your voice, then titles and captions ready to post. It's an agentic system, not a search engine with a script button.",
       },
       {
         q: "Does it actually write in my voice, not a generic AI voice?",
@@ -27,7 +27,7 @@ const groups: Group[] = [
       },
       {
         q: "Is this just another research tool?",
-        a: "No. Octupie includes research, but it also produces ready-to-shoot scripts, titles and captions. Research is the starting point, not the finish line.",
+        a: "No. Octupie includes research, but it also produces ready to shoot scripts, titles and captions. Research is the starting point, not the finish line.",
       },
     ],
   },
@@ -40,7 +40,7 @@ const groups: Group[] = [
       },
       {
         q: "What do I get on the waitlist?",
-        a: "Launch updates, early-access invites and (for the first batch of creators) founder pricing once billing goes live.",
+        a: "Launch updates, early access invites and (for the first batch of creators) founder pricing once billing goes live.",
       },
       {
         q: "Will you spam me?",

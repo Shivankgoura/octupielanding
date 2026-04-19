@@ -19,7 +19,7 @@ export function HeroVisualization({ className = "" }: Props) {
       className={`h-full w-full ${className}`}
       preserveAspectRatio="xMidYMid meet"
       role="img"
-      aria-label="Octupie reads outlier reels from creators on Instagram and turns them into ready-to-post scripts in your voice"
+      aria-label="Octupie reads outlier reels from creators on Instagram and turns them into ready to post scripts in your voice"
     >
       <defs>
         <linearGradient id="hv-bg" x1="0" y1="0" x2="1" y2="1">

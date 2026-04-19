@@ -22,13 +22,13 @@ export function Cta() {
               <br className="hidden md:block" /> Start shipping.
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-[#0B1430]/75 md:text-lg dark:text-white/75">
-              Join the waitlist to get early access to Octupie, your viral-content
-              researcher and script-writing agentic workflow.
+              Join the waitlist to get early access to Octupie, your viral
+              content researcher and scriptwriter.
             </p>
             <div className="mx-auto mt-8 w-full max-w-xl">
               <WaitlistForm ctaLabel="Join the Waitlist" />
               <p className="mt-3 text-xs text-[#0B1430]/55 dark:text-white/55">
-                We&apos;ll only email you launch news and early-access invites.
+                We&apos;ll only email you launch news and early access invites.
               </p>
             </div>
           </div>

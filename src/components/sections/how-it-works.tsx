@@ -19,14 +19,14 @@ const steps: Step[] = [
     label: "STEP 1",
     shortLabel: "Research",
     title: "Pick the creators you want to learn from",
-    body: "Plug in any Instagram handle. Octupie tracks what's working for them in near real-time. LinkedIn support is on the roadmap.",
+    body: "Plug in any Instagram handle. Octupie tracks what's working for them in near real time. LinkedIn support is on the roadmap.",
     illustration: "pick",
   },
   {
     label: "STEP 2",
     shortLabel: "Analyse",
     title: "Surface their actual outliers",
-    body: "We filter out their baseline and show only videos that massively out-performed. The ones worth studying.",
+    body: "We filter out their baseline and show only videos that massively outperformed. The ones worth studying.",
     illustration: "outliers",
   },
   {
@@ -40,7 +40,7 @@ const steps: Step[] = [
     label: "STEP 4",
     shortLabel: "Caption",
     title: "Recreate in your voice: script, title, caption",
-    body: "One click turns insight into a ready-to-shoot script plus matching titles and captions, tuned to your tone and niche.",
+    body: "One click turns insight into a ready to shoot script plus matching titles and captions, tuned to your tone and niche.",
     illustration: "recreate",
   },
 ];
