@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   StepIllustration,
   type StepIllustrationKey,
@@ -45,11 +45,39 @@ const steps: Step[] = [
   },
 ];
 
+// Hover debounce. Rapid mouse movement across cards should not swap the
+// preview 4 times in 100ms (the source of the glitch). A short delay
+// smooths it out without feeling laggy.
+const HOVER_DELAY_MS = 80;
+
 export function HowItWorks() {
   const [active, setActive] = useState(0);
-  const [hovered, setHovered] = useState<number | null>(null);
-  const visible = hovered ?? active;
-  const current = steps[visible];
+  const [preview, setPreview] = useState<number>(0);
+  const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Whenever the clicked step changes, sync preview immediately.
+  useEffect(() => {
+    setPreview(active);
+  }, [active]);
+
+  const schedulePreview = useCallback((i: number) => {
+    if (hoverTimer.current) clearTimeout(hoverTimer.current);
+    hoverTimer.current = setTimeout(() => setPreview(i), HOVER_DELAY_MS);
+  }, []);
+
+  const cancelHover = useCallback(() => {
+    if (hoverTimer.current) clearTimeout(hoverTimer.current);
+    // Revert to the persisted click state so the preview returns to where
+    // the user actually is, not whatever card they brushed past.
+    setPreview((prev) => prev);
+  }, []);
+
+  // Clean up timer on unmount.
+  useEffect(() => {
+    return () => {
+      if (hoverTimer.current) clearTimeout(hoverTimer.current);
+    };
+  }, []);
 
   return (
     <section id="how-it-works" className="relative overflow-x-clip py-20 md:py-28">
@@ -59,26 +87,30 @@ export function HowItWorks() {
             How Octupie works
           </h2>
           <p className="mt-4 text-[#0B1430]/70 md:text-lg dark:text-white/70">
-            One agentic loop. No more jumping between tabs, tools and
-            half-finished docs.
+            One agentic loop. No more jumping between tabs, tools and half
+            finished docs.
           </p>
 
-          {/* Visual flow pills (replaces the arrow tagline) */}
+          {/* Flow pills. Bind to `active` (clicks), NOT `preview`, so
+              mouse hover over the left-hand cards does not retrigger the
+              pill row animation. */}
           <div className="mt-8 hidden items-center justify-center gap-2 md:flex">
             {steps.map((s, i) => (
               <div key={s.shortLabel} className="flex items-center gap-2">
-                <div
+                <button
+                  type="button"
+                  onClick={() => setActive(i)}
                   className={[
-                    "flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-medium transition",
-                    visible === i
+                    "flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors duration-200",
+                    active === i
                       ? "border-[#4C61FF] bg-[#F0F4FF] text-[#0B1430] shadow-[0_0_0_4px_rgba(76,97,255,0.12)] dark:bg-[#0a1636] dark:text-white"
-                      : "border-black/10 bg-black/[0.03] text-[#0B1430]/65 dark:border-white/10 dark:bg-white/[0.03] dark:text-white/65",
+                      : "border-black/10 bg-black/[0.03] text-[#0B1430]/65 hover:text-[#0B1430] dark:border-white/10 dark:bg-white/[0.03] dark:text-white/65 dark:hover:text-white",
                   ].join(" ")}
                 >
                   <span
                     className={[
                       "inline-flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold",
-                      visible === i
+                      active === i
                         ? "bg-[#014CE3] text-white"
                         : "bg-black/10 text-[#0B1430]/70 dark:bg-white/10 dark:text-white/70",
                     ].join(" ")}
@@ -86,12 +118,12 @@ export function HowItWorks() {
                     {i + 1}
                   </span>
                   {s.shortLabel}
-                </div>
+                </button>
                 {i < steps.length - 1 && (
                   <span
                     aria-hidden
                     className={
-                      visible > i
+                      active > i
                         ? "text-[#4C61FF]/90"
                         : "text-[#0B1430]/25 dark:text-white/25"
                     }
@@ -112,35 +144,41 @@ export function HowItWorks() {
             ))}
           </div>
 
-          {/* Mobile fallback (no pills, simple line) */}
           <p className="mt-6 text-xs uppercase tracking-[0.18em] text-[#0B1430]/45 md:hidden dark:text-white/45">
             Research · Analyse · Script · Caption
           </p>
         </div>
 
         <div className="mt-12 grid grid-cols-1 items-start gap-8 lg:grid-cols-[380px_1fr]">
+          {/* Left: step cards */}
           <div className="flex flex-col gap-3">
             {steps.map((s, i) => {
-              const isActive = visible === i;
+              const isActive = active === i;
+              const isPreviewed = preview === i;
               return (
                 <button
                   key={s.label}
+                  type="button"
                   onClick={() => setActive(i)}
-                  onMouseEnter={() => setHovered(i)}
-                  onMouseLeave={() => setHovered(null)}
-                  onFocus={() => setHovered(i)}
-                  onBlur={() => setHovered(null)}
+                  onMouseEnter={() => schedulePreview(i)}
+                  onMouseLeave={cancelHover}
+                  onFocus={() => setPreview(i)}
+                  onBlur={() => setPreview(active)}
                   className={[
-                    "group relative overflow-hidden rounded-2xl border p-5 text-left transition",
+                    "group relative overflow-hidden rounded-2xl border p-5 text-left transition-colors duration-200",
                     isActive
                       ? "border-[#014CE3]/50 bg-[#F0F4FF] dark:bg-[#0a1636]"
-                      : "border-black/10 bg-white hover:border-black/20 hover:bg-[#F5F7FB] dark:border-white/10 dark:bg-[#040E22] dark:hover:border-white/20 dark:hover:bg-[#081433]",
+                      : isPreviewed
+                        ? "border-[#014CE3]/25 bg-white hover:bg-white dark:border-white/15 dark:bg-[#050f24]"
+                        : "border-black/10 bg-white hover:border-black/20 dark:border-white/10 dark:bg-[#040E22] dark:hover:border-white/20",
                   ].join(" ")}
                 >
                   <div
                     className={[
-                      "text-[11px] font-medium tracking-[0.18em] transition",
-                      isActive ? "text-[#014CE3] dark:text-[#4C61FF]" : "text-[#0B1430]/50 dark:text-white/50",
+                      "text-[11px] font-medium tracking-[0.18em]",
+                      isActive
+                        ? "text-[#014CE3] dark:text-[#4C61FF]"
+                        : "text-[#0B1430]/50 dark:text-white/50",
                     ].join(" ")}
                   >
                     {s.label}
@@ -148,7 +186,9 @@ export function HowItWorks() {
                   <div className="mt-2 font-heading text-[22px] leading-snug tracking-tight text-[#0B1430] dark:text-white">
                     {s.title}
                   </div>
-                  <div className="mt-1.5 text-sm text-[#0B1430]/65 dark:text-white/65">{s.body}</div>
+                  <div className="mt-1.5 text-sm text-[#0B1430]/65 dark:text-white/65">
+                    {s.body}
+                  </div>
                   {isActive && (
                     <div className="mt-4 h-1 w-full overflow-hidden rounded-full bg-black/10 dark:bg-white/10">
                       <div className="h-full w-1/3 bg-[#4C61FF]" />
@@ -159,21 +199,45 @@ export function HowItWorks() {
             })}
           </div>
 
+          {/* Right: pre-mounted illustrations, crossfade on preview change.
+              Sticky keeps the preview next to whichever card the user is on.
+              No key-based remount, no animation restart. */}
           <div className="relative lg:sticky lg:top-24">
-            <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#040E22] p-3">
-              <div className="card-gradient-border relative aspect-[16/10] overflow-hidden rounded-xl bg-[#040E22]">
-                <StepIllustration
-                  key={current.illustration}
-                  k={current.illustration}
-                />
+            <div className="overflow-hidden rounded-2xl border border-black/10 bg-white p-3 shadow-[0_1px_2px_rgba(11,20,48,0.04)] dark:border-white/10 dark:bg-[#040E22] dark:shadow-none">
+              <div className="card-gradient-border relative aspect-[16/10] overflow-hidden rounded-xl bg-white dark:bg-[#040E22]">
+                {steps.map((s, i) => (
+                  <div
+                    key={s.illustration}
+                    aria-hidden={preview !== i}
+                    className={[
+                      "absolute inset-0 transition-opacity duration-300 ease-out",
+                      preview === i ? "opacity-100" : "opacity-0",
+                    ].join(" ")}
+                  >
+                    <StepIllustration k={s.illustration} />
+                  </div>
+                ))}
               </div>
-              <div className="px-2 pt-3 pb-1">
-                <div className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4C61FF]">
-                  {current.label}
-                </div>
-                <div className="mt-1 font-heading text-lg text-white">
-                  {current.title}
-                </div>
+
+              {/* Label strip. Crossfade text to match the illustration. */}
+              <div className="relative mt-3 h-[58px]">
+                {steps.map((s, i) => (
+                  <div
+                    key={s.label}
+                    aria-hidden={preview !== i}
+                    className={[
+                      "absolute inset-0 px-2 transition-opacity duration-300 ease-out",
+                      preview === i ? "opacity-100" : "opacity-0",
+                    ].join(" ")}
+                  >
+                    <div className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#014CE3] dark:text-[#4C61FF]">
+                      {s.label}
+                    </div>
+                    <div className="mt-1 font-heading text-lg text-[#0B1430] dark:text-white">
+                      {s.title}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
