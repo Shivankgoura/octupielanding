@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Octupie UI Branding Specification. LIGHT MODE variant.
+
+  Purpose: reproducible spec of every element on the Octupie marketing
+  site when the LIGHT theme is active. Light is the default palette;
+  .dark on <html> swaps to the dark palette documented in
+  BRAND_SPEC.xml. Both documents are authoritative; read them in pair
+  when replicating. Any value not overridden here is inherited from
+  BRAND_SPEC.xml (same structure, same copy, same layout).
+
+  Source of truth: src/app/globals.css :root block + paired Tailwind
+  utilities on every component (pattern: class="{light} dark:{dark}").
+
+  Units: px. Colors: hex or rgba. Contrast numbers WCAG 2.2 AA/AAA.
+  Rule: no em dashes (U+2014) or en dashes (U+2013) anywhere.
+-->
+<brand-spec product="Octupie" theme="light" version="1.0" generated-at="2026-04-20">
+
+  <!-- =========================================================== -->
+  <!-- META                                                          -->
+  <!-- =========================================================== -->
+  <meta>
+    <name>Octupie</name>
+    <tab-title>Octupie | Your viral-content researcher &amp; script-writing agent</tab-title>
+    <default-theme>light</default-theme>
+    <toggle>dark (via next-themes, user-persistent in localStorage)</toggle>
+    <suited-secondary>Brand blue (#014CE3 primary, #4C61FF accent) over white surfaces, with deep navy (#0B1430) text. White + brand blue keep visual identity continuous across themes.</suited-secondary>
+    <illustration-policy>All product-UI illustrations (hero-visualization, feature-illustrations, step-illustrations) stay DARK in light mode by design. Their --illus-* CSS vars are pinned to dark values in both themes so the embedded product previews read as dark cards on the white page. This is intentional, not a bug.</illustration-policy>
+  </meta>
+
+  <!-- =========================================================== -->
+  <!-- DESIGN TOKENS: LIGHT                                          -->
+  <!-- =========================================================== -->
+  <design-tokens>
+
+    <colors>
+      <!-- Surfaces -->
+      <token name="background (page)" value="#FFFFFF" role="html + body, section backgrounds, footer strip." />
+      <token name="card" value="#FFFFFF" role="Default card, nav pill, feature card, niche card, faq item, waitlist form container." />
+      <token name="card-hover" value="#F5F7FB" role="Feature card hover, how-it-works step card hover." />
+      <token name="card-elevated" value="#F0F4FF" role="How-it-works active step card (bluewashed white)." />
+      <token name="panel" value="#EEF2FA" role="FAQ tab selected pill, pre launch / eyebrow pill bg, problem chip bg." />
+      <token name="input-bg" value="#F5F7FB" role="Waitlist name + email inputs." />
+      <token name="mobile-menu-bg" value="#FFFFFF" role="Nav dropdown drawer." />
+
+      <!-- Text -->
+      <token name="foreground" value="#0B1430" role="Headings, primary text, wordmark 'Octupie', CTA labels over white." />
+      <token name="muted-foreground" value="rgba(11,20,48,0.65)" role="Subcopy, muted paragraphs, stat descriptions, faq answers." />
+      <token name="faint-foreground" value="rgba(11,20,48,0.50)" role="Eyebrow small labels, mobile eyebrow, footer small text." />
+      <token name="faintest-foreground" value="rgba(11,20,48,0.45)" role="Footnote strip, copyright." />
+      <token name="placeholder" value="rgba(11,20,48,0.45)" role="Input placeholder." />
+
+      <!-- Borders -->
+      <token name="border" value="rgba(11,20,48,0.10)" role="Default card, section, nav pill border." />
+      <token name="border-strong" value="rgba(11,20,48,0.18)" role="Hover card border, input focus-within." />
+      <token name="border-brand" value="rgba(76,97,255,0.40)" role="Active step card border, focused input." />
+      <token name="border-brand-strong" value="#014CE3" role="Active step pill outline, selected state." />
+      <token name="divider" value="rgba(11,20,48,0.10)" role="Hairline dividers, .divider-line." />
+      <token name="grid-line" value="rgba(11,20,48,0.05)" role="Hero .bg-grid-overlay 48x48 grid." />
+
+      <!-- Brand (identical across themes) -->
+      <token name="brand-primary (CTA)" value="#014CE3" role="Waitlist button fill, active step pill fill, primary link text on light." />
+      <token name="brand-accent-1" value="#4C61FF" role="Hover CTA fill, ring, glow pulse, dots, hover accent bar." />
+      <token name="eyebrow-accent" value="#014CE3" role="'What you actually get', 'Why Octupie', 'Pre launch' label text on light. Swaps to #9BB2FF on dark." />
+      <token name="link-hover" value="#0B1430" role="Eyebrow / link hover on light (goes darker, not lighter)." />
+
+      <!-- Accent washes on white -->
+      <token name="brand-fill-15" value="rgba(76,97,255,0.15)" role="Pre launch pill bg, 'Octupie fixes it' badge bg (before minimal rewrite)." />
+      <token name="brand-fill-30" value="rgba(76,97,255,0.30)" role="Pre launch pill border." />
+
+      <!-- Semantic -->
+      <token name="destructive-fg" value="#B42318" role="Form error message text." />
+      <token name="problem-dot" value="rgba(248,113,113,0.70)" role="Why Octupie pain bullet dot (red-400/70)." />
+
+      <!-- Reference rgba triplets (so alpha can vary at use site) -->
+      <token name="grid-line-rgb" value="11 20 48" role="Used as rgb(var(--grid-line-rgb) / ALPHA) for the .bg-grid-overlay and .divider-line utilities." />
+      <token name="divider-rgb" value="11 20 48" role="Same pattern for .divider-line." />
+      <token name="page-bg-transparent" value="rgba(255,255,255,0)" role="End stop for .gradient-radial-bottom so the glow fades into the white page." />
+
+      <!-- Illustration (pinned dark in BOTH themes) -->
+      <token name="illus-bg-start" value="#0a152c" role="SVG illustration gradient top stop. INTENTIONALLY dark on light theme." />
+      <token name="illus-bg-end" value="#040E22" role="SVG illustration gradient bottom stop. Dark on light theme." />
+      <token name="illus-chip-start" value="#15223C" role="SVG chip gradient top." />
+      <token name="illus-chip-end" value="#0a1530" role="SVG chip gradient bottom." />
+      <token name="illus-text" value="#FFFFFF" role="Text inside illustrations." />
+      <token name="illus-text-muted" value="rgba(255,255,255,0.50)" />
+      <token name="illus-text-faint" value="rgba(255,255,255,0.28)" />
+      <token name="illus-grid" value="rgba(255,255,255,0.04)" />
+      <token name="illus-border" value="rgba(255,255,255,0.08)" />
+    </colors>
+
+    <contrast-check>
+      <pair foreground="#0B1430" background="#FFFFFF" ratio="16.3:1" level="AAA" />
+      <pair foreground="#014CE3" background="#FFFFFF" ratio="7.1:1" level="AAA" />
+      <pair foreground="#FFFFFF" background="#014CE3" ratio="7.1:1" level="AAA" />
+      <pair foreground="rgba(11,20,48,0.65)" background="#FFFFFF" ratio="~7.0:1" level="AAA (large + body)" />
+      <pair foreground="rgba(11,20,48,0.50)" background="#FFFFFF" ratio="~5.0:1" level="AA large" />
+    </contrast-check>
+
+    <typography note="Identical to dark spec. Host Grotesk 500 for headings, Inter for body. Hero h1 uses fluid clamp(32px, 9vw, 40px)." />
+
+    <radii note="Identical to dark spec. rounded-full pills, rounded-2xl cards, rounded-3xl large CTA card." />
+
+    <shadows>
+      <shadow name="card-lift" value="0 1px 2px rgba(11,20,48,0.04)" role="New on light: subtle shadow on every card where dark relied on contrast alone. Applied to feature cards, niche cards, faq items, why octupie cards." />
+      <shadow name="cta-primary" value="inset 0 1px 0 rgba(255,255,255,0.24), 0 8px 24px rgba(1,76,227,0.40)" role="Primary CTA button. Unchanged across themes. Highlight on blue reads cleaner on white." />
+      <shadow name="nav-scrolled" value="0 8px 30px rgba(11,20,48,0.10)" role="Nav pill shadow after scroll on light (replaces 0 8px 30px rgba(0,0,0,0.35) from dark)." />
+      <shadow name="step-pill-active" value="0 0 0 4px rgba(76,97,255,0.12)" role="Active step pill ring. Unchanged." />
+      <shadow name="faq-tab-active" value="inset 0 2px 4px rgba(11,20,48,0.08)" role="Selected FAQ tab inner light-to-shadow (reversed vs dark)." />
+    </shadows>
+
+    <breakpoints note="Unchanged: sm 640, md 768, lg 1024, xl 1280, 2xl 1536. Mobile first." />
+
+    <motion>
+      <rule>All keyframes are theme-safe: only opacity and transform are animated.</rule>
+      <rule>`glow-pulse` ring stays rgba(76,97,255,*) (brand blue) in both themes.</rule>
+      <rule>Marquee track uses .gpu-layer, duplicated children, 60s linear infinite.</rule>
+    </motion>
+  </design-tokens>
+
+  <!-- =========================================================== -->
+  <!-- GLOBAL CSS LIGHT OVERRIDES                                    -->
+  <!-- =========================================================== -->
+  <global-css file="src/app/globals.css">
+    <rule scope="html">
+      <css><![CDATA[
+color-scheme: light;
+      ]]></css>
+    </rule>
+    <rule scope="html.dark">
+      <css><![CDATA[
+color-scheme: dark;
+      ]]></css>
+    </rule>
+    <rule scope="body">
+      <css><![CDATA[
+background: var(--background);   /* #FFFFFF in light */
+color: var(--foreground);        /* #0B1430 in light */
+      ]]></css>
+    </rule>
+    <utility name=".bg-grid-overlay" desc="In light mode renders rgb(11 20 48 / 0.05) grid on white (faintly visible navy dots)." />
+    <utility name=".divider-line" desc="In light mode renders rgb(11 20 48 / 0.10) gradient hairline." />
+    <utility name=".gradient-radial-bottom" desc="Fades from rgba(1,76,227,0.35) into rgba(255,255,255,0) on light, so the hero blue glow blends into the white page." />
+    <utility name=".card-gradient-border" desc="Unchanged. The rgba(1,76,227,*) pseudo-border reads on both themes." />
+    <utility name=".glow-pulse" desc="Unchanged. Brand blue ring visible on both themes." />
+    <theme-plumbing>
+      <provider file="src/components/theme-provider.tsx" package="next-themes" attribute="class" defaultTheme="light" enableSystem="false" disableTransitionOnChange="true" />
+      <toggle file="src/components/theme-toggle.tsx" shape="36px round button, sun/moon inline SVG, useSyncExternalStore mount guard" placement="inside Nav pill next to WaitlistButton" />
+      <ssr-safety>html + body both carry suppressHydrationWarning. Initial SSR renders in light markup (no .dark class); next-themes may flip class post-mount if user previously chose dark.</ssr-safety>
+    </theme-plumbing>
+  </global-css>
+
+  <!-- =========================================================== -->
+  <!-- PAIRED-CLASS MIGRATION TABLE                                  -->
+  <!-- =========================================================== -->
+  <paired-class-pattern>
+    <intro>Every hardcoded dark Tailwind class in the original design is migrated to a paired light + dark utility. The component renders the light utility when html has no .dark class, the dark utility when .dark is present.</intro>
+    <pair dark="bg-[#020814]"          light="bg-white" />
+    <pair dark="bg-[#040E22]"          light="bg-white" />
+    <pair dark="bg-[#040E22]/60"       light="bg-white/80" />
+    <pair dark="bg-[#040E22]/95"       light="bg-white/95" />
+    <pair dark="bg-[#15223C]"          light="bg-[#EEF2FA]" />
+    <pair dark="bg-[#0a1636]"          light="bg-[#F0F4FF]" />
+    <pair dark="bg-[#081433]"          light="bg-[#F5F7FB]" />
+    <pair dark="text-white"            light="text-[#0B1430]" />
+    <pair dark="text-white/70"         light="text-[#0B1430]/70" />
+    <pair dark="text-white/65"         light="text-[#0B1430]/65" />
+    <pair dark="text-white/60"         light="text-[#0B1430]/60" />
+    <pair dark="text-white/55"         light="text-[#0B1430]/55" />
+    <pair dark="text-white/50"         light="text-[#0B1430]/50" />
+    <pair dark="text-white/45"         light="text-[#0B1430]/45" />
+    <pair dark="border-white/10"       light="border-black/10" />
+    <pair dark="border-white/15"       light="border-black/15" />
+    <pair dark="border-white/20"       light="border-black/20" />
+    <pair dark="bg-white/5"             light="bg-[#0B1430]/5" />
+    <pair dark="bg-white/10"            light="bg-[#0B1430]/10" />
+    <pair dark="text-[#9BB2FF]"        light="text-[#014CE3]" note="Eyebrow color swap: lilac pale on dark, rich brand blue on light." />
+    <pair dark="bg-[#4C61FF]/10"       light="bg-[#4C61FF]/15" note="Slightly stronger accent wash on white so the tint is visible." />
+    <pair dark="from-[#020814]"        light="from-white" note="Marquee edge-fade masks." />
+    <pair dark="text-red-300"          light="text-[#B42318]" note="Form error copy." />
+  </paired-class-pattern>
+
+  <!-- =========================================================== -->
+  <!-- SECTIONS (light-mode specifics only; copy + layout inherit)   -->
+  <!-- =========================================================== -->
+  <sections>
+
+    <section id="nav">
+      <pill state="default">bg-transparent border-transparent.</pill>
+      <pill state="scrolled (scrollY > 24)">bg-white/95, border border-black/10, shadow 0 8px 30px rgba(11,20,48,0.10). NO backdrop-blur.</pill>
+      <wordmark>OctupieLogo (unchanged SVG) + span text-[#0B1430] font-heading text-xl.</wordmark>
+      <links>text-[#0B1430]/75, hover:text-[#0B1430].</links>
+      <theme-toggle>h-9 w-9 round button, border-black/10, bg-[#0B1430]/5 hover:bg-[#0B1430]/10, sun icon when isDark (so clicking = back to light), moon icon when light.</theme-toggle>
+      <mobile-menu>fixed inset-x-4 top-20, rounded-2xl border-black/10 bg-white p-6, link list text-[#0B1430]/90.</mobile-menu>
+    </section>
+
+    <section id="hero">
+      <wrapper>Same overflow-hidden pt-36 pb-20 md:pt-44 md:pb-28.</wrapper>
+      <backdrops>
+        <grid>.bg-grid-overlay renders navy-on-white faint grid.</grid>
+        <radial>.gradient-radial-bottom fades brand-blue glow into white.</radial>
+      </backdrops>
+      <announce-pill>bg-white/5 style becomes bg-[#0B1430]/5, border border-black/10, text-[#0B1430]/80. InstagramIcon + LinkedInIcon unchanged (self-contained colored tiles).</announce-pill>
+      <headline>font-heading text-[clamp(32px,9vw,40px)] ... text-[#0B1430], tracking-tight, break-words, hyphens-auto.</headline>
+      <subcopy>text-[#0B1430]/70 base, md:text-lg.</subcopy>
+      <form-slot>WaitlistForm ctaLabel "Join the Waitlist". Note: inputs now use bg-[#F5F7FB] + border-black/10 + text-[#0B1430] + placeholder-[#0B1430]/45; focus:border-[#4C61FF].</form-slot>
+      <product-frame>
+        <wrapper>relative mx-auto mt-16 max-w-[1100px].</wrapper>
+        <card>INTENTIONALLY DARK in light mode: border border-white/10 bg-[#040E22]/90 p-3 backdrop-blur-sm. dark variant: bg-[#040E22]/60. The card hugs a dark illustration so it does not float.</card>
+        <glow>brand-blue radial, unchanged.</glow>
+      </product-frame>
+    </section>
+
+    <section id="features">
+      <eyebrow>text-sm font-medium uppercase tracking-[0.2em] text-[#014CE3]. Copy: "What you actually get".</eyebrow>
+      <h2>text-[#0B1430].</h2>
+      <card>rounded-2xl border border-black/10 bg-white p-6, shadow-[0_1px_2px_rgba(11,20,48,0.04)], hover:bg-[#F5F7FB] hover:border-[#4C61FF]/40.</card>
+      <illustration-frame>INTENTIONALLY DARK: border-white/5 bg-gradient-to-br from-[#0a152c] to-[#040E22]. Same in both themes. Wraps the dark FeatureIllustration SVG.</illustration-frame>
+      <title>font-heading text-[#0B1430].</title>
+      <body>text-[#0B1430]/65.</body>
+      <card-gradient-border>Unchanged brand-blue pseudo-border.</card-gradient-border>
+    </section>
+
+    <section id="how-it-works">
+      <eyebrow>text-[#014CE3].</eyebrow>
+      <h2>text-[#0B1430].</h2>
+      <step-pills default="rounded-full border-black/10 bg-[#0B1430]/[0.03] text-[#0B1430]/65">Inactive pill on light.</step-pills>
+      <step-pills active="border-[#4C61FF] bg-[#F0F4FF] text-[#0B1430] shadow-[0_0_0_4px_rgba(76,97,255,0.12)]">Active pill on light.</step-pills>
+      <step-number-active>bg-[#014CE3] text-white.</step-number-active>
+      <step-number-default>bg-[#0B1430]/10 text-[#0B1430]/70.</step-number-default>
+      <step-card active="border-[#014CE3]/50 bg-[#F0F4FF]">Active step card on light.</step-card>
+      <step-card default="border-black/10 bg-white, hover:border-black/20 hover:bg-[#F5F7FB]">Default step card.</step-card>
+      <preview-pane>INTENTIONALLY DARK on light: border-white/10 bg-[#040E22] p-3 wraps the StepIllustration SVG. Eyebrow inside pane: text-[#4C61FF]. Title: text-white (because the pane is dark).</preview-pane>
+    </section>
+
+    <section id="social-proof">
+      <stats-row>Stat numbers text-[#0B1430], desc text-[#0B1430]/70.</stats-row>
+      <section-heading>"Built for short form creators across every niche" text-[#0B1430]. No eyebrow pill, no subtitle (removed).</section-heading>
+      <platform-line>text-[#0B1430]/50 uppercase, InstagramIcon + LinkedInIcon inline.</platform-line>
+      <marquee-edge-fade>left: from-white to-transparent. right: from-white to-transparent.</marquee-edge-fade>
+      <niche-card>rounded-2xl border border-black/10 bg-white p-5, shadow-[0_1px_2px_rgba(11,20,48,0.04)]. Icon badge: h-10 w-10 rounded-xl border-black/10 bg-gradient-to-br from-[#EEF2FA] to-[#FFFFFF], icon color text-[#014CE3]. Label text-[#0B1430]. Blurb text-[#0B1430]/65.</niche-card>
+    </section>
+
+    <section id="why">
+      <eyebrow>text-sm font-medium uppercase tracking-[0.2em] text-[#014CE3]. Copy: "Why Octupie". Matches Features eyebrow style exactly.</eyebrow>
+      <h2>text-[#0B1430]. "Built to fix what research / tools leave unfinished".</h2>
+      <card>rounded-2xl border border-black/10 bg-white p-6, shadow-[0_1px_2px_rgba(11,20,48,0.04)], hover:border-[#4C61FF]/40. Minimal: no badges, no index, no eyebrows, no detail paragraphs.</card>
+      <tag-label>text-[11px] uppercase tracking-[0.2em] text-[#0B1430]/50.</tag-label>
+      <pain-line>text-sm text-[#0B1430]/60, preceded by a 1.5x1.5 red-dot (bg-red-400/70).</pain-line>
+      <fix-headline>font-heading text-[20px] md:text-[22px] text-[#0B1430], preceded by a 1.5x1.5 brand-dot (bg-[#4C61FF]).</fix-headline>
+      <removed>Problem/fix split, "x" red badge, connector arrow chip, "Octupie fixes it" logo badge, index "0N", footnote legend strip, blur blob backdrops, hairline divider above section.</removed>
+    </section>
+
+    <section id="cta">
+      <frame>rounded-3xl border border-black/10 bg-white px-8 py-16 md:px-16 md:py-20.</frame>
+      <bg-image>footerBg webp rendered at opacity-60; gradient overlay fades to var(--background) (white) via .gradient-radial-bottom style mapping.</bg-image>
+      <h2>text-[#0B1430].</h2>
+      <subcopy>text-[#0B1430]/75.</subcopy>
+      <form-note>text-[#0B1430]/55.</form-note>
+    </section>
+
+    <section id="faq">
+      <h2>text-[#0B1430].</h2>
+      <contact-link>
+        <primary>text-[#014CE3] hover:text-[#0B1430]. Copy: "Contact us →". href: mailto:vishnu@octupie.com?subject=Octupie%20inquiry.</primary>
+        <email-line>text-[#0B1430]/65 hover:text-[#014CE3]. Copy: "vishnu@octupie.com". Displayed directly below the primary link.</email-line>
+      </contact-link>
+      <tab-switcher>border-black/10 bg-white p-1. Tab default: text-[#0B1430]/70 hover:text-[#0B1430]. Tab selected: bg-[#EEF2FA] text-[#0B1430] shadow-[inset_0_2px_4px_rgba(11,20,48,0.08)].</tab-switcher>
+      <item>rounded-2xl border-black/10 bg-white.</item>
+      <item-question>font-heading text-[#0B1430].</item-question>
+      <item-answer>text-[#0B1430]/70.</item-answer>
+      <plus-icon>border-black/10 bg-[#0B1430]/5 text-[#0B1430]/80.</plus-icon>
+    </section>
+
+    <section id="footer">
+      <wrapper>border-t border-black/10 bg-white.</wrapper>
+      <tagline>text-[#0B1430]/60.</tagline>
+      <column-label>text-[#0B1430]/50 uppercase tracking-[0.18em].</column-label>
+      <column-link>text-[#0B1430]/75 hover:text-[#0B1430].</column-link>
+      <contact-us>Mailto link label "Contact Us" + second visible list item "vishnu@octupie.com", both href mailto:vishnu@octupie.com?subject=Octupie%20inquiry.</contact-us>
+      <bottom-bar>border-t border-black/10, text-[#0B1430]/50.</bottom-bar>
+    </section>
+
+  </sections>
+
+  <!-- =========================================================== -->
+  <!-- COMPONENTS (light-mode variants)                              -->
+  <!-- =========================================================== -->
+  <components>
+
+    <component name="WaitlistButton">
+      <primary>bg-[#014CE3] text-white, shadow-[inset_0_1px_0_rgba(255,255,255,0.24),0_8px_24px_rgba(1,76,227,0.40)], hover:bg-[#4C61FF]. Unchanged across themes.</primary>
+      <ghost>border-black/10 bg-[#0B1430]/5 text-[#0B1430]/90 hover:bg-[#0B1430]/10.</ghost>
+    </component>
+
+    <component name="WaitlistForm">
+      <input>rounded-full border border-black/10 bg-[#F5F7FB] px-5 py-3 text-sm text-[#0B1430] placeholder:text-[#0B1430]/45 outline-none transition focus:border-[#4C61FF] focus:bg-white.</input>
+      <cta>Same as WaitlistButton primary.</cta>
+      <success-pill>rounded-full border-[#4C61FF]/30 bg-[#4C61FF]/15 px-5 py-3 text-sm text-[#014CE3], check icon + "You are on the list. We will be in touch soon.".</success-pill>
+      <error>text-[#B42318] text-xs.</error>
+    </component>
+
+    <component name="WaitlistDialog">
+      <overlay>fixed inset-0 z-[100] bg-[#0B1430]/50 backdrop-blur-sm.</overlay>
+      <panel>rounded-2xl border border-black/10 bg-white p-8.</panel>
+      <close-button>border-black/10 bg-[#0B1430]/5 text-[#0B1430]/80 hover:text-[#0B1430].</close-button>
+    </component>
+
+    <component name="Brandmark / Wordmark">
+      <logo>OctupieLogo SVG unchanged. Brand-gradient rounded square with 8 white dots + white core. Reads equally well on both themes.</logo>
+      <wordmark-text>span text-[#0B1430] in light.</wordmark-text>
+    </component>
+
+    <component name="ThemeToggle">
+      <shape>36x36 rounded-full button.</shape>
+      <container>border border-black/10 bg-[#0B1430]/5 hover:bg-[#0B1430]/10.</container>
+      <icon>Inline SVG sun (light-is-active) or moon (dark-is-active). Stroke currentColor text-[#0B1430].</icon>
+      <mount-guard>useSyncExternalStore pattern. Pre-mount defaults to isDark=false so SSR light matches client light.</mount-guard>
+    </component>
+
+    <component name="NicheIcon / InstagramIcon / LinkedInIcon">
+      <note>Unchanged. Niche icons use stroke=currentColor and inherit the card text color. Instagram and LinkedIn are self-contained colored tiles (gradient + white marks) so they render identically on both themes.</note>
+    </component>
+
+    <component name="Illustrations (feature / step / hero-visualization)">
+      <note>PINNED DARK. Their --illus-* CSS vars are set to dark values in both :root and .dark. SVG gradients, grid, text fills are all dark palette. Intentional: product UI previews stay recognizable and the surrounding wrappers are also dark so there are no floating dark slabs.</note>
+    </component>
+
+  </components>
+
+  <!-- =========================================================== -->
+  <!-- COPY INVARIANTS                                               -->
+  <!-- =========================================================== -->
+  <copy-invariants>
+    <rule>No em dashes (U+2014) or en dashes (U+2013).</rule>
+    <rule>No fabricated testimonials. Niche archetypes only.</rule>
+    <rule>"Pre launch" pill and the "Octupie has not launched yet" paragraph are REMOVED from social proof. Only the headline remains above the marquee.</rule>
+    <rule>Why Octupie eyebrow uses the Features eyebrow style (plain uppercase text, no pill, no dot).</rule>
+    <rule>Contact email: vishnu@octupie.com. Mailto links include ?subject=Octupie%20inquiry. The email is displayed as visible text both in FAQ (below "Contact us →") and in Footer (second Company column link).</rule>
+    <rule>Tab title uses pipe separator: "Octupie | ...". No dash.</rule>
+  </copy-invariants>
+
+  <!-- =========================================================== -->
+  <!-- REPRODUCTION RECIPE (LIGHT)                                   -->
+  <!-- =========================================================== -->
+  <reproduction>
+    <step n="1">Load Host Grotesk + Inter. Set body bg #FFFFFF, color #0B1430, antialiased.</step>
+    <step n="2">Install next-themes, mount ThemeProvider with attribute="class", defaultTheme="light", enableSystem=false, disableTransitionOnChange. Add suppressHydrationWarning on html + body.</step>
+    <step n="3">In globals.css, put the LIGHT token set in :root and the DARK token set in .dark. body reads var(--background) / var(--foreground).</step>
+    <step n="4">For every component, migrate hardcoded dark values to paired utilities using the paired-class table. Base class renders light, dark: variant renders dark.</step>
+    <step n="5">Illustrations: define --illus-* CSS vars once with dark values and consume them inside every SVG via the stop-color=var(--illus-...) attribute on each gradient stop. Do NOT split these across themes.</step>
+    <step n="6">Add ThemeToggle (36px round moon/sun) to the nav pill. Use useSyncExternalStore for mount detection so SSR matches the default light render.</step>
+    <step n="7">Swap eyebrow #9BB2FF to #014CE3 on light (plain uppercase text, no pill wrapper) to keep hierarchy.</step>
+    <step n="8">Apply subtle 0 1px 2px rgba(11,20,48,0.04) shadow to every card where dark relied on contrast.</step>
+    <step n="9">Nav, CTA card, hero product-frame wrappers must STAY dark in light mode when they directly host a dark illustration. This prevents floating dark slabs.</step>
+    <step n="10">Test: typecheck, lint, next build. Toggle theme, verify localStorage persistence. Resize 375 and 1280 both modes.</step>
+  </reproduction>
+
+  <!-- =========================================================== -->
+  <!-- KNOWN EXCEPTIONS / STAY-DARK ELEMENTS                         -->
+  <!-- =========================================================== -->
+  <stay-dark-in-light-mode>
+    <element>Hero product frame (hero.tsx outer card around HeroVisualization).</element>
+    <element>Features card illustration frame (the inner gradient box, not the outer card).</element>
+    <element>How-it-works preview pane (right column wrapping StepIllustration).</element>
+    <element>All inline SVG illustration content (feature-illustrations, step-illustrations, hero-visualization).</element>
+    <element>Primary WaitlistButton (blue fill with white text, same in both themes).</element>
+    <element>Marquee card icon gradient when rendered against the white card (colors adjust but badge itself is a blue-to-white gradient on white).</element>
+    <rationale>These elements either host dark illustration content and would leave a visible black rectangle on white, or are brand-colored CTAs whose contrast works on any background.</rationale>
+  </stay-dark-in-light-mode>
+
+</brand-spec>
